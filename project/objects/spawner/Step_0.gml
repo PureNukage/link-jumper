@@ -10,3 +10,9 @@ if spawn_time_current == spawn_time {
 	spawn_time_current = 0 
 	spawn_time = irandom_range(10,80)
 }	
+
+if keyboard_check_pressed(vk_left) {
+	x = 925
+} else if keyboard_check_pressed(vk_right) {
+	x = 1248
+}	

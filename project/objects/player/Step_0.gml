@@ -3,6 +3,8 @@ if keyboard_check_pressed(ord("W")) and y == ground {
 	vspd = -15
 }
 
+if keyboard_check_pressed(vk_control) god = !god
+
 if keyboard_check_pressed(ord("S")) {
 	vspd = 15
 }	
@@ -21,6 +23,6 @@ repeat abs(vspd) {
 	}
 }
 
-if instance_place(x+1,y,obstacle) {
+if instance_place(x+1,y,obstacle) and god == 0 {
 	game_restart()	
 }
