@@ -207,6 +207,14 @@
             }
         },
         {
+            "Key": "f3e4c36a-8139-484b-a250-189ddd339235",
+            "Value": {
+                "id": "ea7e7e49-6c14-4e77-b912-1583c12e9c9c",
+                "resourcePath": "sprites\\s_chainlink\\s_chainlink.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f418569b-3bdd-4706-a0e4-364317f54032",
             "Value": {
                 "id": "64ffbac2-7513-47f8-b677-8f3fe057ed87",
