@@ -23,6 +23,15 @@ repeat abs(vspd) {
 	}
 }
 
+if vspd < 0 {
+	sprite_index = s_sergey_jump0	
+} else if vspd > 0 { 
+	sprite_index = s_sergey_jump1	
+} else {
+	sprite_index = s_sergey_run	
+}
+
+
 if instance_place(x+1,y,obstacle) and god == 0 {
 	game_restart()	
 }
