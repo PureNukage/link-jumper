@@ -3,7 +3,9 @@ spawn_time_current++
 if spawn_time_current == spawn_time {
 	var throw_height = irandom_range(y,y-96)
 	var bounce_chance = irandom_range(1,100)
+	var asset = irandom_range(0,obstacles_total-1)
 	var _obstacle = instance_create_layer(x,throw_height,"Instances",obstacle)
+	_obstacle.sprite_index = obstacles[| asset]
 	if bounce_chance > 90 {
 		_obstacle.bounce = 1
 	}	
