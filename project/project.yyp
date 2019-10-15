@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "8002c18a-a73b-4add-b39c-6d62618c80cd",
+            "Value": {
+                "id": "89102a02-91a3-4320-a442-7759498d51f0",
+                "resourcePath": "sprites\\s_fud\\s_fud.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "813a95e2-65cf-4b4a-9d8f-8e7e6c51456c",
             "Value": {
                 "id": "0a0add8f-6c53-4f9a-9736-cdfcc17d33bd",
