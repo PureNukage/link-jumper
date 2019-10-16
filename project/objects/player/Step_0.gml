@@ -7,7 +7,11 @@ if keyboard_check(ord("W")) and y == ground {
 if (keyboard_check_released(ord("W")) and y == ground and jump != 0) or (jump < -15) {
 	vspd = jump
 	jump = -5
-}	
+}
+
+hspd = (keyboard_check(ord("D")) - keyboard_check(ord("A")))*6
+x += hspd
+x = clamp(x,160,255)
 
 
 //	God Mode Toggle
