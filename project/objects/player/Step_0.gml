@@ -1,7 +1,13 @@
 //	Jump
-if keyboard_check_pressed(ord("W")) and y == ground {
-	vspd = -15
+//	Charge
+if keyboard_check(ord("W")) and y == ground {
+	jump--
 }
+//	Release
+if (keyboard_check_released(ord("W")) and y == ground and jump != 0) or (jump < -15) {
+	vspd = jump
+	jump = -5
+}	
 
 
 //	God Mode Toggle
