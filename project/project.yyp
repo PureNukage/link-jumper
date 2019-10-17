@@ -55,6 +55,14 @@
             }
         },
         {
+            "Key": "1be28b47-1d4e-4cc9-b823-2764a19f25e3",
+            "Value": {
+                "id": "02b5779b-80b2-4b78-8413-3c7e1e8d12a2",
+                "resourcePath": "scripts\\enums_and_macros\\enums_and_macros.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "1dc205a2-eca8-4f40-b53c-93e2d4d47323",
             "Value": {
                 "id": "22151563-f889-457c-abdb-20623630d637",
@@ -328,6 +336,7 @@
         }
     ],
     "script_order": [
+        "1be28b47-1d4e-4cc9-b823-2764a19f25e3",
         "fd58d784-0a03-46ba-a11a-857ced9dfa79"
     ],
     "tutorial": ""

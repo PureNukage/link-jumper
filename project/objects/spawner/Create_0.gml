@@ -1,12 +1,10 @@
-spawn_time = 30
-spawn_time_current = 0
-
-stage = []
+spawn = ds_queue_create()
+spawn_time = ds_queue_create()
 stage0()
 
 obstacles = ds_list_create()
 
-obstacles[| 0] = s_fud
-obstacles[| 1] = s_chainlink
+obstacles[| obstacle_type.fud] = s_fud
+obstacles[| obstacle_type.link] = s_chainlink
 
 obstacles_total = ds_list_size(obstacles)
