@@ -1,7 +1,8 @@
 spawn_time = 30
 spawn_time_current = 0
 
-history = []
+stage = []
+stage0()
 
 obstacles = ds_list_create()
 
