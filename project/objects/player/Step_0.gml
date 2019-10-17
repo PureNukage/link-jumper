@@ -1,13 +1,18 @@
 //	Jump
 //	Charge
-if keyboard_check(ord("W")) and y == ground {
-	jump--
+if keyboard_check_pressed(ord("W")) and y == ground {
+	vspd = -10
+	jump = 8
 }
+if keyboard_check(ord("W")) and (jump > 0 and jump < 5) {
+	vspd--
+}
+if jump > 0 jump--
 //	Release
-if (keyboard_check_released(ord("W")) and y == ground and jump != 0) or (jump < -15) {
-	vspd = jump
-	jump = -5
-}
+//if (keyboard_check_released(ord("W")) and y == ground and jump != 0) or (jump < -15) {
+//	vspd = jump
+//	jump = -5
+//}
 
 hspd = (keyboard_check(ord("D")) - keyboard_check(ord("A")))*6
 x += hspd
