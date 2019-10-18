@@ -1,3 +1,6 @@
+var _queue = argument[0]
+
+
 var solos = 1		//	This is the amount of solo fuds that will spawn 
 var dubs = 1		//	This is the amount of x2 fuds that will spawn 
 var trips = 1		//	This is the amount of x3 fuds that will spawn 
@@ -7,10 +10,6 @@ var _time = 10		//	The initial stream value (for other stages it should init as 
 var total = solos + dubs + trips	//	Total amount of obstacles to spawn this stage
 
 var remainder_list = ds_list_create()
-
-if solos > 0 ds_list_add(remainder_list,1)
-if dubs > 0 ds_list_add(remainder_list,2)
-if trips > 0 ds_list_add(remainder_list,3)
 
 for(var i=0;i<total;i++) {
 	
@@ -60,3 +59,4 @@ var _frames = _time - (_seconds*60)
 var _minutes = floor(_seconds/60)
 _seconds = _seconds - _minutes*60
 show_debug_message("stage0 length: "+string(_minutes)+" minutes, "+string(_seconds)+" seconds and "+string(_frames)+"frames")
+show_debug_message("")

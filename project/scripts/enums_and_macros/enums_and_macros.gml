@@ -4,7 +4,7 @@ enum obstacle_type {
 }	
 
 enum obstacle_amount {
-	solo = 1,
-	dubs = 2,
-	trips = 3,
+	solo,
+	dubs,
+	trips,
 }	
