@@ -50,8 +50,21 @@ repeat abs(vspd) {
 }
 #endregion
 
-
+if damaged > 0 damaged--
 //	Obstacle Collision-Check
-if instance_place(x+1,y,obstacle) and god == 0 {
-	game_restart()	
+if instance_place(x+1,y,obstacle) and god == 0 and damaged == 0 {
+	var _obstacle = instance_place(x+1,y,obstacle)
+	if _obstacle.sprite_index == s_fud {
+		hp--
+		damaged = 45
+	} else {
+		hp++
+		damaged = 45
+		instance_destroy(_obstacle)
+	}
+}
+
+//	Game Over
+if hp <= 0 {
+	game_restart()
 }

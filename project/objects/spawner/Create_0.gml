@@ -23,9 +23,22 @@ for(var a=0;a<obstacles_total;a++) {
 
 #region Stage 0 
 
-queue[obstacle_type.fud,obstacle_amount.solo] = 1
-queue[obstacle_type.fud,obstacle_amount.dubs] = 1
-queue[obstacle_type.fud,obstacle_amount.trips] = 1
+queue[obstacle_type.fud,obstacle_amount.solo] = 6
+queue[obstacle_type.fud,obstacle_amount.dubs] = 2
+
+queue[obstacle_type.link,obstacle_amount.solo] = 1
+
+obstacle_queue(queue)
+
+queue[obstacle_type.fud,obstacle_amount.dubs] = 6
+queue[obstacle_type.fud,obstacle_amount.trips] = 2
+
+queue[obstacle_type.link,obstacle_amount.solo] = 1
+
+obstacle_queue(queue)
+
+queue[obstacle_type.fud,obstacle_amount.dubs] = 2
+queue[obstacle_type.fud,obstacle_amount.trips] = 6
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
