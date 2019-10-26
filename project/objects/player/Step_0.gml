@@ -19,8 +19,8 @@ if keyboard_check_pressed(vk_control) god = !god
 
 
 //	Fall to Ground
-if keyboard_check_pressed(ord("S")) {
-	vspd = 15
+if keyboard_check_pressed(ord("S")) and vspd < 0 {
+	vspd = 0
 }	
 
 
