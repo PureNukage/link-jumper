@@ -6,7 +6,10 @@
     "children": [
         "1ad7efe9-5e27-43c0-a9ae-504a9ecb57b1",
         "4a94f61e-dc3d-46b7-a9a5-f3090eec0aac",
-        "f839e93d-8ba9-47fc-ab68-bd49f855c677"
+        "f839e93d-8ba9-47fc-ab68-bd49f855c677",
+        "8d9b9d19-e013-4715-b565-58442415ee9b",
+        "4ec4e3ef-f2cb-4a12-aaf4-0d15de4e52f7",
+        "9277d86e-2456-4dc6-8504-d268ead977e8"
     ],
     "filterType": "GMSprite",
     "folderName": "backgrounds",
