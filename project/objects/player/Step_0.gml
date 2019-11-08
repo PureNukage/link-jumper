@@ -54,7 +54,7 @@ if damaged > 0 damaged--
 
 //	Obstacle Collision-Check
 if instance_place(x-15,y,obstacle) and god == 0 and damaged == 0 {
-	var _obstacle = instance_place(x+1,y,obstacle)
+	var _obstacle = instance_place(x-15,y,obstacle)
 	if _obstacle.sprite_index == s_fud {
 		hp--
 		damaged = 45
