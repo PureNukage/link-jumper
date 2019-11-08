@@ -50,11 +50,11 @@ repeat abs(vspd) {
 }
 #endregion
 
-if damaged > 0 damaged--
+if damaged > 0 { damaged-- image_blend = c_red } else image_blend = c_white
 
 //	Obstacle Collision-Check
-if instance_place(x-15,y,obstacle) and god == 0 and damaged == 0 {
-	var _obstacle = instance_place(x-15,y,obstacle)
+if instance_place(x+15,y,obstacle) and god == 0 and damaged == 0 {
+	var _obstacle = instance_place(x+15,y,obstacle)
 	if _obstacle.sprite_index == s_fud {
 		hp--
 		damaged = 45
