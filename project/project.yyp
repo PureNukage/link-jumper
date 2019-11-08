@@ -50,7 +50,7 @@
             "Key": "1ad7efe9-5e27-43c0-a9ae-504a9ecb57b1",
             "Value": {
                 "id": "ecfbb682-2d85-40ad-bb21-efdc3e6db760",
-                "resourcePath": "sprites\\s_bg_ground\\s_bg_ground.yy",
+                "resourcePath": "sprites\\s_bg_ground2\\s_bg_ground2.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -98,7 +98,15 @@
             "Key": "4a94f61e-dc3d-46b7-a9a5-f3090eec0aac",
             "Value": {
                 "id": "abb59083-16a7-4e80-9980-1239570161f4",
-                "resourcePath": "sprites\\s_bg_lightpoles\\s_bg_lightpoles.yy",
+                "resourcePath": "sprites\\s_bg_lightpoles2\\s_bg_lightpoles2.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "4ec4e3ef-f2cb-4a12-aaf4-0d15de4e52f7",
+            "Value": {
+                "id": "55a0c9a7-dd8c-48ac-95ac-1d8fa5a8e40f",
+                "resourcePath": "sprites\\s_bg_city\\s_bg_city.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -164,6 +172,22 @@
                 "id": "0a0add8f-6c53-4f9a-9736-cdfcc17d33bd",
                 "resourcePath": "views\\813a95e2-65cf-4b4a-9d8f-8e7e6c51456c.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "8d9b9d19-e013-4715-b565-58442415ee9b",
+            "Value": {
+                "id": "bf1a0605-c5b1-4059-974a-ff0f2485efbd",
+                "resourcePath": "sprites\\s_bg_ground\\s_bg_ground.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "9277d86e-2456-4dc6-8504-d268ead977e8",
+            "Value": {
+                "id": "3e2ef392-93a9-4542-b18c-bc75199e7c5c",
+                "resourcePath": "sprites\\s_bg_lightpoles\\s_bg_lightpoles.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -338,7 +362,7 @@
             "Key": "f839e93d-8ba9-47fc-ab68-bd49f855c677",
             "Value": {
                 "id": "f5f13282-f6aa-4280-864d-14bc41b4603e",
-                "resourcePath": "sprites\\s_bg_city\\s_bg_city.yy",
+                "resourcePath": "sprites\\s_bg_city2\\s_bg_city2.yy",
                 "resourceType": "GMSprite"
             }
         },
