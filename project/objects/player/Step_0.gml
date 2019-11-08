@@ -9,9 +9,9 @@ if keyboard_check(ord("W")) and (jump > 0 and jump < 5) {
 }
 if jump > 0 jump--
 
-hspd = (keyboard_check(ord("D")) - keyboard_check(ord("A")))*6
-x += hspd
-x = clamp(x,160,255)
+//hspd = (keyboard_check(ord("D")) - keyboard_check(ord("A")))*6
+//x += hspd
+//x = clamp(x,160,255)
 
 
 //	God Mode Toggle
@@ -51,8 +51,9 @@ repeat abs(vspd) {
 #endregion
 
 if damaged > 0 damaged--
+
 //	Obstacle Collision-Check
-if instance_place(x+1,y,obstacle) and god == 0 and damaged == 0 {
+if instance_place(x-15,y,obstacle) and god == 0 and damaged == 0 {
 	var _obstacle = instance_place(x+1,y,obstacle)
 	if _obstacle.sprite_index == s_fud {
 		hp--
