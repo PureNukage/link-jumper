@@ -23,7 +23,8 @@ if game_start == false {
 		x = lerp(x,player_game_xpos,.03)		
 	} else {
 		instance_create_layer(0,0,"Instances",time)
-		instance_create_layer(x,player_game_ypos,"Instances",player)
+		var _player = instance_create_layer(x,player_game_ypos,"Instances",player)
+		_player.image_index = image_index
 		instance_create_layer(1248,576,"Instances",spawner)
 		if instance_number(music) == 0 instance_create_layer(0,0,"Instances",music)
 		instance_destroy()
