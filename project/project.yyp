@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "52b4f9cb-b68d-473b-8cf8-cedb74c80a8c",
+            "Value": {
+                "id": "46abdb05-8a74-4987-a7e4-d9e204ef67c6",
+                "resourcePath": "sprites\\s_bg_sky\\s_bg_sky.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "53e4f286-0f9f-49ff-89dc-57b8058dd940",
             "Value": {
                 "id": "57e508dc-1581-4e4e-91dc-a889fa6486c6",
