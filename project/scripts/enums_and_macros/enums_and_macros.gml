@@ -1,6 +1,10 @@
 enum obstacle_type {
 	fud,
-	link
+	link,
+	duck,
+	fist,
+	rockstar,
+	shadowfork
 }	
 
 enum obstacle_amount {

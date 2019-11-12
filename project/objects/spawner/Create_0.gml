@@ -5,6 +5,10 @@ obstacles = ds_list_create()
 
 obstacles[| obstacle_type.fud] = s_fud
 obstacles[| obstacle_type.link] = s_chainlink
+obstacles[| obstacle_type.duck] = s_duck
+obstacles[| obstacle_type.fist] = s_fist
+obstacles[| obstacle_type.rockstar] = s_rockstar
+obstacles[| obstacle_type.shadowfork] = s_shadowfork
 
 obstacles_total = ds_list_size(obstacles)
 
