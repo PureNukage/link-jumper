@@ -55,13 +55,12 @@ if damaged > 0 { damaged-- image_blend = c_red } else image_blend = c_white
 //	Obstacle Collision-Check
 if instance_place(x,y,obstacle) and god == 0 and damaged == 0 {
 	var _obstacle = instance_place(x,y,obstacle)
-	if _obstacle.sprite_index == s_fud {
+	if _obstacle.sprite_index == s_chainlink {
+		hp++ 
+		instance_destroy(_obstacle)
+	} else {
 		hp--
 		damaged = 45
-	} else {
-		hp++
-		//damaged = 45
-		instance_destroy(_obstacle)
 	}
 }
 
