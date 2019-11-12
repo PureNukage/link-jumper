@@ -19,13 +19,13 @@ if game_start == false {
 	}
 } else {
 	
-	if distance_to_point(player_game_xpos-63,player_game_ypos) > 1 { 
-		x = lerp(x,player_game_xpos-63,.03)		
+	if distance_to_point(player_game_xpos,player_game_ypos) > 10 { 
+		x = lerp(x,player_game_xpos,.03)		
 	} else {
-		instance_create_layer(0,0,"Instances",music)
 		instance_create_layer(0,0,"Instances",time)
 		instance_create_layer(x,player_game_ypos,"Instances",player)
 		instance_create_layer(1248,576,"Instances",spawner)
+		if instance_number(music) == 0 instance_create_layer(0,0,"Instances",music)
 		instance_destroy()
 			
 	}

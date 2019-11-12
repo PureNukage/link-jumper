@@ -67,5 +67,11 @@ if instance_place(x,y,obstacle) and god == 0 and damaged == 0 {
 
 //	Game Over
 if hp <= 0 {
-	game_restart()
+	//	Restart everything
+	with all {
+		if object_index != music {
+			instance_destroy()	
+		}
+	}
+	instance_create_layer(0,0,"Instances",mainmenu)
 }
