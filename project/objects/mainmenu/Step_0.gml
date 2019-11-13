@@ -1,7 +1,7 @@
 if game_start == false { 
 	if point_in_rectangle(mouse_x,mouse_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) {
 		button_mouseover = true
-		button_color = c_dkgray
+		button_color = color_button_highlight
 	
 		//	If leftclick
 		if mouse_check_button(mb_left) {
@@ -15,7 +15,7 @@ if game_start == false {
 	
 	} else {
 		button_mouseover = false
-		button_color = c_gray
+		button_color = color_button_normal
 	}
 } else {
 	

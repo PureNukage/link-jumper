@@ -383,6 +383,14 @@
             }
         },
         {
+            "Key": "cfd8aecd-2817-418b-a5c8-d7b03bac9759",
+            "Value": {
+                "id": "32597dba-5cdf-4778-869d-34acb44a6a1b",
+                "resourcePath": "fonts\\font_reg_24\\font_reg_24.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "d2e2cc2e-5fe0-4cf6-84f2-52bcb3f777f3",
             "Value": {
                 "id": "c76126d2-f3b4-456f-94d3-99fdf40015d8",
