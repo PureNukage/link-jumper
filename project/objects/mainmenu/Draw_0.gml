@@ -42,6 +42,14 @@ if game_start == false {
 	draw_set_font(font_bold_12)
 	draw_text(help_buttonX+button_width/2,help_buttonY+button_height/2,help_button_string)
 	
+	//	Credits
+	draw_set_color(c_white)
+	draw_set_halign(fa_left)
+	draw_set_valign(fa_top)
+	draw_text(15,15,"Created by @PureNukage")
+	draw_text(15,32,"Assistance by @Leo62550304/Potato")
+	draw_text(15,49,"Music by wombocombo")
+	
 	if help_menu_open == true { 
 	//	Help menu background
 	draw_set_color(c_ltgray)
@@ -59,7 +67,7 @@ if game_start == false {
 	draw_sprite_ext(s_sergey_jump0,-1,help_menuX+295,help_menuY+36,.5,.5,0,c_white,1)
 	draw_text(help_menuX+16,help_menuY+96,"Collect Chainlinks for health")
 	draw_sprite_ext(s_chainlink,-1,help_menuX+240,help_menuY+76,.75,.75,0,c_white,1)
-	draw_text(help_menuX+16,help_menuY+160,"Avoid everything else")
+	draw_text(help_menuX+16,help_menuY+152,"Avoid everything else")
 	draw_sprite(s_fud,-1,help_menuX+200,help_menuY+130)
 	
 	}
