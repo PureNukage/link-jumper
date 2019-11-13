@@ -26,6 +26,12 @@ arrow_left_x = 0
 arrow_right_x = 0
 arrow_y = 0
 
+volume = .25
+volume_old = volume
+
+volume_icon_x = display_get_gui_width()-96
+volume_icon_y = 32
+
 
 
 player_game_xpos = 576
