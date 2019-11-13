@@ -13,6 +13,12 @@ if jump > 0 jump--
 //x += hspd
 //x = clamp(x,160,255)
 
+//	Running score
+running_score_frame++
+if running_score_frame >= 5 {
+	running_score_frame = 0
+	running_score++
+}
 
 //	God Mode Toggle
 if keyboard_check_pressed(vk_control) god = !god
