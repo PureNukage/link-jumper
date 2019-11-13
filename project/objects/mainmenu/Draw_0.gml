@@ -47,7 +47,6 @@ if instance_number(music) == 0 {
 	} else { 
 		var _sprite = s_audio_on
 	}
+	draw_sprite(_sprite,0,volume_icon_x,volume_icon_y)
 }
-
-draw_sprite(_sprite,0,volume_icon_x,volume_icon_y)
 
