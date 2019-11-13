@@ -55,10 +55,12 @@ if game_start == false {
 	draw_set_color(c_black)
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)
-	draw_text(help_menuX+32,help_menuY+32,"Press W to jump")
-	draw_text(help_menuX+32,help_menuY+64,"Collect Chainlinks for health")
-	draw_text(help_menuX+32,help_menuY+96,"Avoid everything else")
-	draw_sprite(s_chainlink,-1,help_menuX+96,help_menuY+124)
+	draw_text(help_menuX+16,help_menuY+32,"Press W to jump. Hold to go higher")
+	draw_sprite_ext(s_sergey_jump0,-1,help_menuX+295,help_menuY+36,.5,.5,0,c_white,1)
+	draw_text(help_menuX+16,help_menuY+96,"Collect Chainlinks for health")
+	draw_sprite_ext(s_chainlink,-1,help_menuX+240,help_menuY+76,.75,.75,0,c_white,1)
+	draw_text(help_menuX+16,help_menuY+160,"Avoid everything else")
+	draw_sprite(s_fud,-1,help_menuX+200,help_menuY+130)
 	
 	}
 	

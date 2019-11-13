@@ -20,10 +20,10 @@ help_button_color = color_button_normal
 help_button_string = "How to Play"
 help_menu_open = false
 
-help_menu_width = 256
+help_menu_width = 320
 help_menu_height = 192
 help_menuX = help_buttonX-help_menu_width/4
-help_menuY = help_buttonY+button_height+32
+help_menuY = help_buttonY+button_height+16
 
 volume = .25
 volume_old = volume
