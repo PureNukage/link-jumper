@@ -2,7 +2,7 @@ button_width = 128
 button_height = 64
 
 buttonX = display_get_gui_width()/2-(button_width/2)
-buttonY = display_get_gui_height()/2
+buttonY = display_get_gui_height()/2 - 32
 
 button_string = "Play"
 
@@ -14,17 +14,16 @@ color_button_highlight = make_color_rgb(29,63,153)
 
 button_color = color_button_normal
 
+help_buttonX = buttonX
+help_buttonY = buttonY+button_height+32
+help_button_color = color_button_normal
+help_button_string = "How to Play"
+help_menu_open = false
 
-header_string = "ChainLink: The Journey" 
-subheader_string = " Avoid the fud and memes \n \n Collect the ChainLinks"
-headerX = display_get_gui_width()/2
-headerY = 128
-
-slide = 0
-
-arrow_left_x = 0
-arrow_right_x = 0
-arrow_y = 0
+help_menu_width = 256
+help_menu_height = 192
+help_menuX = help_buttonX-help_menu_width/4
+help_menuY = help_buttonY+button_height+32
 
 volume = .25
 volume_old = volume

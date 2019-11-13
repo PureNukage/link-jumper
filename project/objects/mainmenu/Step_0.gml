@@ -1,4 +1,5 @@
 if game_start == false { 
+	//	Play Button mouseover check
 	if point_in_rectangle(mouse_x,mouse_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) {
 		button_mouseover = true
 		button_color = color_button_highlight
@@ -18,6 +19,21 @@ if game_start == false {
 		button_color = color_button_normal
 	}
 	
+	//	Help Button mouseover check
+	if point_in_rectangle(mouse_x,mouse_y,help_buttonX,help_buttonY,help_buttonX+button_width,help_buttonY+button_height) {
+		//if help_menu_open == false {
+		help_button_color = color_button_highlight	
+		
+		// If leftclick
+		if mouse_check_button_pressed(mb_left) {
+			help_menu_open = !help_menu_open
+			
+		}
+	} else {
+		if help_menu_open == false {
+			help_button_color = color_button_normal	
+		}
+	}
 	
 } else {
 	

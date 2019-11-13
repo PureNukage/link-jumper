@@ -12,28 +12,55 @@ if game_start == false {
 	draw_set_valign(fa_top)
 	draw_text(596,130,"Chainlink")
 	
-	//	Button background
+	//	Play Button background
 	draw_set_color(button_color)
 	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
 	
-	//	Button outline
+	//	Play Button outline
 	draw_set_color(c_black)
 	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,true)
 
-	//	Button text
+	//	Play Button text
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_set_color(c_white)
 	draw_set_font(font_bold_12)
 	draw_text(buttonX+button_width/2,buttonY+button_height/2,button_string)
 	
-	//	Header text
-	//draw_text(headerX,headerY,header_string)
+	//	Help Button background
+	draw_set_color(help_button_color)
+	draw_roundrect(help_buttonX,help_buttonY,help_buttonX+button_width,help_buttonY+button_height,false)
 	
-	//	Subheader text
-	//draw_text(headerX,headerY+128,subheader_string)
+	//	Help Button outline
+	draw_set_color(c_black)
+	draw_roundrect(help_buttonX,help_buttonY,help_buttonX+button_width,help_buttonY+button_height,true)
 	
+	//	Help Button text
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_set_color(c_white)
+	draw_set_font(font_bold_12)
+	draw_text(help_buttonX+button_width/2,help_buttonY+button_height/2,help_button_string)
 	
+	if help_menu_open == true { 
+	//	Help menu background
+	draw_set_color(c_ltgray)
+	draw_roundrect(help_menuX,help_menuY,help_menuX+help_menu_width,help_menuY+help_menu_height,false)
+	
+	//	Help menu outline
+	draw_set_color(c_black)
+	draw_roundrect(help_menuX,help_menuY,help_menuX+help_menu_width,help_menuY+help_menu_height,true)
+	
+	//	Help images
+	draw_set_color(c_black)
+	draw_set_halign(fa_left)
+	draw_set_valign(fa_top)
+	draw_text(help_menuX+32,help_menuY+32,"Press W to jump")
+	draw_text(help_menuX+32,help_menuY+64,"Collect Chainlinks for health")
+	draw_text(help_menuX+32,help_menuY+96,"Avoid everything else")
+	draw_sprite(s_chainlink,-1,help_menuX+96,help_menuY+124)
+	
+	}
 	
 } else {
 	draw_self()
