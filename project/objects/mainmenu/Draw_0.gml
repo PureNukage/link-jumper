@@ -10,6 +10,7 @@ if game_start == false {
 	//	Button text
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
+	draw_set_font(font_reg_12)
 	draw_text(buttonX+button_width/2,buttonY+button_height/2,button_string)
 	
 	//	Header text
