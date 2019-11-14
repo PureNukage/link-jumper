@@ -15,7 +15,7 @@ switch(states)
 	
 		laugh_frame++
 	
-		if laugh_frame >= 2 {
+		if laugh_frame >= 5 {
 			laugh++	
 			laugh_frame = 0
 		}
