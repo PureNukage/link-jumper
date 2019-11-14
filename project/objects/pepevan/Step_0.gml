@@ -5,7 +5,7 @@ switch(states)
 		if distance_to_point(goalX,y) > 20 {
 			x = lerp(x,goalX,0.03)
 		} else {
-			timer = 120
+			timer = 30
 			states = 1	
 		}
 	
