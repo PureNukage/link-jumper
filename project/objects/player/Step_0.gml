@@ -79,5 +79,6 @@ if hp <= 0 {
 			instance_destroy()	
 		}
 	}
-	instance_create_layer(0,0,"Instances",mainmenu)
+	var _gameover = instance_create_layer(0,0,"Instances",gameover)
+	_gameover.running_score = running_score
 }

@@ -207,6 +207,14 @@
             }
         },
         {
+            "Key": "73ada238-165c-4de6-ae58-7db14700ef06",
+            "Value": {
+                "id": "f9848136-7ae4-48d7-b68f-c2eb2d3a97bb",
+                "resourcePath": "fonts\\font_gameover\\font_gameover.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "75ac291e-7061-4bcb-8e8a-3b3545332d41",
             "Value": {
                 "id": "5998f535-d40c-4b1c-9f51-317ef78d5a00",
@@ -343,6 +351,14 @@
             }
         },
         {
+            "Key": "b5006a6e-33ed-4a16-aa5a-9af5317f15bd",
+            "Value": {
+                "id": "e20bf969-af03-4efa-800e-7d181da0b9dc",
+                "resourcePath": "objects\\gameover\\gameover.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "b76ec2b2-e2b4-46d2-a76c-d68d7af44b38",
             "Value": {
                 "id": "dd260602-6643-4d46-8929-0f324c122998",
@@ -412,6 +428,14 @@
                 "id": "c76126d2-f3b4-456f-94d3-99fdf40015d8",
                 "resourcePath": "objects\\obstacle\\obstacle.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "dbe114a4-4487-4182-9161-6401b756a655",
+            "Value": {
+                "id": "8dde18d7-4804-4c49-a645-67ea65027be6",
+                "resourcePath": "fonts\\font_reg_18\\font_reg_18.yy",
+                "resourceType": "GMFont"
             }
         },
         {
