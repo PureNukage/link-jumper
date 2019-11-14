@@ -87,3 +87,12 @@ queue[obstacle_type.fud,obstacle_amount.trips] = 9
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 #endregion
+
+//	Estimate length of the game
+var _seconds = floor(queue_time/60)
+var _frames = queue_time - (_seconds*60)
+var _minutes = floor(_seconds/60)
+_seconds = _seconds - _minutes*60
+var _max_score = queue_time/6
+show_debug_message("estimated length: "+string(_minutes)+" minutes, "+string(_seconds)+" seconds and "+string(_frames)+"frames")
+show_debug_message("estimated score: "+string(_max_score))

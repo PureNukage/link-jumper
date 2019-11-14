@@ -46,9 +46,9 @@ if game_start == false {
 	draw_set_color(c_white)
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)
-	draw_text(15,15,"Created by @PureNukage")
-	draw_text(15,32,"Assistance by @Leo62550304/Potato")
-	draw_text(15,49,"Music by wombocombo")
+	draw_text(15,15,"created by @PureNukage")
+	draw_text(15,32,"assistance by @Leo62550304/Potato")
+	draw_text(15,49,"music by wombocombo")
 	
 	if help_menu_open == true { 
 	//	Help menu background
