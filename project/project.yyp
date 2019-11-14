@@ -455,6 +455,14 @@
             }
         },
         {
+            "Key": "d4faba68-6794-4c1b-9413-77f1a7d42758",
+            "Value": {
+                "id": "f10d9932-352b-49f9-96df-b5a86ea8ccf9",
+                "resourcePath": "objects\\pepevan\\pepevan.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "dbe114a4-4487-4182-9161-6401b756a655",
             "Value": {
                 "id": "8dde18d7-4804-4c49-a645-67ea65027be6",

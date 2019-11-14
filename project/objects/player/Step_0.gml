@@ -73,12 +73,13 @@ if instance_place(x,y,obstacle) and god == 0 and damaged == 0 {
 
 //	Game Over
 if hp <= 0 {
-	//	Restart everything
+	//	Game over state
 	with all {
 		if object_index != music {
 			instance_destroy()	
 		}
 	}
+	instance_create_layer(1086,576,"Instances",pepevan)
 	var _gameover = instance_create_layer(0,0,"Instances",gameover)
 	_gameover.running_score = running_score
 }
