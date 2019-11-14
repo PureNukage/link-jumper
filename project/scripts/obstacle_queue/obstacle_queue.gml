@@ -1,4 +1,6 @@
 var _queue = argument[0]
+var gap0 = argument[1]
+var gap1 = argument[2]
 
 var remainder_list = ds_list_create()
 
@@ -36,7 +38,7 @@ for(var type=0;type<obstacles_total;type++) {
 		
 		_queue[type,which-1]--
 		
-		var gap = irandom_range(30,60)
+		var gap = irandom_range(gap0,gap1)
 		queue_time += gap
 		
 	}	

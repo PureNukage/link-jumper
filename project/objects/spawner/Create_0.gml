@@ -32,21 +32,21 @@ queue[obstacle_type.fud,obstacle_amount.dubs] = 2
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,60,90)
 
 queue[obstacle_type.fud,obstacle_amount.dubs] = 6
 queue[obstacle_type.fud,obstacle_amount.trips] = 2
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,60,90)
 
 queue[obstacle_type.fud,obstacle_amount.dubs] = 2
 queue[obstacle_type.fud,obstacle_amount.trips] = 6
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,60,90)
 
 #endregion
 #region Stage 1
@@ -55,19 +55,21 @@ queue[obstacle_type.fud,obstacle_amount.dubs] = 5
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,30,60)
 
 queue[obstacle_type.shadowfork,obstacle_amount.dubs] = 5
 queue[obstacle_type.fud,obstacle_amount.trips] = 3
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,30,60)
 
 queue[obstacle_type.fist,obstacle_amount.dubs] = 2
 queue[obstacle_type.rockstar,obstacle_amount.trips] = 8
 
 queue[obstacle_type.link,obstacle_amount.solo] = 3
+obstacle_queue(queue,30,60)
+
 #endregion
 #region Stage 2
 queue[obstacle_type.fud,obstacle_amount.solo] = 6
@@ -75,7 +77,7 @@ queue[obstacle_type.duck,obstacle_amount.dubs] = 5
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
 
-obstacle_queue(queue)
+obstacle_queue(queue,20,45)
 
 queue[obstacle_type.duck,obstacle_amount.dubs] = 6
 queue[obstacle_type.fud,obstacle_amount.trips] = 5
