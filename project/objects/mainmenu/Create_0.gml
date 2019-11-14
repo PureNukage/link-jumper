@@ -35,7 +35,7 @@ volume_icon_y = 32
 
 
 
-player_game_xpos = 576
+player_game_xpos = 256
 player_game_ypos = 608
 
 player_xpos = room_width+100
