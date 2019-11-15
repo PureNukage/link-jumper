@@ -24,75 +24,23 @@ for(var a=0;a<obstacles_total;a++) {
 	}
 }
 
-#region Stage 0 
+queue_total = 8
+queue_solos = queue_total
+queue_dubs = 0
+queue_trips = 0
+queue_gap0 = 70
+queue_gap1 = 80
 
-queue[obstacle_type.fud,obstacle_amount.solo] = 6
-queue[obstacle_type.fud,obstacle_amount.dubs] = 2
+available_stages = ds_list_create()
+//available_stages[| 0] = obstacle_type.fud
+available_stages[| 0] = obstacle_type.duck
+available_stages[| 1] = obstacle_type.shadowfork
 
-queue[obstacle_type.link,obstacle_amount.solo] = 1
+stage(obstacle_type.fud,queue_solos,queue_dubs,queue_trips,queue_gap0,queue_gap1)
+//stage(obstacle_type.duck,7,1,0,65,75)
+//stage(obstacle_type.shadowfork,6,2,0,60,70)
 
-obstacle_queue(queue,60,90)
-
-queue[obstacle_type.fud,obstacle_amount.dubs] = 6
-queue[obstacle_type.fud,obstacle_amount.trips] = 2
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,60,90)
-
-queue[obstacle_type.fud,obstacle_amount.dubs] = 2
-queue[obstacle_type.fud,obstacle_amount.trips] = 6
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,60,90)
-
-#endregion
-#region Stage 1
-
-queue[obstacle_type.duck,obstacle_amount.solo] = 4
-queue[obstacle_type.fud,obstacle_amount.dubs] = 5
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,30,60)
-
-queue[obstacle_type.shadowfork,obstacle_amount.dubs] = 5
-queue[obstacle_type.fud,obstacle_amount.trips] = 3
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,30,60)
-
-queue[obstacle_type.fist,obstacle_amount.dubs] = 2
-queue[obstacle_type.rockstar,obstacle_amount.trips] = 8
-
-queue[obstacle_type.link,obstacle_amount.solo] = 3
-obstacle_queue(queue,30,60)
-
-#endregion
-#region Stage 2
-
-queue[obstacle_type.fud,obstacle_amount.solo] = 6
-queue[obstacle_type.duck,obstacle_amount.dubs] = 5
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,20,45)
-
-queue[obstacle_type.duck,obstacle_amount.dubs] = 6
-queue[obstacle_type.fud,obstacle_amount.trips] = 5
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-queue[obstacle_type.fud,obstacle_amount.dubs] = 4
-queue[obstacle_type.fud,obstacle_amount.trips] = 9
-
-queue[obstacle_type.link,obstacle_amount.solo] = 1
-
-obstacle_queue(queue,20,45)
-
-#endregion
+stages = 1
 
 //	Estimate length of the game
 var _seconds = floor(queue_time/60)
