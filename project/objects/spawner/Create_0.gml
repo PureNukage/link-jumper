@@ -14,7 +14,6 @@ obstacles_total = ds_list_size(obstacles)
 
 amount_total = 3
 
-queue_stage = 0
 queue_time = 10
 
 queue = []
@@ -50,6 +49,7 @@ obstacle_queue(queue,60,90)
 
 #endregion
 #region Stage 1
+
 queue[obstacle_type.duck,obstacle_amount.solo] = 4
 queue[obstacle_type.fud,obstacle_amount.dubs] = 5
 
@@ -72,6 +72,7 @@ obstacle_queue(queue,30,60)
 
 #endregion
 #region Stage 2
+
 queue[obstacle_type.fud,obstacle_amount.solo] = 6
 queue[obstacle_type.duck,obstacle_amount.dubs] = 5
 
@@ -88,6 +89,9 @@ queue[obstacle_type.fud,obstacle_amount.dubs] = 4
 queue[obstacle_type.fud,obstacle_amount.trips] = 9
 
 queue[obstacle_type.link,obstacle_amount.solo] = 1
+
+obstacle_queue(queue,20,45)
+
 #endregion
 
 //	Estimate length of the game
