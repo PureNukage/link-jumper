@@ -63,7 +63,7 @@ if instance_place(x,y,obstacle) and god == 0 and damaged == 0 {
 	var _obstacle = instance_place(x,y,obstacle)
 	if _obstacle.sprite_index == s_chainlink {
 		hp++ 
-		hp = clamp(hp,0,5)
+		hp = clamp(hp,0,hp_max)
 		instance_destroy(_obstacle)
 	} else {
 		hp--
