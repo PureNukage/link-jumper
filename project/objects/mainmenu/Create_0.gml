@@ -25,7 +25,7 @@ help_menu_height = 192
 help_menuX = help_buttonX-help_menu_width/4
 help_menuY = help_buttonY+button_height+16
 
-image_speed = 1.5
+image_speed = .75
 
 volume = .25
 volume_old = volume

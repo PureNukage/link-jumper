@@ -9,6 +9,7 @@ if game_start == false {
 		
 			game_start = true
 			sprite_index = s_sergey_run
+			image_speed = 1.5
 			x = player_xpos
 			y = player_ypos
 
