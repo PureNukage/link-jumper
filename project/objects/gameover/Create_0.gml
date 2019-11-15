@@ -1,7 +1,7 @@
 running_score = 0
 
 scoreboard_width = 384
-scoreboard_height = 256
+scoreboard_height = 320
 
 scoreboardX = display_get_gui_width()/2-(scoreboard_width/2)
 scoreboardY = display_get_gui_height()/3
