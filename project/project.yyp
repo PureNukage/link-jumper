@@ -327,6 +327,14 @@
             }
         },
         {
+            "Key": "9fc4be75-5ccd-4366-9334-1b048de08089",
+            "Value": {
+                "id": "5a7b2a6d-5bc7-4246-8969-3ce08d927f46",
+                "resourcePath": "sprites\\s_700k\\s_700k.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a57f28ba-6fd8-4af0-98a0-05477b5b2985",
             "Value": {
                 "id": "ebab74cc-8309-40a0-b809-1da7193ced7e",

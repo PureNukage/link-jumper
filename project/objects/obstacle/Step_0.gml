@@ -4,6 +4,11 @@ if time.stream - spawn_time == 1 {
 		sprite_index = _choose
 	}
 	
+	if sprite_index == s_fud {
+		var _choose = choose(s_fud,s_700k)
+		sprite_index = _choose
+	}
+	
 	if sprite_get_number(sprite_index) > 1 {
 		var _random_frame = irandom_range(0,sprite_get_number(sprite_index))
 		image_index = _random_frame
