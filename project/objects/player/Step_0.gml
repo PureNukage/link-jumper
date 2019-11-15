@@ -21,7 +21,7 @@ if running_score_frame >= 5 {
 }
 
 //	God Mode Toggle
-if keyboard_check_pressed(vk_control) god = !god
+//if keyboard_check_pressed(vk_control) god = !god
 
 
 //	Fall to Ground

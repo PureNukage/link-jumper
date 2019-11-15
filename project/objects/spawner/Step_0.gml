@@ -5,12 +5,6 @@ if time.stream == ds_queue_head(spawn_time) {
 	_obstacle.sprite_index = obstacles[| ds_queue_dequeue(spawn)]
 }
 
-if keyboard_check_pressed(vk_left) {
-	x = 925
-} else if keyboard_check_pressed(vk_right) {
-	x = 1248
-}	
-
 //	Time to stage!
 if (queue_time - time.stream) <= 120 {
 	
