@@ -1,10 +1,10 @@
 //	Jump
 //	Charge
-if keyboard_check_pressed(ord("W")) and y == ground {
+if (keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_space)) and y == ground {
 	vspd = -10
 	jump = 8
 }
-if keyboard_check(ord("W")) and (jump > 0 and jump < 5) {
+if (keyboard_check(ord("W")) or keyboard_check(vk_space)) and (jump > 0 and jump < 5) {
 	vspd--
 }
 if jump > 0 jump--
