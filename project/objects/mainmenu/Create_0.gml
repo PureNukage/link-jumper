@@ -44,3 +44,5 @@ player_ypos = player_game_ypos
 
 game_start = false
 
+meme = 0
+

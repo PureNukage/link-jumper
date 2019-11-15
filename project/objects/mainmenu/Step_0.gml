@@ -36,6 +36,14 @@ if game_start == false {
 		}
 	}
 	
+	//	Hehe
+	if point_in_rectangle(mouse_x,mouse_y,596,130,596+64,130+20) and meme == 0 {
+		if mouse_check_button_pressed(mb_left) {
+			meme = 1
+		}
+	}
+	if meme > 0 meme++
+	
 } else {
 	
 	if distance_to_point(player_game_xpos,player_game_ypos) > 10 { 

@@ -72,6 +72,17 @@ if game_start == false {
 	
 	}
 	
+	//	Draw meme
+	if meme > 0 {
+		var _count = room_width/60
+		var _x = 0
+		var _y = 0
+		for(var i=0;i<_count;i++) {
+			draw_sprite(s_chainlink,-1,_x,_y+meme)	
+			_x += 60
+		}
+	}
+	
 } else {
 	draw_self()
 
