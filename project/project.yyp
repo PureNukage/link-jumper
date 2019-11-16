@@ -295,6 +295,14 @@
             }
         },
         {
+            "Key": "8427047f-9ef8-4c77-89f3-9c20623d07b6",
+            "Value": {
+                "id": "a6db7e42-cda4-4e0a-80e7-ba633111c8ae",
+                "resourcePath": "options\\ios\\options_ios.yy",
+                "resourceType": "GMiOSOptions"
+            }
+        },
+        {
             "Key": "8d9b9d19-e013-4715-b565-58442415ee9b",
             "Value": {
                 "id": "bf1a0605-c5b1-4059-974a-ff0f2485efbd",
@@ -319,6 +327,14 @@
             }
         },
         {
+            "Key": "93566aad-c3b3-48a9-8fa7-9c5ee19f74ac",
+            "Value": {
+                "id": "017bd211-d34a-4140-b9ab-7d23dc803bd4",
+                "resourcePath": "options\\tvos\\options_tvos.yy",
+                "resourceType": "GMtvOSOptions"
+            }
+        },
+        {
             "Key": "9a047ac6-4251-4fde-8013-932e056e5003",
             "Value": {
                 "id": "677da33d-f519-4900-817e-72ca808b4206",
@@ -332,6 +348,14 @@
                 "id": "5a7b2a6d-5bc7-4246-8969-3ce08d927f46",
                 "resourcePath": "sprites\\s_700k\\s_700k.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a128950b-5063-4876-b4a6-b99dbd2ea6d1",
+            "Value": {
+                "id": "05747975-28f0-4237-9f4c-ab9aa447ddca",
+                "resourcePath": "options\\amazonfire\\options_amazonfire.yy",
+                "resourceType": "GMAmazonFireOptions"
             }
         },
         {
@@ -484,6 +508,14 @@
                 "id": "0f5bdfb0-9474-45f4-a1de-bb198f15e238",
                 "resourcePath": "views\\ddd1e6be-1cbb-44a0-93d4-b603c835729f.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "e42bf5cc-3f46-4d67-a6d0-a4885a11ac3f",
+            "Value": {
+                "id": "9b9b1233-63d5-4ff1-a2dd-dbde7383a711",
+                "resourcePath": "options\\android\\options_android.yy",
+                "resourceType": "GMAndroidOptions"
             }
         },
         {
