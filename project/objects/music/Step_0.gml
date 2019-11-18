@@ -11,6 +11,7 @@ if keyboard_check(vk_pageup) or keyboard_check(vk_pagedown) {
 }
 
 if point_in_rectangle(mouse_x,mouse_y,volume_icon_x,volume_icon_y,volume_icon_x+64,volume_icon_y+64) {
+	moused_over = true
 	if mouse_check_button_pressed(mb_left) {
 		if volume > 0 {
 			volume_old = volume
@@ -22,4 +23,6 @@ if point_in_rectangle(mouse_x,mouse_y,volume_icon_x,volume_icon_y,volume_icon_x+
 		}	
 		audio_sound_gain(song,volume,0)
 	}
+} else {
+	moused_over = false	
 }

@@ -49,6 +49,7 @@ if game_start == false {
 	if distance_to_point(player_game_xpos,player_game_ypos) > 10 { 
 		x = lerp(x,player_game_xpos,.03)		
 	} else {
+		instance_create_layer(0,0,"Instances",input)
 		instance_create_layer(0,0,"Instances",time)
 		var _player = instance_create_layer(x,player_game_ypos,"Instances",player)
 		_player.image_index = image_index

@@ -9,6 +9,7 @@ for(var i=0;i<hp;i++) {
 draw_set_color(c_black)
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
+draw_set_font(font_reg_12)
 draw_text(660,80,"Score: "+string(running_score))
 
 //draw_set_color(c_black)
