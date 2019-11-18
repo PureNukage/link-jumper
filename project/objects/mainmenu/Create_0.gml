@@ -1,8 +1,8 @@
 button_width = 128
 button_height = 64
 
-buttonX = window_get_width()/2-(button_width/2)
-buttonY = window_get_height()/2 - 32
+buttonX = display_get_gui_width()/2-(button_width/2)
+buttonY = display_get_gui_height()/2 - 32
 
 button_string = "Play"
 
@@ -30,7 +30,7 @@ image_speed = .75
 volume = .25
 volume_old = volume
 
-volume_icon_x = window_get_width()-96
+volume_icon_x = display_get_gui_width()-96
 volume_icon_y = 32
 
 
