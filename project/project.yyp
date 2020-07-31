@@ -522,7 +522,15 @@
             "Key": "e0396ae0-05bd-4d21-989c-e4bc7c973bf3",
             "Value": {
                 "id": "0f176bfe-603b-4d13-9502-7d61efb32981",
-                "resourcePath": "objects\\application\\application.yy",
+                "resourcePath": "objects\\app\\app.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e4107d8f-3882-4e49-89f6-173fb2210ef8",
+            "Value": {
+                "id": "c56bd2ac-4bed-4c2b-a0a1-c84db22f1ac8",
+                "resourcePath": "objects\\spawner2\\spawner2.yy",
                 "resourceType": "GMObject"
             }
         },

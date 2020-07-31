@@ -53,7 +53,7 @@ if game_start == false {
 		instance_create_layer(0,0,"Instances",time)
 		var _player = instance_create_layer(x,player_game_ypos,"Instances",player)
 		_player.image_index = image_index
-		instance_create_layer(1086,576,"Instances",spawner)
+		instance_create_layer(1086,576,"Instances",spawner2)
 		if instance_number(music) == 0 {
 			var _music = instance_create_layer(0,0,"Instances",music)
 			_music.volume = volume

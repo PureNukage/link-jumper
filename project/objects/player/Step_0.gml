@@ -62,14 +62,25 @@ if damaged > 0 { damaged-- image_blend = c_red } else image_blend = c_white
 if instance_place(x,y,obstacle) and god == 0 and damaged == 0 {
 	var _obstacle = instance_place(x,y,obstacle)
 	if _obstacle.sprite_index == s_chainlink {
-		hp++ 
-		hp = clamp(hp,0,hp_max)
-		instance_destroy(_obstacle)
+		if vspd > 0 {
+			//hp++
+			//hp = clamp(hp,0,hp_max)
+			instance_destroy(_obstacle)
+			vspd = -15
+		} else {
+				
+		}
 	} else {
 		hp--
 		damaged = 45
 	}
 }
+
+////	Bouncing off Chainlink cube
+//if instance_place(x,y+2,obstacle) and vspd < 0 {
+//	var Obstacle = instance_place(x,y+2,obstacle)
+//	if Obstacle.sprite_index == s_chainlink vspd += 10
+//}
 
 //	Game Over
 if hp <= 0 {
