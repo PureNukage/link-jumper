@@ -68,7 +68,7 @@ function sparkleMergeDone() {
 	
 }
 	
-colorIndex = 0
+colorIndex = irandom_range(0,array_length(colors)-1)
 colorColor = colors[colorIndex][0]
-colorNextIndex = 1
+colorNextIndex = irandom_range(0,array_length(colors)-1)
 colorLerp = 0

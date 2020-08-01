@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "s_sergey_walk",
+    "path": "sprites/s_sergey_walk/s_sergey_walk.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

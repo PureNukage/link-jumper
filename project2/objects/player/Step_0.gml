@@ -1,5 +1,6 @@
 switch(app.stage) 
 {
+	#region RUNNING STAGE
 	case 0:
 		//	Jump
 		if input.jump and onGround {
@@ -32,7 +33,8 @@ switch(app.stage)
 			if y >= ground {
 				y = ground
 				onGround = true
-				sprite_index = s_sergey_run
+				if running sprite_index = s_sergey_run
+				else sprite_index = s_sergey_walk
 				vspd = 0
 				jump = 0
 			}
@@ -47,7 +49,10 @@ switch(app.stage)
 				with Obs instance_destroy()
 			}
 		}	
-	break	
+	break
+	#endregion
+	
+	#region FLYING STAGE
 	case 1:
 	
 		// Move left and right
@@ -77,41 +82,87 @@ switch(app.stage)
 			y += vspd
 			vspd += grav
 			
-			y = clamp(y,60,room_height)
+			y = clamp(y,room_height/2-160,room_height/2+160)
 			
 			//	Going up
 			if vspd < 0 {
-				var skyID = layer_get_id("Sky")
-				var cityID = layer_get_id("City")
-				var roadID = layer_get_id("Road")
-				var lightpolesID = layer_get_id("Lightpoles")
-				
-				var oldSkyY = layer_get_y(skyID)
-				var oldCityY = layer_get_y(cityID)
-				var oldRoadY = layer_get_y(roadID)
-				var oldLightpolesY = layer_get_y(lightpolesID)
-				
-				oldSkyY -= vspd
-				oldCityY -= vspd
-				oldRoadY -= vspd
-				oldLightpolesY -= vspd
-				
-				layer_y(skyID, oldSkyY)
-				layer_y(cityID, oldCityY)
-				layer_y(roadID, oldRoadY)
-				layer_y(lightpolesID, oldLightpolesY)
 			}
 			//	Falling down
 			else {
 				sprite_index = s_sergey_jump1
 			}
+			
+			{	//	Mess with the background layers
+				var skyID = layer_get_id("Sky")
+				var cityID = layer_get_id("City")
+				var roadID = layer_get_id("Road")
+				var lightpolesID = layer_get_id("Lightpoles")
+				var starsID = layer_get_id("Stars")
+				
+				var oldSkyY = layer_get_y(skyID)
+				var oldCityY = layer_get_y(cityID)
+				var oldRoadY = layer_get_y(roadID)
+				var oldLightpolesY = layer_get_y(lightpolesID)
+				var starsY = layer_get_y(starsID)
+				
+				oldSkyY -= vspd
+				oldCityY -= vspd
+				oldRoadY -= vspd
+				oldLightpolesY -= vspd
+				starsY -= vspd
+				
+				layer_y(skyID, oldSkyY)
+				layer_y(cityID, oldCityY)
+				layer_y(roadID, oldRoadY)
+				layer_y(lightpolesID, oldLightpolesY)
+				layer_y(starsID, starsY)
+				
+				var spaceMergeStartY = 2000
+				var spaceMergeEndY = 7000
+				
+				var backID = layer_background_get_id(starsID)
+				var _skyID = layer_background_get_id(skyID)
+				
+				if oldRoadY < spaceMergeStartY {
+					var starsAlpha = 0
+					layer_background_alpha(backID,starsAlpha)
+					var skyAlpha = 1
+					layer_background_alpha(_skyID,skyAlpha)
+					
+				} else if oldRoadY >= spaceMergeStartY and oldRoadY < spaceMergeEndY {
+					var starsAlpha = (oldRoadY/spaceMergeEndY) * 1
+					layer_background_alpha(backID,starsAlpha)
+					var skyAlpha = 1 - starsAlpha
+					layer_background_alpha(_skyID,skyAlpha)
+				} else if oldRoadY > spaceMergeEndY {
+					layer_background_alpha(_skyID,0)
+					layer_background_alpha(backID,1)
+				}
+			}
+				
+			with obstacle {
+				y -= other.vspd / 5
+			}
 	
 			//	Check for landing on the ground
-			if y >= ground {
+			var roadID = layer_get_id("Road")
+			var roadY = layer_get_y(roadID)
+			debug.log("roadY: "+string(roadY))
+			if layer_get_y(roadID) <= -180 {
+				if sprite_index != s_sergey_idle sprite_index = s_sergey_idle
 				y = ground
 				onGround = true
 				vspd = 0
 				jump = 0
+			}
+		}
+		//	On the ground
+		else {
+			image_speed = 1
+			if hspd != 0 {
+				sprite_index = s_sergey_walk
+			} else {
+				sprite_index = s_sergey_idle	
 			}
 		}
 		
@@ -132,7 +183,7 @@ switch(app.stage)
 			}
 		}
 		
-	break	
-	
+	break
+	#endregion
 	
 }
