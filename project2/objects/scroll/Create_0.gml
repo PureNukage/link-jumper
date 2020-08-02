@@ -1,0 +1,3 @@
+waveY = y
+
+closeInteract = false

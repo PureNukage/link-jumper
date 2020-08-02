@@ -104,30 +104,48 @@ if alive {
 					var roadID = layer_get_id("Road")
 					var lightpolesID = layer_get_id("Lightpoles")
 					var starsID = layer_get_id("Stars")
+					var heavensWorldID = layer_get_id("Heavens_world")
+					var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+					var heavensCloudsID = layer_get_id("Heavens_clouds")
 				
 					var oldSkyY = layer_get_y(skyID)
 					var oldCityY = layer_get_y(cityID)
 					var oldRoadY = layer_get_y(roadID)
 					var oldLightpolesY = layer_get_y(lightpolesID)
 					var starsY = layer_get_y(starsID)
+					
+					//var heavensWorldX = layer_get_x(heavensWorldID)
+					var heavensWorldY = layer_get_y(heavensWorldID)
+					//var heavensPillarX = layer_get_x(heavensFrontPillarID)
+					var heavensPillarY = layer_get_y(heavensFrontPillarID)
+					//var heavensCloudsX = layer_get_x(heavensCloudsID)
+					var heavensCloudsY = layer_get_y(heavensCloudsID)
 				
 					oldSkyY -= vspd
 					oldCityY -= vspd
 					oldRoadY -= vspd
 					oldLightpolesY -= vspd
 					starsY -= vspd
+					heavensCloudsY -= vspd
 				
 					layer_y(skyID, oldSkyY)
 					layer_y(cityID, oldCityY)
 					layer_y(roadID, oldRoadY)
 					layer_y(lightpolesID, oldLightpolesY)
 					layer_y(starsID, starsY)
+					layer_y(heavensCloudsID, heavensCloudsY)
 				
 					var spaceMergeStartY = 2000
-					var spaceMergeEndY = 7000
+					var spaceMergeEndY = 6000
+					
+					var heavensMergeStartY = spaceMergeEndY + 2000
+					var heavensMergeEndY = heavensMergeStartY + 4000
 				
 					var backID = layer_background_get_id(starsID)
 					var _skyID = layer_background_get_id(skyID)
+					var _cloudsID = layer_background_get_id(heavensCloudsID)
+					var _worldID = layer_background_get_id(heavensWorldID)
+					var _pillarID = layer_background_get_id(heavensFrontPillarID)
 				
 					//	All sky and no stars
 					if oldRoadY < spaceMergeStartY {
@@ -143,11 +161,51 @@ if alive {
 						layer_background_alpha(backID,starsAlpha)
 						var skyAlpha = 1 - starsAlpha
 						layer_background_alpha(_skyID,skyAlpha)
+						
+						
+						layer_background_alpha(_cloudsID,0)
+						layer_background_alpha(_worldID,0)
+						layer_background_alpha(_pillarID,0)
 					} 
-					//	All stars and no sky
+					//	in spaaaaaccce
 					else if oldRoadY > spaceMergeEndY {
-						layer_background_alpha(_skyID,0)
-						layer_background_alpha(backID,1)
+						
+						if oldRoadY < heavensMergeStartY {
+							layer_background_alpha(_skyID,0)
+							layer_background_alpha(backID,1)
+						} else if oldRoadY > heavensMergeStartY and oldRoadY < heavensMergeEndY { 
+							var cloudsAlpha = (oldRoadY / heavensMergeEndY) 
+							var starsAlpha = 1 - cloudsAlpha
+							layer_background_alpha(backID,starsAlpha)
+							layer_background_alpha(_cloudsID,cloudsAlpha)	
+						} else if oldRoadY > heavensMergeEndY { 
+							layer_background_alpha(backID,0)
+							layer_background_alpha(_cloudsID,1)
+							
+							//	We've reached the heavens, turn alpha on and position the world
+							if layer_background_get_alpha(_worldID) == 0 {
+								layer_background_alpha(_worldID, 1)
+								layer_background_alpha(_pillarID, 1)
+								
+								layer_y(heavensWorldID, -400)
+								layer_y(heavensFrontPillarID, -400)
+								heavensWorldY = layer_get_y(heavensWorldID)
+								heavensPillarY = layer_get_y(heavensFrontPillarID)
+							} else {
+								
+								//	Lets move the heaven world/pillar up
+								heavensWorldY -= vspd
+								heavensPillarY -= vspd
+								layer_y(heavensWorldID, heavensWorldY)
+								layer_y(heavensFrontPillarID, heavensPillarY)
+								
+								if heavensWorldY >= 0 {
+									app.switch_stage(2)
+								}
+							}
+						}
+						
+						
 					}
 				}
 				
@@ -216,6 +274,55 @@ if alive {
 			}
 		
 		break
+		#endregion
+		
+		#region HEAVEN STAGE
+			case 2:
+			
+			depth = -(y + sprite_get_height(sprite_index)/2)
+			depth = -y - 62
+			
+			var fpID = layer_get_id("Heavens_frontpillar")
+			layer_depth(fpID,depth-1)
+			
+			// Move left and right
+			var hspd = input.keyRight - input.keyLeft
+			var Vspd = input.keyDown - input.keyUp
+			
+			xx += hspd * 5
+			yy += Vspd * 5
+			
+			if hspd != 0 {
+				image_xscale = hspd	
+				sprite_index = s_sergey_run
+			} else {
+				sprite_index = s_sergey_idle		
+			}
+				
+			//	In the air
+			if !onGround {
+	
+				y += vspd
+				vspd += grav
+	
+				//	Determine sprite
+				if vspd < 0 sprite_index = s_sergey_jump0
+				else sprite_index = s_sergey_jump1
+	
+				//	Check for landing on the ground
+				if y >= ground {
+					y = ground
+					onGround = true
+					if running sprite_index = s_sergey_run
+					else sprite_index = s_sergey_walk
+					vspd = 0
+					jump = 0
+				}
+			}
+			
+			applyMovementAndCollide()
+				
+			break
 		#endregion
 	
 	}

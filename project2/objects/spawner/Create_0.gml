@@ -39,12 +39,12 @@ function spawn() {
 			
 			spawnTimer2--
 			
-			if Direction == 1 and x >= (room_width - sprite_get_width(sprite_index)/4) Direction = -1
+			if Direction == 1 and x >= (camera.width - sprite_get_width(sprite_index)/4) Direction = -1
 			if Direction == -1 and x <= 0 + sprite_get_width(sprite_index)/4 Direction = 1
 			
 			if spawnTimer2 == 0 {
 				
-				var randomX = irandom_range(30,room_width-30)
+				var randomX = irandom_range(30,camera.width-30)
 				var Obstacle = instance_create_layer(randomX,y,"Instances",obstacle)
 				//Obstacle.sprite_index = s_chainlink
 				Obstacle.image_xscale = 0.5
@@ -70,10 +70,10 @@ function spawn() {
 			if spawnTimerChainlinks == 0 {
 				
 				var spawnX = -1
-				if player.x >= room_width/2 {
-					spawnX = irandom_range(100, room_width/2-100)	
+				if player.x >= camera.width/2 {
+					spawnX = irandom_range(100, camera.width/2-100)	
 				} else {
-					spawnX = irandom_range(room_width/2 + 100, room_width-100)
+					spawnX = irandom_range(camera.width/2 + 100, camera.width-100)
 				}
 				
 				var Obstacle = instance_create_layer(spawnX,y,"Instances",obstacle)

@@ -1,4 +1,4 @@
-if instance_exists(player) {
+if instance_exists(player) and app.stage == 2 {
 	x = player.x
 	y = player.y
 }

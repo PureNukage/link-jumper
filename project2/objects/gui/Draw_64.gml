@@ -11,7 +11,7 @@ if showRestart {
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
 		draw_set_color(c_ltgray)
 		if input.leftPress {
-			game_restart()	
+			game_restart()
 		}
 	}
 	else {
@@ -25,5 +25,23 @@ if showRestart {
 	draw_text(xx+width/2,yy+height/2,"Restart")
 	
 	draw_reset()
+	
+}
+	
+if showInteract {
+	
+	var xx = display_get_gui_width()/2
+	var yy = display_get_gui_height()/2
+	
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text_outlined(xx,yy, "Press [E] to interact",c_white,c_black)
+	draw_reset()
+	
+	if input.keyInteraction {
+		
+	}
+	
 	
 }

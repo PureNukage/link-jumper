@@ -1,1 +1,3 @@
 showRestart = false
+
+showInteract = false
