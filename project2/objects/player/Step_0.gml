@@ -240,27 +240,31 @@ if alive {
 			//	Collisions
 			if place_meeting(x,y,obstacle) {
 				var Obs = instance_place(x,y,obstacle)
-				if Obs.sprite_index == s_chainlink {
-					if !Obs.sparkle {
-						vspd = -10
-						sprite_index = s_sergey_jump0
-					}
-					else {
-						vspd = -15
-						sprite_index = s_sergey_flying
-					}
-					onGround = false
+				if sprite_index == s_sergey_flying {
 					with Obs instance_destroy()
-				}
-				//	not a chainlink cube
-				else {
-					damaged = true
-					damagedTimer = 30
-					vspd = 0
-					var Direction = point_direction(Obs.x,Obs.y, player.x,player.y)
-					var Force = 12
-					bounceSet(Direction, Force)
-					instance_destroy(Obs)
+				} else {
+					if Obs.sprite_index == s_chainlink {
+						if !Obs.sparkle {
+							vspd = -10
+							sprite_index = s_sergey_jump0
+						}
+						else {
+							vspd = -15
+							sprite_index = s_sergey_flying
+						}
+						onGround = false
+						with Obs instance_destroy()
+					}
+					//	not a chainlink cube
+					else {
+						damaged = true
+						damagedTimer = 30
+						vspd = 0
+						var Direction = point_direction(Obs.x,Obs.y, player.x,player.y)
+						var Force = 12
+						bounceSet(Direction, Force)
+						instance_destroy(Obs)
+					}
 				}
 			}
 			
