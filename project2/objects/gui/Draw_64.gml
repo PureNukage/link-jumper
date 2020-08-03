@@ -59,3 +59,32 @@ if showArrows {
 	
 	
 }
+	
+if showMessage {
+	
+	messageTimer--
+	
+	var centerX = display_get_gui_width()/2
+	var centerY = display_get_gui_height()/2
+	
+	var width = string_width(text) + 40
+	var height = string_height(text) + 20
+	var xx = centerX - width/2
+	var yy = centerY - height/2
+	
+	draw_set_color(c_black)
+	draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
+	
+	draw_set_color(c_gray)
+	draw_roundrect(xx,yy, xx+width,yy+height, false)
+	
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text(xx+width/2,yy+height/2,text)
+	
+	if messageTimer <= 0 {
+		endMessage()	
+	}
+		
+}

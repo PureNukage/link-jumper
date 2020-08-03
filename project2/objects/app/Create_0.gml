@@ -17,6 +17,19 @@ instance_create_layer(0,0,Layer,gui)
 
 function switch_stage(index) {
 	
+	var heavensWorldID = layer_get_id("Heavens_world")
+	var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+	var heavensCloudsID = layer_get_id("Heavens_clouds")
+	var roadID = layer_get_id("Road")
+	var lightpolesID = layer_get_id("Lightpoles")
+	var cityID = layer_get_id("City")
+	var skyID = layer_get_id("Sky")
+	
+	var _heavensWorldID = layer_background_get_id(heavensWorldID)
+	var _heavensClouds = layer_background_get_id(heavensCloudsID)
+	var _heavensFrontPillarID = layer_background_get_id(heavensFrontPillarID)
+	var _skyID = layer_background_get_id(skyID)
+	
 	switch(index) 
 	{
 		case 0:
@@ -26,26 +39,41 @@ function switch_stage(index) {
 			app.stage = 1
 			spawner.spawnTimer = 0
 			if instance_exists(obstacle) with obstacle instance_destroy()
-			var roadID = layer_get_id("Road")
-			var lightpolesID = layer_get_id("Lightpoles")
-			var cityID = layer_get_id("City")
-			var skyID = layer_get_id("Sky")
 			layer_hspeed(roadID,0)
 			layer_hspeed(lightpolesID,0)
 			layer_hspeed(cityID,0)
 			layer_hspeed(skyID,0)
+			
+			layer_y(roadID, -190)
+			layer_y(lightpolesID, -100)
+			layer_y(cityID, 0)
+			layer_y(skyID, 0)
+			if player.x > display_get_gui_width() player.x = 100
+			camera.x = 0
+			player.y = player.ground - 40
+			player.mask_index = s_sergey_idle
+			if player.damaged player.damaged = false
+			
+			var _heavensWorldID = layer_background_get_id(heavensWorldID)
+			var _heavensClouds = layer_background_get_id(heavensCloudsID)
+			var _heavensFrontPillarID = layer_background_get_id(heavensFrontPillarID)
+			var _skyID = layer_background_get_id(skyID)
+			
+			layer_background_alpha(_heavensWorldID, 0)
+			layer_background_alpha(_heavensClouds, 0)
+			layer_background_alpha(_heavensFrontPillarID, 0)
+			
+			layer_background_alpha(_skyID, 1)
+			
+			
 		break
 		case 2:
 			app.stage = 2
-			var heavensWorldID = layer_get_id("Heavens_world")
-			var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
 			layer_y(heavensWorldID,0)
 			layer_y(heavensFrontPillarID,0)
-			player.ground -= 40
-			//player.y = player.ground
 			
-			//room_width = 2080
 			player.image_speed = 1
+			if player.damaged player.damaged = false
 			
 			if instance_exists(obstacle) with obstacle instance_destroy()
 			
@@ -67,13 +95,23 @@ function switch_stage(index) {
 			var _cityID = layer_background_get_id(cityID)
 			var _starsID = layer_background_get_id(starsID)
 			
-			if layer_background_get_alpha(_skyID) > 0 {
-				layer_background_alpha(_skyID, 0)
-				layer_background_alpha(_starsID, 0)
-				layer_y(roadID, 5000)
-				layer_y(cityID, 5000)
-				layer_y(lightpolesID, 5000)
-			}
+			
+			layer_background_alpha(_skyID, 0)
+			layer_background_alpha(_starsID, 0)
+			
+			var _heavensWorldID = layer_background_get_id(heavensWorldID)
+			var _heavensClouds = layer_background_get_id(heavensCloudsID)
+			var _heavensFrontPillarID = layer_background_get_id(heavensFrontPillarID)
+			
+			layer_background_alpha(_heavensWorldID, 1)
+			layer_background_alpha(_heavensClouds, 1)
+			layer_background_alpha(_heavensFrontPillarID, 1)
+			
+			layer_y(roadID, 5000)
+			layer_y(cityID, 5000)
+			layer_y(lightpolesID, 5000)
+			layer_y(heavensWorldID, 0)
+			layer_y(heavensFrontPillarID, 0)
 			
 			
 			

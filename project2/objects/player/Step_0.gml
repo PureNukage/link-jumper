@@ -101,6 +101,8 @@ if alive {
 			if input.keyDown y += 3
 		
 			x += hspd * 5
+			
+			x = clamp(x, 0, display_get_gui_width())
 		
 			if hspd != 0 {
 				image_xscale = hspd	
@@ -317,48 +319,51 @@ if alive {
 		#region HEAVEN STAGE
 			case 2:
 			
-			depth = -(y + sprite_get_height(sprite_index)/2)
-			depth = -y - 62
+			if !gui.showMessage {
 			
-			var fpID = layer_get_id("Heavens_frontpillar")
-			layer_depth(fpID,depth-1)
+				depth = -(y + sprite_get_height(sprite_index)/2)
+				depth = -y - 62
 			
-			// Move left and right
-			var hspd = input.keyRight - input.keyLeft
-			var Vspd = input.keyDown - input.keyUp
+				var fpID = layer_get_id("Heavens_frontpillar")
+				layer_depth(fpID,depth-1)
 			
-			xx += hspd * 5
-			yy += Vspd * 5
+				// Move left and right
+				var hspd = input.keyRight - input.keyLeft
+				var Vspd = input.keyDown - input.keyUp
 			
-			if hspd != 0 {
-				image_xscale = hspd	
-				sprite_index = s_sergey_run
-			} else {
-				sprite_index = s_sergey_idle		
-			}
-				
-			//	In the air
-			if !onGround {
-	
-				y += vspd
-				vspd += grav
-	
-				//	Determine sprite
-				if vspd < 0 sprite_index = s_sergey_jump0
-				else sprite_index = s_sergey_jump1
-	
-				//	Check for landing on the ground
-				if y >= ground {
-					y = ground
-					onGround = true
-					if running sprite_index = s_sergey_run
-					else sprite_index = s_sergey_walk
-					vspd = 0
-					jump = 0
+				xx += hspd * 5
+				yy += Vspd * 5
+			
+				if hspd != 0 {
+					image_xscale = hspd	
+					sprite_index = s_sergey_run
+				} else {
+					sprite_index = s_sergey_idle		
 				}
-			}
+				
+				//	In the air
+				if !onGround {
+	
+					y += vspd
+					vspd += grav
+	
+					//	Determine sprite
+					if vspd < 0 sprite_index = s_sergey_jump0
+					else sprite_index = s_sergey_jump1
+	
+					//	Check for landing on the ground
+					if y >= ground {
+						y = ground
+						onGround = true
+						if running sprite_index = s_sergey_run
+						else sprite_index = s_sergey_walk
+						vspd = 0
+						jump = 0
+					}
+				}
 			
-			applyMovementAndCollide()
+				applyMovementAndCollide()
+			}
 				
 			break
 		#endregion

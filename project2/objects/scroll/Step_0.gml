@@ -9,8 +9,9 @@ if point_distance(x,y, player.x,player.y) < 50 {
 	if !gui.showInteract gui.showInteract = true
 	
 	if input.keyInteraction {
-		show_message("You have acquired the God Protocols!\nGame Over!")
-		game_end()
+		gui.setMessage("You have acquired the God Protocols!", 90)
+		if gui.showInteract gui.showInteract = false
+		instance_destroy()
 	}	
 	
 }

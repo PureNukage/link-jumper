@@ -3,6 +3,7 @@
     {"id":{"name":"s_stars","path":"sprites/s_stars/s_stars.yy",},"order":7,},
     {"id":{"name":"s_sergey_jump0","path":"sprites/s_sergey_jump0/s_sergey_jump0.yy",},"order":15,},
     {"id":{"name":"obstacle","path":"objects/obstacle/obstacle.yy",},"order":8,},
+    {"id":{"name":"s_saturn","path":"sprites/s_saturn/s_saturn.yy",},"order":28,},
     {"id":{"name":"camera","path":"objects/camera/camera.yy",},"order":3,},
     {"id":{"name":"s_sky","path":"sprites/s_sky/s_sky.yy",},"order":6,},
     {"id":{"name":"s_sergey_jump1","path":"sprites/s_sergey_jump1/s_sergey_jump1.yy",},"order":16,},
