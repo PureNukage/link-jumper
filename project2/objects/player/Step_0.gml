@@ -3,6 +3,37 @@ if alive {
 	{
 		#region RUNNING STAGE
 		case 0:
+			
+			if !damaged { 
+				// Move left and right
+				var Hspd = input.keyRight - input.keyLeft
+		
+				var End = spawner.x-200
+				if x < End image_speed = (x / End) * 2
+				else image_speed = 2
+				if x < 100 image_speed = .5
+			
+				x += Hspd * 3
+			}
+			else {
+				
+				bounce()
+
+				damagedTimer--
+				if damagedTimer == 0 {
+					damagedTimer = -1
+					damaged = false
+				}
+				
+				x -= 3	
+			}
+			
+			x = clamp(x, -100, spawner.x-100)
+			
+			if x < -50 {
+				alive = false	
+			}
+		
 			//	Jump
 			if input.jump and onGround {
 				vspd = -10
@@ -47,12 +78,15 @@ if alive {
 				if Obs.sprite_index == s_chainlink {
 					vspd = -10
 					onGround = false
-					with Obs instance_destroy()
+					Obs.destroy()
 				}
 				else {
+					var Direction = point_direction(Obs.x,Obs.y, -100,player.y)
+					var Force = 12
+					bounceSet(Direction, Force)
 					damaged = true
-					alive = false
-					image_speed = 0
+					damagedTimer = 30
+					Obs.destroy()
 				}
 			}	
 		break
@@ -135,11 +169,11 @@ if alive {
 					layer_y(starsID, starsY)
 					layer_y(heavensCloudsID, heavensCloudsY)
 				
-					var spaceMergeStartY = 2000
-					var spaceMergeEndY = 6000
+					var spaceMergeStartY = 1000
+					var spaceMergeEndY = 2000
 					
-					var heavensMergeStartY = spaceMergeEndY + 2000
-					var heavensMergeEndY = heavensMergeStartY + 4000
+					var heavensMergeStartY = spaceMergeEndY + 500 
+					var heavensMergeEndY = heavensMergeStartY + 500
 				
 					var backID = layer_background_get_id(starsID)
 					var _skyID = layer_background_get_id(skyID)
@@ -157,7 +191,7 @@ if alive {
 					} 
 					//	Merging between sky and stars
 					else if oldRoadY >= spaceMergeStartY and oldRoadY < spaceMergeEndY {
-						var starsAlpha = (oldRoadY/spaceMergeEndY) * 1
+						var starsAlpha = ((oldRoadY-spaceMergeStartY) / (spaceMergeEndY-spaceMergeStartY)) * 1
 						layer_background_alpha(backID,starsAlpha)
 						var skyAlpha = 1 - starsAlpha
 						layer_background_alpha(_skyID,skyAlpha)
@@ -174,7 +208,7 @@ if alive {
 							layer_background_alpha(_skyID,0)
 							layer_background_alpha(backID,1)
 						} else if oldRoadY > heavensMergeStartY and oldRoadY < heavensMergeEndY { 
-							var cloudsAlpha = (oldRoadY / heavensMergeEndY) 
+							var cloudsAlpha = ((oldRoadY-heavensMergeStartY) / (heavensMergeEndY-heavensMergeStartY)) 
 							var starsAlpha = 1 - cloudsAlpha
 							layer_background_alpha(backID,starsAlpha)
 							layer_background_alpha(_cloudsID,cloudsAlpha)	

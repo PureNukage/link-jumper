@@ -12,6 +12,10 @@ colorNextIndex = -1
 colorColor = c_white
 colorLerp = -1
 
+bouncing = false
+bouncingHoverID = -1
+bouncingYCenter = -1
+
 colors = []
 colors[0][0] = make_color_rgb(236,19,255) // Purple
 colors[1][0] = make_color_rgb(31,42,254) // Blue
@@ -26,6 +30,14 @@ colors[2][1] = false // Teal
 colors[3][1] = false // Green
 colors[4][1] = false // Yellow
 colors[5][1] = false // Red
+
+function destroy() {
+	
+	with obstacle if bouncingHoverID == other.id instance_destroy()
+	
+	instance_destroy()
+	
+}
 
 function sparkleColorsReset() {
 	for(var i=0;i<6;i++) {

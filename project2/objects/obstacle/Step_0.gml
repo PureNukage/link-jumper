@@ -1,10 +1,12 @@
 switch(app.stage) 
 {
 	case 0:
-		x -= Speed
+	
+		if !bouncing {
+			x -= Speed
 
-		//	In the air
-		if !onGround {
+			//	In the air
+			if !onGround {
 	
 			y += vspd
 			vspd += grav
@@ -14,6 +16,21 @@ switch(app.stage)
 				y = ground
 				onGround = true
 			}
+		}
+		}
+		//	Bouncing
+		else {
+			
+			//	First frame of bouncing
+			if bouncingYCenter == -1 {
+				bouncingYCenter = y
+			}
+			
+			x = bouncingHoverID.x
+			
+			var dist = 30
+			y = wave(bouncingYCenter-dist,bouncingYCenter+dist,.2,.4)
+			
 		}
 	
 	break

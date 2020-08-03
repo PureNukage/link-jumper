@@ -45,3 +45,17 @@ if showInteract {
 	
 	
 }
+	
+if showArrows {
+	
+	var centerX = display_get_gui_width()/2
+	var centerY = display_get_gui_height()/2
+	
+	draw_sprite_ext(s_arrow,0, centerX,centerY-120,.5,.5, 90, c_white, 1)
+	
+	draw_sprite_ext(s_arrow,0, centerX-120,centerY, .5,.5, 180, c_white, 1)
+	
+	draw_sprite_ext(s_arrow,0, centerX+120,centerY, .5,.5, 0, c_white, 1)
+	
+	
+}

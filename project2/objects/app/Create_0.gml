@@ -24,6 +24,7 @@ function switch_stage(index) {
 		break;
 		case 1:
 			app.stage = 1
+			spawner.spawnTimer = 0
 			if instance_exists(obstacle) with obstacle instance_destroy()
 			var roadID = layer_get_id("Road")
 			var lightpolesID = layer_get_id("Lightpoles")

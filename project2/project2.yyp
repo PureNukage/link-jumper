@@ -14,6 +14,7 @@
     {"id":{"name":"app","path":"objects/app/app.yy",},"order":0,},
     {"id":{"name":"s_shadowfork","path":"sprites/s_shadowfork/s_shadowfork.yy",},"order":10,},
     {"id":{"name":"s_lightpoles","path":"sprites/s_lightpoles/s_lightpoles.yy",},"order":5,},
+    {"id":{"name":"s_arrow","path":"sprites/s_arrow/s_arrow.yy",},"order":27,},
     {"id":{"name":"s_sergey_idle","path":"sprites/s_sergey_idle/s_sergey_idle.yy",},"order":19,},
     {"id":{"name":"s_heavens_frontpillar","path":"sprites/s_heavens_frontpillar/s_heavens_frontpillar.yy",},"order":21,},
     {"id":{"name":"sdr_white","path":"shaders/sdr_white/sdr_white.yy",},"order":0,},
