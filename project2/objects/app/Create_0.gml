@@ -120,6 +120,7 @@ function switch_stage(index) {
 			app.stage = 3
 			
 			player.image_angle = 180
+			
 			player.vspd = 20
 			player.y = 100
 			

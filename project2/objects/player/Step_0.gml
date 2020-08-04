@@ -513,6 +513,8 @@ if alive {
 					//	Not at the station
 					if !atStation {
 					
+						image_angle = 180
+						
 						sprite_index = s_sergey_flying
 					
 						image_speed = (vspd / 100) * 1

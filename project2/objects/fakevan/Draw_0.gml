@@ -15,7 +15,7 @@ if !blownUp {
 
 	else {
 		draw_sprite(s_explosion,image_index, x+256,y+128)
-		if (image_index > image_number-1) {
+		if (image_index > image_number-2) {
 			blownUp = true
 			explode = false
 		}
