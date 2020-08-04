@@ -242,26 +242,29 @@ switch(app.stage)
 	
 	#region FALLING STAGE
 		case 3:
+		
+			if !player.atStation {
 			
-			x += Direction * 4
+				x += Direction * 4
 			
-			y = room_height - 100
+				y = room_height - 100
 			
-			if Direction == 1 and x >= (camera.width - sprite_get_width(sprite_index)/4) Direction = -1
-			if Direction == -1 and x <= 0 + sprite_get_width(sprite_index)/4 Direction = 1
+				if Direction == 1 and x >= (camera.width - sprite_get_width(sprite_index)/4) Direction = -1
+				if Direction == -1 and x <= 0 + sprite_get_width(sprite_index)/4 Direction = 1
 			
 			
-			spawnTimerChainlinks--
-			if spawnTimerChainlinks == 0 {
+				spawnTimerChainlinks--
+				if spawnTimerChainlinks == 0 {
 				
-				var spawnX = irandom_range(100, camera.width-100)	
+					var spawnX = irandom_range(100, camera.width-100)	
 				
-				var Obstacle = instance_create_layer(spawnX,y,"Instances",obstacle)
-				Obstacle.sprite_index = s_chainlink
-				Obstacle.image_xscale = 0.5
-				Obstacle.image_yscale = 0.5
+					var Obstacle = instance_create_layer(spawnX,y,"Instances",obstacle)
+					Obstacle.sprite_index = s_chainlink
+					Obstacle.image_xscale = 0.5
+					Obstacle.image_yscale = 0.5
 				
-				spawnTimerChainlinks = irandom_range(45,75)
+					spawnTimerChainlinks = irandom_range(45,75)
+				}
 			}
 			
 		break

@@ -6,6 +6,6 @@ if damaged {
 	draw_self()	
 }
 
-if app.stage == 3 {
+if app.stage == 3 and !atStation {
 	draw_sprite_ext(s_burningup,image_index,x,y+50,1,1,180,fallingColor,fallingAlpha)	
 }

@@ -1,0 +1,1 @@
+y = wave(floatY - 5, floatY + 5, 0.5, 0)

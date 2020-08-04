@@ -465,31 +465,69 @@ if alive {
 		#region FALLING STAGE 
 			case 3:
 				
-				sprite_index = s_sergey_flying
-				//image_angle = 180
-				
 				var Hspd = input.keyRight - input.keyLeft
 				x += Hspd * 5
 				
-				image_speed = (vspd / 100) * 1
+				//	Space station
+				if vspd >= 60 and !seenStation {
+					atStation = true
+					
+					if instance_exists(obstacle) with obstacle instance_destroy()
+					
+					if Hspd != 0 image_xscale = Hspd
+					
+					sprite_index = s_sergey_jump1
+					image_angle = 0 
+					
+					var Vspd = input.keyDown - input.keyUp
+					y += Vspd * 5
+					
+					x = clamp(x, 400, display_get_gui_width())
+					y = clamp(y, 0, room_height)
+					
+					var starsID = layer_get_id("Stars")
+					var heavensCloudsID = layer_get_id("Heavens_clouds")
+					var _starsID = layer_background_get_id(starsID)
+					var _heavensCloudsID = layer_background_get_id(heavensCloudsID)
+					layer_background_alpha(_starsID, 1)
+					layer_background_alpha(_heavensCloudsID, 0)
+					
+					if !instance_exists(astronaut) {
+						instance_create_layer(349,391, "Instances", astronaut)
+						instance_create_layer(213,175, "Instances", station)
+						instance_create_layer(631,387, "Instances", wrench)
+					}
+					
+					
+					
+				}
 				
-				//	Falling color and alpha
-				var Lerp = (vspd / 100) * 1
-				fallingColor = merge_color(c_yellow,c_red, Lerp)
-				fallingAlpha = Lerp
+				if !atStation {
+					
+					sprite_index = s_sergey_flying
+					
+					image_speed = (vspd / 100) * 1
 				
-				x = clamp(x, 100, display_get_gui_width()-100)
+					//	Falling color and alpha
+					var Lerp = (vspd / 100) * 1
+					fallingColor = merge_color(c_yellow,c_red, Lerp)
+					fallingAlpha = Lerp
+				
+					x = clamp(x, 100, display_get_gui_width()-100)
 						
-				var heavensWorldID = layer_get_id("Heavens_world")
-				var heavensCloudsID = layer_get_id("Heavens_clouds")
-				var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+					var heavensWorldID = layer_get_id("Heavens_world")
+					var heavensCloudsID = layer_get_id("Heavens_clouds")
+					var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+					var starsID = layer_get_id("Stars")
 						
-				layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd/2)
-				layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd/2)
-				layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd/2)
+					layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd/2)
+					layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd/2)
+					layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd/2)
+					
+					if seenStation layer_y(starsID, layer_get_y(starsID) - vspd/2)
 				
-				//	Collisions
-				if place_meeting(x,y,obstacle) {
+					//	Collisions
+					if place_meeting(x,y,obstacle) {
 					var Obs = instance_place(x,y,obstacle)
 					if Obs.sprite_index == s_chainlink {
 						vspd += 4
@@ -504,6 +542,24 @@ if alive {
 						var Force = 12
 						bounceSet(Direction, Force)
 						instance_destroy(Obs)
+					}
+				}
+						
+				}
+					
+				else {
+					if stationTimer > -1 stationTimer--
+					if stationTimer == 0 {
+						seenStation = true
+						atStation = false
+						if instance_exists(astronaut) instance_destroy(astronaut)
+						if instance_exists(station) instance_destroy(station)
+						if instance_exists(wrench) instance_destroy(wrench)
+						player.sprite_index = s_sergey_flying
+						player.image_angle = 180
+						player.image_xscale = 1
+						player.y = 100
+						player.vspd = 60
 					}
 				}
 				

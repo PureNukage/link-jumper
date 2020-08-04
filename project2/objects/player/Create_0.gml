@@ -19,6 +19,11 @@ fallingAlpha = 0
 fallingColor = c_yellow
 fallingStage = 0
 
+seenStation = false
+atStation = false
+hasWrench = false
+stationTimer = -1
+
 bounceDirection = -1
 bounceForce = -1
 
