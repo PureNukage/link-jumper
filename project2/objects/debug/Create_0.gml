@@ -23,13 +23,13 @@ function draw_debug_button(X, Y, width, height, String) {
 	draw_roundrect(xx-2,yy-2,xx+buttonWidth+2,yy+buttonHeight+2,false)
 	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-2,yy-2,xx+buttonWidth+2,yy+buttonHeight+2) {
-		draw_set_color(c_ltgray)
+		draw_set_color(c_sergey_blue2)
 		if input.leftPress {
 			clicked = true	
 		}
 	}
 	else {
-		draw_set_color(c_gray)
+		draw_set_color(c_sergey_blue)
 	}
 	draw_roundrect(xx,yy,xx+buttonWidth,yy+buttonHeight,false)
 	draw_set_color(c_white)

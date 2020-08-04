@@ -41,6 +41,8 @@ function switch_stage(index) {
 			
 			with spawner instance_destroy()
 			
+			time.stream = 0
+			
 			var Spawner = instance_create_layer(768,256,"Instances",spawner)
 			Spawner.visible = true
 			

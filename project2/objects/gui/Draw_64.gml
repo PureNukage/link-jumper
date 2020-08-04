@@ -110,6 +110,16 @@ if showEnd {
 	
 if showMenu {
 	
+	
+	//	Credits
+	var xx = 30
+	var yy = room_height - 60
+	
+	draw_set_color(c_white)
+	draw_text(xx,yy, app.creator)
+	draw_text(xx,yy+15, "Music by wombocombo")
+	draw_text(xx,yy+30, "Help by @Leo_the_Potato")
+	
 	var centerX = display_get_gui_width()/2
 	var centerY = display_get_gui_height()/2
 	
@@ -117,7 +127,7 @@ if showMenu {
 	var Scale = .3
 	draw_sprite_ext(s_thejourney, 0, centerX,centerY-50, Scale,Scale, 0,c_white,1)
 	
-	draw_set_color(c_black)
+	draw_set_color(c_sergey_blue)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_text(centerX,centerY-150, "Chainlink")
@@ -131,13 +141,13 @@ if showMenu {
 	draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
 	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+width,yy+height) {
-		draw_set_color(c_aqua)
+		draw_set_color(c_sergey_blue2)
 		if input.leftPress {
 			app.switch_stage(0)	
 		}
 	}
 	else {
-		draw_set_color(c_blue)
+		draw_set_color(c_sergey_blue)
 	}
 	draw_roundrect(xx,yy, xx+width,yy+height, false)
 	
