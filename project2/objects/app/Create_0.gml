@@ -37,6 +37,7 @@ function switch_stage(index) {
 		break;
 		case 1:
 			app.stage = 1
+			player.image_angle = 0
 			spawner.spawnTimer = 0
 			if instance_exists(obstacle) with obstacle instance_destroy()
 			layer_hspeed(roadID,0)
@@ -69,6 +70,7 @@ function switch_stage(index) {
 		break
 		case 2:
 			app.stage = 2
+			player.image_angle = 0
 			layer_y(heavensWorldID,0)
 			layer_y(heavensFrontPillarID,0)
 			

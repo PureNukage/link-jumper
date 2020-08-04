@@ -23,5 +23,5 @@ if !blownUp {
 }
 
 else {
-	draw_sprite(s_van,0, x,y)	
+	//draw_sprite(s_van,0, x,y)	
 }

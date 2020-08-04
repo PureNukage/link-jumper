@@ -174,7 +174,7 @@ if alive {
 					var spaceMergeStartY = 1000
 					var spaceMergeEndY = 2000
 					
-					var heavensMergeStartY = spaceMergeEndY + 500 
+					var heavensMergeStartY = spaceMergeEndY + 1500 
 					var heavensMergeEndY = heavensMergeStartY + 500
 				
 					var backID = layer_background_get_id(starsID)
@@ -211,10 +211,13 @@ if alive {
 							layer_background_alpha(backID,1)
 							
 							//	Saturn
-							var saturnY = (heavensMergeStartY - spaceMergeEndY)/2 + spaceMergeEndY
+							//var saturnY = (heavensMergeStartY - spaceMergeEndY)/2 + spaceMergeEndY
 							
-							if oldRoadY < saturnY {
-									
+							if oldRoadY < heavensMergeStartY {
+								
+								var saturnID = layer_get_id("Saturn")
+								layer_y(saturnID, layer_get_y(saturnID) - vspd)
+								
 							}
 						} else if oldRoadY > heavensMergeStartY and oldRoadY < heavensMergeEndY { 
 							var cloudsAlpha = ((oldRoadY-heavensMergeStartY) / (heavensMergeEndY-heavensMergeStartY)) 
@@ -610,6 +613,11 @@ if alive {
 						layer_y(cityID, 0)
 						layer_y(roadID, -180)
 						layer_y(lpID, 0)
+						
+						layer_hspeed(skyID, -2)
+						layer_hspeed(cityID, -4)
+						layer_hspeed(lpID, -8)
+						layer_hspeed(roadID, -10)
 						
 						player.visible = false
 						
