@@ -471,6 +471,8 @@ if alive {
 				if !done {
 					var Hspd = input.keyRight - input.keyLeft
 					x += Hspd * 5
+					
+					x = clamp(x, 0, display_get_gui_width())
 				}
 				
 				//	Falling/space station
@@ -580,6 +582,7 @@ if alive {
 				}
 						
 				} 
+				
 				//	Falling after station
 				else if fallingStage == 1 {
 					
@@ -633,6 +636,7 @@ if alive {
 					}
 					
 				} 
+					
 				//	Pepe van shot 1
 				else if fallingStage == 2 {
 					fallingTimer--
