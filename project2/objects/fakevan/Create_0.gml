@@ -1,0 +1,2 @@
+explode = false
+blownUp = false

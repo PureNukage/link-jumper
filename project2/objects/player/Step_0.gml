@@ -465,91 +465,102 @@ if alive {
 		#region FALLING STAGE 
 			case 3:
 				
-				var Hspd = input.keyRight - input.keyLeft
-				x += Hspd * 5
-				
-				//	Space station
-				if vspd >= 60 and !seenStation {
-					atStation = true
-					
-					if instance_exists(obstacle) with obstacle instance_destroy()
-					
-					if Hspd != 0 image_xscale = Hspd
-					
-					sprite_index = s_sergey_jump1
-					image_angle = 0 
-					
-					var Vspd = input.keyDown - input.keyUp
-					y += Vspd * 5
-					
-					x = clamp(x, 400, display_get_gui_width())
-					y = clamp(y, 0, room_height)
-					
-					var starsID = layer_get_id("Stars")
-					var heavensCloudsID = layer_get_id("Heavens_clouds")
-					var _starsID = layer_background_get_id(starsID)
-					var _heavensCloudsID = layer_background_get_id(heavensCloudsID)
-					layer_background_alpha(_starsID, 1)
-					layer_background_alpha(_heavensCloudsID, 0)
-					
-					if !instance_exists(astronaut) {
-						instance_create_layer(349,391, "Instances", astronaut)
-						instance_create_layer(213,175, "Instances", station)
-						instance_create_layer(631,387, "Instances", wrench)
-					}
-					
-					
-					
+				if !done {
+					var Hspd = input.keyRight - input.keyLeft
+					x += Hspd * 5
 				}
 				
-				if !atStation {
-					
-					sprite_index = s_sergey_flying
-					
-					image_speed = (vspd / 100) * 1
+				//	Falling/space station
+				if fallingStage == 0 {
 				
-					//	Falling color and alpha
-					var Lerp = (vspd / 100) * 1
-					fallingColor = merge_color(c_yellow,c_red, Lerp)
-					fallingAlpha = Lerp
-				
-					x = clamp(x, 100, display_get_gui_width()-100)
-						
-					var heavensWorldID = layer_get_id("Heavens_world")
-					var heavensCloudsID = layer_get_id("Heavens_clouds")
-					var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
-					var starsID = layer_get_id("Stars")
-						
-					layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd/2)
-					layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd/2)
-					layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd/2)
+					//	Space station
+					if vspd >= 60 and !seenStation {
+						atStation = true
 					
-					if seenStation layer_y(starsID, layer_get_y(starsID) - vspd/2)
-				
-					//	Collisions
-					if place_meeting(x,y,obstacle) {
-					var Obs = instance_place(x,y,obstacle)
-					if Obs.sprite_index == s_chainlink {
-						vspd += 4
-						with Obs instance_destroy()
+						if instance_exists(obstacle) with obstacle instance_destroy()
+					
+						if Hspd != 0 image_xscale = Hspd
+					
+						sprite_index = s_sergey_jump1
+						image_angle = 0 
+					
+						var Vspd = input.keyDown - input.keyUp
+						y += Vspd * 5
+					
+						x = clamp(x, 400, display_get_gui_width())
+						y = clamp(y, 0, room_height)
+					
+						var starsID = layer_get_id("Stars")
+						var heavensCloudsID = layer_get_id("Heavens_clouds")
+						var _starsID = layer_background_get_id(starsID)
+						var _heavensCloudsID = layer_background_get_id(heavensCloudsID)
+						layer_background_alpha(_starsID, 1)
+						layer_background_alpha(_heavensCloudsID, 0)
+					
+						if !instance_exists(astronaut) {
+							instance_create_layer(349,391, "Instances", astronaut)
+							instance_create_layer(213,175, "Instances", station)
+							instance_create_layer(631,387, "Instances", wrench)
+						}
+					
+					
+					
 					}
-					//	not a chainlink cube
+				
+					//	Not at the station
+					if !atStation {
+					
+						sprite_index = s_sergey_flying
+					
+						image_speed = (vspd / 100) * 1
+				
+						//	Falling color and alpha
+						var Lerp = (vspd / 100) * 1
+						fallingColor = merge_color(c_yellow,c_red, Lerp)
+						fallingAlpha = Lerp
+				
+						x = clamp(x, 100, display_get_gui_width()-100)
+						
+						var heavensWorldID = layer_get_id("Heavens_world")
+						var heavensCloudsID = layer_get_id("Heavens_clouds")
+						var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						var starsID = layer_get_id("Stars")
+						
+						layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd/2)
+						layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd/2)
+						layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd/2)
+					
+						if seenStation layer_y(starsID, layer_get_y(starsID) - vspd/2)
+				
+						//	Collisions
+						if place_meeting(x,y,obstacle) {
+						var Obs = instance_place(x,y,obstacle)
+						if Obs.sprite_index == s_chainlink {
+							vspd += 4
+							with Obs instance_destroy()
+						}
+						//	not a chainlink cube
+						else {
+							damaged = true
+							damagedTimer = 30
+							vspd = 0
+							var Direction = point_direction(Obs.x,Obs.y, player.x,player.y)
+							var Force = 12
+							bounceSet(Direction, Force)
+							instance_destroy(Obs)
+						}
+					}
+						
+					}
+					//	At the station
 					else {
-						damaged = true
-						damagedTimer = 30
-						vspd = 0
-						var Direction = point_direction(Obs.x,Obs.y, player.x,player.y)
-						var Force = 12
-						bounceSet(Direction, Force)
-						instance_destroy(Obs)
-					}
-				}
-						
-				}
-					
-				else {
 					if stationTimer > -1 stationTimer--
+					
+					//	Done with the space station
 					if stationTimer == 0 {
+						fallingStage = 1
+						fallingTimer = 180
+						
 						seenStation = true
 						atStation = false
 						if instance_exists(astronaut) instance_destroy(astronaut)
@@ -561,6 +572,191 @@ if alive {
 						player.y = 100
 						player.vspd = 60
 					}
+				}
+						
+				} 
+				//	Falling after station
+				else if fallingStage == 1 {
+					
+					if instance_exists(obstacle) with obstacle instance_destroy()
+					
+					var starsID = layer_get_id("Stars")
+					layer_y(starsID, layer_get_y(starsID) - vspd/2)
+					
+					
+					fallingTimer--
+					//	Cut to pepe in van
+					if fallingTimer <= 0 {
+						
+						var starsID = layer_get_id("Stars")
+						var skyID = layer_get_id("Sky")
+						var cityID = layer_get_id("City")
+						var lpID = layer_get_id("Lightpoles")
+						var roadID = layer_get_id("Road")
+						
+						var _starsID = layer_background_get_id(starsID)
+						var _skyID = layer_background_get_id(skyID)
+						var _cityID = layer_background_get_id(cityID)
+						var _lpID = layer_background_get_id(lpID)
+						var _roadID = layer_background_get_id(roadID)
+						
+						layer_background_alpha(_starsID, 0)
+						layer_background_alpha(_skyID, 1)
+						layer_background_alpha(_cityID, 1)
+						layer_background_alpha(_lpID, 1)
+						layer_background_alpha(_roadID, 1)
+						
+						layer_y(skyID, 0)
+						layer_y(cityID, 0)
+						layer_y(roadID, -180)
+						layer_y(lpID, 0)
+						
+						player.visible = false
+						
+						var centerX = display_get_gui_width()/2 - 300
+						var centerY = 256
+						instance_create_layer(centerX,centerY, "Instances", fakevan)
+						
+						fallingStage = 2
+						fallingTimer = 120
+						
+					}
+					
+				} 
+				//	Pepe van shot 1
+				else if fallingStage == 2 {
+					fallingTimer--
+					
+					//	done with van, back to Sergey
+					if fallingTimer == 0 {
+						
+						var starsID = layer_get_id("Stars")
+						var skyID = layer_get_id("Sky")
+						var cityID = layer_get_id("City")
+						var lpID = layer_get_id("Lightpoles")
+						var roadID = layer_get_id("Road")
+						
+						var _starsID = layer_background_get_id(starsID)
+						var _skyID = layer_background_get_id(skyID)
+						var _cityID = layer_background_get_id(cityID)
+						var _lpID = layer_background_get_id(lpID)
+						var _roadID = layer_background_get_id(roadID)
+						
+						layer_background_alpha(_starsID, 1)
+						layer_background_alpha(_skyID, 0)
+						layer_background_alpha(_cityID, 0)
+						layer_background_alpha(_lpID, 0)
+						layer_background_alpha(_roadID, 0)
+						
+						visible = true
+						
+						fallingStage = 3
+						fallingTimer = 90
+						
+						if instance_exists(fakevan) fakevan.visible = false
+						
+					}
+				}
+				
+				//	Sergey falling again
+				else if fallingStage == 3 {
+					
+					var starsID = layer_get_id("Stars")
+					layer_y(starsID, layer_get_y(starsID) - vspd/2)
+					
+					fallingTimer--
+					
+					//	Cut back to pepe van for the final time
+					if fallingTimer == 0 {
+						var starsID = layer_get_id("Stars")
+						var skyID = layer_get_id("Sky")
+						var cityID = layer_get_id("City")
+						var lpID = layer_get_id("Lightpoles")
+						var roadID = layer_get_id("Road")
+						
+						var _starsID = layer_background_get_id(starsID)
+						var _skyID = layer_background_get_id(skyID)
+						var _cityID = layer_background_get_id(cityID)
+						var _lpID = layer_background_get_id(lpID)
+						var _roadID = layer_background_get_id(roadID)
+						
+						layer_background_alpha(_starsID, 0)
+						layer_background_alpha(_skyID, 1)
+						layer_background_alpha(_cityID, 1)
+						layer_background_alpha(_lpID, 1)
+						layer_background_alpha(_roadID, 1)
+						
+						layer_y(skyID, 0)
+						layer_y(cityID, 0)
+						layer_y(roadID, -180)
+						layer_y(lpID, 0)
+						
+						player.visible = false
+						
+						var centerX = display_get_gui_width()/2 - 200
+						var centerY = 256
+						//instance_create_layer(centerX,centerY, "Instances", fakevan)
+						
+						fallingStage = 4
+						fallingTimer = 120
+						
+						if instance_exists(fakevan) fakevan.visible = true
+					}
+					
+				}
+					
+				//	Pepe van final shot
+				else if fallingStage == 4 {
+					
+					fallingTimer--
+					if fallingTimer > 0 fallRadius++
+					
+					if fallingTimer <= 0 {
+						
+						if fallingTimer == 0 y = -100
+						
+						//	Not done
+						if !done {
+							visible = true
+							x = display_get_gui_width()/2 - 100
+						
+							y += 10
+						
+							if y >= fakevan.y {
+								fakevan.explode = true
+								fakevan.image_index = 0
+									
+								done = true
+								
+								y = fakevan.y + 180
+								
+								var skyID = layer_get_id("Sky")
+								var cityID = layer_get_id("City")
+								var lpID = layer_get_id("Lightpoles")
+								var roadID = layer_get_id("Road")
+								
+								layer_hspeed(skyID, 0)
+								layer_hspeed(cityID, 0)
+								layer_hspeed(lpID, 0)
+								layer_hspeed(roadID, 0)
+								
+							}
+						} 
+						//	Done
+						else {
+							sprite_index = s_sergey_run
+							image_speed = 1.5
+							image_angle = 0
+							image_xscale = 1
+							x += 5
+							
+							if x > display_get_gui_width() + 100 {
+								gui.showEnd = true	
+							}
+						}
+						
+					}
+					
 				}
 				
 			break

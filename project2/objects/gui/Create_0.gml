@@ -8,6 +8,8 @@ showMessage = false
 messageTimer = 0
 text = ""
 
+showEnd = false
+
 function setMessage(String, timer) {
 	
 	text = String

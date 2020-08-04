@@ -88,3 +88,19 @@ if showMessage {
 	}
 		
 }
+	
+if showEnd {
+	
+	var centerX = display_get_gui_width()/2
+	var centerY = display_get_gui_height()/2
+	
+	var width = 300
+	var height = 150
+	var X = centerX - width/2
+	var Y = centerY-height/2
+	
+	if debug.draw_debug_button(X,Y,width,height, "Journey complete. Press to exit") {
+		game_end()	
+	}
+	
+}

@@ -18,11 +18,16 @@ zoneJumpingTimer = -1
 fallingAlpha = 0
 fallingColor = c_yellow
 fallingStage = 0
+fallingTimer = -1
 
 seenStation = false
 atStation = false
 hasWrench = false
 stationTimer = -1
+
+done = false
+
+fallRadius = 1
 
 bounceDirection = -1
 bounceForce = -1

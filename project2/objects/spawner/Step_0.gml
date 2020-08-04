@@ -243,11 +243,11 @@ switch(app.stage)
 	#region FALLING STAGE
 		case 3:
 		
-			if !player.atStation {
+			if !player.atStation and player.fallingStage == 0 {
 			
 				x += Direction * 4
 			
-				y = room_height - 100
+				y = room_height + 100
 			
 				if Direction == 1 and x >= (camera.width - sprite_get_width(sprite_index)/4) Direction = -1
 				if Direction == -1 and x <= 0 + sprite_get_width(sprite_index)/4 Direction = 1
