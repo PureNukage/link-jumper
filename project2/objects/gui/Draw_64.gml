@@ -48,6 +48,9 @@ if showInteract {
 	
 if showArrows {
 	
+	arrowTimer--
+	if arrowTimer <= 0 showArrows = false
+	
 	var centerX = display_get_gui_width()/2
 	var centerY = display_get_gui_height()/2
 	
@@ -102,5 +105,45 @@ if showEnd {
 	if debug.draw_debug_button(X,Y,width,height, "Journey complete. Press to exit") {
 		game_end()	
 	}
+	
+}
+	
+if showMenu {
+	
+	var centerX = display_get_gui_width()/2
+	var centerY = display_get_gui_height()/2
+	
+	draw_sprite(s_chainlinklogo, 0, centerX,centerY-150)
+	var Scale = .3
+	draw_sprite_ext(s_thejourney, 0, centerX,centerY-50, Scale,Scale, 0,c_white,1)
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text(centerX,centerY-150, "Chainlink")
+	
+	var width = 120
+	var height = 60
+	var xx = centerX - width/2
+	var yy = centerY + 80
+	
+	draw_set_color(c_black)
+	draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
+	
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+width,yy+height) {
+		draw_set_color(c_aqua)
+		if input.leftPress {
+			app.switch_stage(0)	
+		}
+	}
+	else {
+		draw_set_color(c_blue)
+	}
+	draw_roundrect(xx,yy, xx+width,yy+height, false)
+	
+	draw_set_color(c_white)
+	draw_text(xx+width/2,yy+height/2, "Play")
+	
+	draw_reset()
 	
 }

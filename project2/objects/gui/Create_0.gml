@@ -3,12 +3,15 @@ showRestart = false
 showInteract = false
 
 showArrows = false
+arrowTimer = 90
 
 showMessage = false
 messageTimer = 0
 text = ""
 
 showEnd = false
+
+showMenu = true
 
 function setMessage(String, timer) {
 	

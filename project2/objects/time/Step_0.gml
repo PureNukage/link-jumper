@@ -19,8 +19,8 @@ if seconds >= 60 {
 	minutes_switch = 0	
 }
 
-if stream < 120 {
-	gui.showArrows = true	
-} else {
-	gui.showArrows = false
-}
+//if stream < 120 {
+//	gui.showArrows = true	
+//} else {
+//	gui.showArrows = false
+//}

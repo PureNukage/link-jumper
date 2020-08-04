@@ -1,7 +1,7 @@
 version = "0.0.1"
 creator = "@PureNukage"
 
-stage = 0
+stage = -1
 
 var heavenCollisionID = layer_get_id("HeavenCollision")
 instance_deactivate_layer(heavenCollisionID)
@@ -33,6 +33,22 @@ function switch_stage(index) {
 	switch(index) 
 	{
 		case 0:
+			app.stage = 0
+		
+			player.visible = true
+			
+			spawner.visible = true
+			
+			with spawner instance_destroy()
+			
+			var Spawner = instance_create_layer(768,256,"Instances",spawner)
+			Spawner.visible = true
+			
+			gui.showMenu = false
+			gui.showArrows = true
+			gui.arrowTimer = 90
+			
+			if !instance_exists(sound) instance_create_layer(0,0,"Instances",sound)
 			
 		break;
 		case 1:

@@ -4,7 +4,7 @@
     "path": "sprites/s_sergey_run/s_sergey_run.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
