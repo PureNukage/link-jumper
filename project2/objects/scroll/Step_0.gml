@@ -11,6 +11,7 @@ if point_distance(x,y, player.x,player.y) < 50 {
 	if input.keyInteraction {
 		gui.setMessage("You have acquired the God Protocols!", 90)
 		if gui.showInteract gui.showInteract = false
+		instance_create_layer(1962,411,"Instances",zone)
 		instance_destroy()
 	}	
 	

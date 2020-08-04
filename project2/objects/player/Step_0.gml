@@ -209,6 +209,13 @@ if alive {
 						if oldRoadY < heavensMergeStartY {
 							layer_background_alpha(_skyID,0)
 							layer_background_alpha(backID,1)
+							
+							//	Saturn
+							var saturnY = (heavensMergeStartY - spaceMergeEndY)/2 + spaceMergeEndY
+							
+							if oldRoadY < saturnY {
+									
+							}
 						} else if oldRoadY > heavensMergeStartY and oldRoadY < heavensMergeEndY { 
 							var cloudsAlpha = ((oldRoadY-heavensMergeStartY) / (heavensMergeEndY-heavensMergeStartY)) 
 							var starsAlpha = 1 - cloudsAlpha
@@ -319,7 +326,10 @@ if alive {
 		#region HEAVEN STAGE
 			case 2:
 			
-			if !gui.showMessage {
+			if zoneJumping == -1 {
+				if !gui.showMessage {
+					
+				image_speed = 1
 			
 				depth = -(y + sprite_get_height(sprite_index)/2)
 				depth = -y - 62
@@ -363,7 +373,139 @@ if alive {
 				}
 			
 				applyMovementAndCollide()
+				
+				if place_meeting(x,y,zone) {
+					zoneJumping = 0
+					zoneJumpingTimer = 120
+					vspd -= 10
+					if instance_exists(zone) instance_destroy(zone)
+				}
+			} else image_speed = 0
 			}
+			
+			else {
+				switch(zoneJumping)
+				{
+					case 0:
+						sprite_index = s_sergey_jump0
+						
+						vspd += grav
+						
+						var heavensWorldID = layer_get_id("Heavens_world")
+						var heavensCloudsID = layer_get_id("Heavens_clouds")
+						var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						
+						layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd)
+						layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd)
+						layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd)
+						harambe.y -= vspd
+						
+						zoneJumpingTimer--
+						if zoneJumpingTimer == 0 {
+							zoneJumping++
+							zoneJumpingTimer = 120
+						}
+					break
+					case 1:
+						sprite_index = s_sergey_jump1
+						
+						var Lerp = 0.02
+						
+						x = lerp(x, 100,Lerp)
+						y = lerp(y, 100, Lerp)
+						
+						vspd += grav
+						
+						vspd = clamp(vspd, -10, 20)
+						
+						zoneJumpingTimer--
+						if zoneJumpingTimer == 0 {
+							zoneJumpingTimer = -1
+							zoneJumping++
+						}
+						
+						var heavensWorldID = layer_get_id("Heavens_world")
+						var heavensCloudsID = layer_get_id("Heavens_clouds")
+						var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						
+						layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd)
+						layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd)
+						layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd)
+						
+						
+						
+					break
+					case 2:
+						
+						sprite_index = s_sergey_flying
+						image_angle = 180
+						image_speed = 0
+						
+						var heavensWorldID = layer_get_id("Heavens_world")
+						var heavensCloudsID = layer_get_id("Heavens_clouds")
+						var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						
+						layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd)
+						layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd)
+						layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd)
+						
+						layer_x(heavensWorldID, layer_get_x(heavensWorldID) - vspd)
+						layer_x(heavensCloudsID, layer_get_x(heavensCloudsID) - vspd)
+						layer_x(heavensFrontPillarID, layer_get_x(heavensFrontPillarID) - vspd)
+						
+						app.switch_stage(3)
+						
+					break
+				}
+			}
+				
+			break
+		#endregion
+		
+		#region FALLING STAGE 
+			case 3:
+				
+				sprite_index = s_sergey_flying
+				//image_angle = 180
+				
+				var Hspd = input.keyRight - input.keyLeft
+				x += Hspd * 5
+				
+				image_speed = (vspd / 100) * 1
+				
+				//	Falling color and alpha
+				var Lerp = (vspd / 100) * 1
+				fallingColor = merge_color(c_yellow,c_red, Lerp)
+				fallingAlpha = Lerp
+				
+				x = clamp(x, 100, display_get_gui_width()-100)
+						
+				var heavensWorldID = layer_get_id("Heavens_world")
+				var heavensCloudsID = layer_get_id("Heavens_clouds")
+				var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						
+				layer_y(heavensWorldID, layer_get_y(heavensWorldID) - vspd/2)
+				layer_y(heavensCloudsID, layer_get_y(heavensCloudsID) - vspd/2)
+				layer_y(heavensFrontPillarID, layer_get_y(heavensFrontPillarID) - vspd/2)
+				
+				//	Collisions
+				if place_meeting(x,y,obstacle) {
+					var Obs = instance_place(x,y,obstacle)
+					if Obs.sprite_index == s_chainlink {
+						vspd += 4
+						with Obs instance_destroy()
+					}
+					//	not a chainlink cube
+					else {
+						damaged = true
+						damagedTimer = 30
+						vspd = 0
+						var Direction = point_direction(Obs.x,Obs.y, player.x,player.y)
+						var Force = 12
+						bounceSet(Direction, Force)
+						instance_destroy(Obs)
+					}
+				}
 				
 			break
 		#endregion

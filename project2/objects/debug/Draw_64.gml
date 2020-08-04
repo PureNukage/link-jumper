@@ -8,13 +8,14 @@ if on {
 	with player {
 		draw_text(xx,yy, "jump: "+string(jump))		yy += 15
 		draw_text(xx,yy, "vspd: "+string(vspd))		yy += 15
+		draw_text(xx,yy, "image_angle: "+string(image_angle)) yy += 15
 	}	
 	
 	
 	
 	//	Buttons
 	var width = 200
-	var height = 100
+	var height = 140
 	var xx = display_get_gui_width()/2 - width
 	var yy = 30
 	draw_set_color(c_gray)
@@ -30,6 +31,14 @@ if on {
 	var clicked = draw_debug_button(xx,yy+15,80,30,"Stage 2")
 	if clicked {
 		app.switch_stage(2)	
+	}
+	
+	var xx = display_get_gui_width()/2 - width
+	var yy = 30 + 80
+	var clicked = draw_debug_button(xx+15,yy+15,80,30,"Stage 3")
+	if clicked {
+		app.switch_stage(2)	
+		app.switch_stage(3)	
 	}
 		
 	draw_reset()

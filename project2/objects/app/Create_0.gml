@@ -95,7 +95,6 @@ function switch_stage(index) {
 			var _cityID = layer_background_get_id(cityID)
 			var _starsID = layer_background_get_id(starsID)
 			
-			
 			layer_background_alpha(_skyID, 0)
 			layer_background_alpha(_starsID, 0)
 			
@@ -113,6 +112,29 @@ function switch_stage(index) {
 			layer_y(heavensWorldID, 0)
 			layer_y(heavensFrontPillarID, 0)
 			
+		break
+		case 3:
+		
+			app.stage = 3
+			
+			player.image_angle = 180
+			player.vspd = 20
+			player.y = 100
+			
+			player.mask_index = s_sergey_flying
+			
+			var starsID = layer_get_id("Stars")
+			var _starsID = layer_background_get_id(starsID)
+			var _heavensWorldID = layer_background_get_id(heavensWorldID)
+			var _heavensClouds = layer_background_get_id(heavensCloudsID)
+			var _heavensFrontPillarID = layer_background_get_id(heavensFrontPillarID)
+			var _skyID = layer_background_get_id(skyID)
+			
+			layer_background_alpha(_heavensWorldID, 0)
+			layer_background_alpha(_heavensFrontPillarID, 0)
+			layer_background_alpha(_skyID, 0)
+			
+			//layer_background_alpha(_starsID, 0.5)
 			
 			
 		break

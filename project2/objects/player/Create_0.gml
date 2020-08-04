@@ -12,6 +12,13 @@ depth = -2
 xx = 0
 yy = 0
 
+zoneJumping = -1
+zoneJumpingTimer = -1
+
+fallingAlpha = 0
+fallingColor = c_yellow
+fallingStage = 0
+
 bounceDirection = -1
 bounceForce = -1
 

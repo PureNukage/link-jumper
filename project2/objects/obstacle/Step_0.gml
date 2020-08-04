@@ -55,4 +55,9 @@ switch(app.stage)
 		}
 		
 	break
+	case 3:
+		
+		y -= Speed
+		
+	break
 }
