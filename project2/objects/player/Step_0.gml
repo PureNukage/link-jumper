@@ -14,7 +14,7 @@ if alive {
 				if x < 100 image_speed = .5
 				
 				var Speed = 3
-				if os_browser != browser_not_a_browser Speed = 5
+				if (os_type == os_android or os_type == os_ios) Speed = 5
 				
 				x += Hspd * Speed
 			}
@@ -40,7 +40,7 @@ if alive {
 			//	Jump
 			if input.jump and onGround {
 				vspd = -10
-				if os_browser != browser_not_a_browser vspd = -12
+				if (os_type == os_android or os_type == os_ios) vspd = -12
 				jump = 1
 				onGround = false
 				debug.log("Jumping!")
