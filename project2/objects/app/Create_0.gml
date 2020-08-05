@@ -57,6 +57,7 @@ function switch_stage(index) {
 			app.stage = 1
 			player.image_angle = 0
 			spawner.spawnTimer = 0
+			spawner.sprite_index = s_chopper
 			if instance_exists(obstacle) with obstacle instance_destroy()
 			layer_hspeed(roadID,0)
 			layer_hspeed(lightpolesID,0)

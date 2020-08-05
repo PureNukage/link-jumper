@@ -1,7 +1,7 @@
 spawnTimer--
 	
 if app.stage == 1 {
-	sprite_index = s_chopper
+	//sprite_index = s_chopper
 	if Direction = 0 Direction = 1	
 }
 	
@@ -141,10 +141,10 @@ switch(app.stage)
 							var cityID = layer_get_id("City")
 							var roadID = layer_get_id("Road")
 							var lightpolesID = layer_get_id("Lightpoles")
-							var starsID = layer_get_id("Stars")
-							var heavensWorldID = layer_get_id("Heavens_world")
-							var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
-							var heavensCloudsID = layer_get_id("Heavens_clouds")
+							//var starsID = layer_get_id("Stars")
+							//var heavensWorldID = layer_get_id("Heavens_world")
+							//var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+							//var heavensCloudsID = layer_get_id("Heavens_clouds")
 						
 							var Lerp = 0.1
 							var Hspeed = layer_get_hspeed(skyID)
@@ -188,7 +188,15 @@ switch(app.stage)
 			
 			y = 20
 			
-			image_xscale = Direction
+			//image_xscale = Direction
+			
+			if sprite_index = s_rocketship {
+				image_xscale = .4
+				image_yscale = .4
+			} else {
+				image_xscale = 1 * Direction
+				image_yscale = 1
+			}
 			
 			spawnTimer2--
 			

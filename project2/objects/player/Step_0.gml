@@ -206,9 +206,13 @@ if alive {
 						layer_background_alpha(_cloudsID,0)
 						layer_background_alpha(_worldID,0)
 						layer_background_alpha(_pillarID,0)
+						
+						if spawner.sprite_index != s_chopper spawner.sprite_index = s_chopper
 					} 
 					//	in spaaaaaccce
 					else if oldRoadY > spaceMergeEndY {
+						
+						if spawner.sprite_index != s_rocketship spawner.sprite_index = s_rocketship
 						
 						if oldRoadY < heavensMergeStartY {
 							layer_background_alpha(_skyID,0)

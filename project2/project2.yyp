@@ -53,6 +53,7 @@
     {"id":{"name":"fakevan","path":"objects/fakevan/fakevan.yy",},"order":17,},
     {"id":{"name":"s_heavens_clouds","path":"sprites/s_heavens_clouds/s_heavens_clouds.yy",},"order":22,},
     {"id":{"name":"s_700k","path":"sprites/s_700k/s_700k.yy",},"order":9,},
+    {"id":{"name":"s_rocketship","path":"sprites/s_rocketship/s_rocketship.yy",},"order":37,},
     {"id":{"name":"s_heavens_world","path":"sprites/s_heavens_world/s_heavens_world.yy",},"order":20,},
     {"id":{"name":"s_duck","path":"sprites/s_duck/s_duck.yy",},"order":11,},
     {"id":{"name":"collision","path":"objects/collision/collision.yy",},"order":8,},
