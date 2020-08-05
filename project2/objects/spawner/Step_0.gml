@@ -4,8 +4,10 @@ if app.stage == 1 {
 	//sprite_index = s_chopper
 	if Direction = 0 Direction = 1	
 }
+
+if lossState == -1 {
 	
-switch(app.stage) 
+	switch(app.stage) 
 {
 	#region RUNNING STAGE 
 		case 0:
@@ -277,4 +279,46 @@ switch(app.stage)
 			
 		break
 	#endregion
+}
+	
+} else {
+	switch(lossState)
+	{
+		//	Sliding back into camera view
+		case 0:
+			x = lerp(x, 500, 0.03)
+			if x < 510 {
+				lossState = 1	
+				lossLaugh = 0
+				laughTimer = 10
+			}
+		break
+		//	Pepe laughing
+		case 1:
+			laughTimerTotal--
+			
+			laughTimer--
+			
+			if laughTimer == 0 {
+				laughTimer = 10
+				lossLaugh++
+				if lossLaugh >= 3 {
+					lossLaugh = 0
+				}
+			}
+			
+			if laughTimerTotal == 0 {
+				lossState = 2	
+			}
+		break
+		//	Zoom off
+		case 2:
+		
+			x = lerp(x, display_get_gui_width() + 200, 0.09)
+			
+			if x > display_get_gui_width() + 200 - 50 {
+				lossState = 3	
+			}
+		break
+	}
 }

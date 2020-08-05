@@ -795,6 +795,7 @@ else {
 	
 	if y > room_height { 
 		gui.showRestart = true
+		if spawner.lossState == -1 spawner.lossState = 0
 	}
 	
 }

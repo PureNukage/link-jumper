@@ -13,6 +13,11 @@ built = false
 
 delayTimer = 0
 
+lossState = -1
+lossLaugh = -1
+laughTimer = -1
+laughTimerTotal = 90
+
 function createQueueObject(Time, link_cube) constructor {
 	spawnTime = Time
 	linkcube = link_cube
