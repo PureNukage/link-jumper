@@ -120,6 +120,11 @@ if showMenu {
 	draw_text(xx,yy+15, "Music by wombocombo")
 	draw_text(xx,yy+30, "Help by @Leo_the_Potato")
 	
+	//	 version
+	var xx = display_get_gui_width() - 100
+	var yy = room_height - 30
+	draw_text(xx,yy, "v"+string(app.version))
+	
 	var centerX = display_get_gui_width()/2
 	var centerY = display_get_gui_height()/2
 	

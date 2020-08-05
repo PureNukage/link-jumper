@@ -12,8 +12,11 @@ if alive {
 				if x < End image_speed = (x / End) * 2
 				else image_speed = 2
 				if x < 100 image_speed = .5
-			
-				x += Hspd * 3
+				
+				var Speed = 3
+				if os_browser != browser_not_a_browser Speed = 5
+				
+				x += Hspd * Speed
 			}
 			else {
 				
@@ -37,6 +40,7 @@ if alive {
 			//	Jump
 			if input.jump and onGround {
 				vspd = -10
+				if os_browser != browser_not_a_browser vspd = -12
 				jump = 1
 				onGround = false
 				debug.log("Jumping!")
