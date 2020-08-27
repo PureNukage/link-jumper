@@ -47,6 +47,11 @@ function queueCheck() {
 				linkCube.image_xscale = .5
 				linkCube.image_yscale = .5
 			}
+			
+			if app.stage == 0 {
+				Obstacle.image_xscale = 0.66
+				Obstacle.image_yscale = 0.66
+			}
 		
 			ds_queue_dequeue(queueObs)
 			

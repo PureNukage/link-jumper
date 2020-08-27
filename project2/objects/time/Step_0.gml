@@ -1,5 +1,10 @@
-frames++
-stream++
+if instance_exists(spawner) and instance_exists(player) and app.stage == 0 {
+	stream += 1 * player.image_speed	
+	frames += 1 * player.image_speed
+} else {
+	frames = floor(frames + 1)
+	stream = floor(stream + 1)
+}
 
 if frames >= 60 {
 	seconds++

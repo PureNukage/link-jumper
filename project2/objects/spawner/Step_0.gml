@@ -54,7 +54,7 @@ if lossState == -1 {
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 30
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 							
@@ -78,11 +78,11 @@ if lossState == -1 {
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 20
+							SpawnTime += 12
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 20
+							SpawnTime += 12
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 							
@@ -106,19 +106,19 @@ if lossState == -1 {
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 20
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 20
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, true)
 							queueObject(obs)
 							
-							SpawnTime += 20
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 							
-							SpawnTime += 20
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 							
@@ -134,7 +134,7 @@ if lossState == -1 {
 					//if !ds_queue_empty(queueObs) { ds_queue_clear(queueObs) }
 					
 					delayTimer++					
-					if delayTimer > 120 {
+					if delayTimer > 180 {
 					
 						spawner.x += 2
 					
@@ -177,6 +177,50 @@ if lossState == -1 {
 					
 				}
 					
+			}
+			
+			else if time.seconds_stream > 90 {
+				delayTimer++					
+				if delayTimer > 180 {
+					
+					spawner.x += 2
+					
+					{	//	Mess with the background layers
+						var skyID = layer_get_id("Sky")
+						var cityID = layer_get_id("City")
+						var roadID = layer_get_id("Road")
+						var lightpolesID = layer_get_id("Lightpoles")
+						//var starsID = layer_get_id("Stars")
+						//var heavensWorldID = layer_get_id("Heavens_world")
+						//var heavensFrontPillarID = layer_get_id("Heavens_frontpillar")
+						//var heavensCloudsID = layer_get_id("Heavens_clouds")
+						
+						var Lerp = 0.1
+						var Hspeed = layer_get_hspeed(skyID)
+						Hspeed = lerp(Hspeed,0,Lerp)
+						layer_hspeed(skyID, Hspeed)
+						
+						var Lerp = 0.1
+						var Hspeed = layer_get_hspeed(cityID)
+						Hspeed = lerp(Hspeed,0,Lerp)
+						layer_hspeed(cityID, Hspeed)
+						
+						var Lerp = 0.1
+						var Hspeed = layer_get_hspeed(roadID)
+						Hspeed = lerp(Hspeed,0,Lerp)
+						layer_hspeed(roadID, Hspeed)
+						
+						var Lerp = 0.1
+						var Hspeed = layer_get_hspeed(lightpolesID)
+						Hspeed = lerp(Hspeed,0,Lerp)
+						layer_hspeed(lightpolesID, Hspeed)
+					}
+					
+					if spawner.x >= display_get_gui_width()/2 + 480 {
+						if instance_exists(obstacle) with obstacle instance_destroy()
+						app.switch_stage(1)
+					}
+				}	
 			}
 			
 			
