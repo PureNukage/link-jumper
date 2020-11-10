@@ -56,16 +56,30 @@ if showArrows {
 	
 	draw_sprite_ext(s_arrow,0, centerX,centerY-120,.5,.5, 90, c_white, 1)
 	
-	draw_sprite_ext(s_arrow,0, centerX-120,centerY, .5,.5, 180, c_white, 1)
+	//draw_sprite_ext(s_arrow,0, centerX-120,centerY, .5,.5, 180, c_white, 1)
 	
-	draw_sprite_ext(s_arrow,0, centerX+120,centerY, .5,.5, 0, c_white, 1)
+	//draw_sprite_ext(s_arrow,0, centerX+120,centerY, .5,.5, 0, c_white, 1)
 	
 	
+}
+
+if showArrowsFlying {
+	arrowTimer--
+	if arrowTimer <= 0 showArrowsFlying = false
+	
+	var centerX = display_get_gui_width()/2
+	var centerY = display_get_gui_height()/2
+	
+	draw_sprite_ext(s_arrow,0, centerX+90,centerY-134,.5,.5, 0, c_white, 1)
+	draw_sprite_ext(s_arrow,0, centerX-90,centerY-120,.5,.5, 180, c_white, 1)
+	draw_sprite_ext(s_arrow,0, centerX,centerY-30,.5,.5, 270, c_white, 1)
 }
 	
 if showMessage {
 	
 	messageTimer--
+	
+	draw_set_font(font_text)
 	
 	var centerX = display_get_gui_width()/2
 	var centerY = display_get_gui_height()/2
@@ -85,6 +99,8 @@ if showMessage {
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_text(xx+width/2,yy+height/2,text)
+	
+	draw_set_font(-1)
 	
 	if messageTimer <= 0 {
 		endMessage()	

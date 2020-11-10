@@ -55,6 +55,12 @@ function switch_stage(index) {
 		break;
 		case 1:
 			app.stage = 1
+			
+			//layer_y("Road", -181)
+			
+			gui.showArrowsFlying = true
+			gui.arrowTimer = 90
+			
 			player.image_angle = 0
 			spawner.spawnTimer = 0
 			spawner.sprite_index = s_chopper
@@ -163,4 +169,12 @@ function switch_stage(index) {
 	}
 	
 	
+}
+	
+function save_game() {
+		
+}
+
+function load_game() {
+		
 }

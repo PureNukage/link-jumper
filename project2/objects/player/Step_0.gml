@@ -6,7 +6,7 @@ if alive {
 			
 			if !damaged { 
 				// Move left and right
-				var Hspd = input.keyRight - input.keyLeft
+				//var Hspd = input.keyRight - input.keyLeft
 		
 				var End = spawner.x-200
 				if x < End image_speed = (x / End) * 2
@@ -16,7 +16,7 @@ if alive {
 				var Speed = 3
 				if (os_type == os_android or os_type == os_ios) Speed = 5
 				
-				x += Hspd * Speed
+				//x += Hspd * Speed
 			}
 			else {
 				
@@ -31,6 +31,10 @@ if alive {
 				x -= 3	
 			}
 			
+			if x < startingX and !damaged {
+				x += 5	
+			}
+			
 			x = clamp(x, -100, spawner.x-100)
 			
 			if x < -50 {
@@ -38,8 +42,8 @@ if alive {
 			}
 		
 			//	Jump
-			if input.jump and onGround {
-				vspd = -10
+			if (input.jump or input.keyUp) and onGround {
+				vspd = -11
 				if (os_type == os_android or os_type == os_ios) vspd = -12
 				jump = 1
 				onGround = false
@@ -47,7 +51,7 @@ if alive {
 			}
 
 			//	Long Jump
-			if input.jumpHold {
+			if input.jumpHold or input.keyUp {
 				jump++
 	
 				if jump > 4 and jump < 10 {
@@ -264,7 +268,7 @@ if alive {
 				}
 				
 				with obstacle {
-					y -= other.vspd / 5
+					//y -= other.vspd / 5
 				}
 	
 				//	Check for landing on the ground

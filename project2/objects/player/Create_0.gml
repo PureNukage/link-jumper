@@ -1,6 +1,7 @@
 onGround = true
 ground = y
 grav = 0.4
+startingX = x
 jump = 0
 hspd = 0
 vspd = 0

@@ -3,7 +3,7 @@ switch(app.stage)
 	case 0:
 	
 		if !bouncing {
-			x -= Speed
+			x -= (Speed + player.image_speed)
 
 			//	In the air
 			if !onGround {

@@ -69,7 +69,7 @@ if lossState == -1 {
 						var nextSpawn = ds_queue_tail(queueObs)
 						var nextSpawnTime = nextSpawn.spawnTime
 						
-						var spacerTime = 90
+						var spacerTime = 75
 						
 						var SpawnTime = nextSpawnTime + spacerTime
 						
@@ -78,11 +78,11 @@ if lossState == -1 {
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 12
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 12
+							SpawnTime += 15
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 							

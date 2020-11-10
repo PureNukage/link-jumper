@@ -3,6 +3,7 @@ showRestart = false
 showInteract = false
 
 showArrows = false
+showArrowsFlying = false
 arrowTimer = 90
 
 showMessage = false
