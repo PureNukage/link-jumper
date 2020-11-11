@@ -119,7 +119,7 @@ if showEnd {
 	var Y = centerY-height/2
 	
 	if debug.draw_debug_button(X,Y,width,height, "Journey complete. Press to exit") {
-		game_end()	
+		game_restart()	
 	}
 	
 }
@@ -174,6 +174,30 @@ if showMenu {
 	
 	draw_set_color(c_white)
 	draw_text(xx+width/2,yy+height/2, "Play")
+	
+	if app.unlockedFlyingStage {
+		var width = 180
+		var height = 60
+		var xx = centerX - width/2
+		var yy = yy + 80
+	
+		draw_set_color(c_black)
+		draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
+	
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+width,yy+height) {
+			draw_set_color(c_sergey_blue2)
+			if input.leftPress {
+				app.switch_stage(1)
+			}
+		}
+		else {
+			draw_set_color(c_sergey_blue)
+		}
+		draw_roundrect(xx,yy, xx+width,yy+height, false)
+	
+		draw_set_color(c_white)
+		draw_text(xx+width/2,yy+height/2, "Start at Stage 2")	
+	}
 	
 	draw_reset()
 	

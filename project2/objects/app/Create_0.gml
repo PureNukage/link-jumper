@@ -56,8 +56,15 @@ function switch_stage(index) {
 		case 1:
 			app.stage = 1
 			
+			app.unlockedFlyingStage = true
+			
+			player.visible = true
+			
+			spawner.visible = true
+			
 			//layer_y("Road", -181)
 			
+			if gui.showMenu gui.showMenu = false
 			gui.showArrowsFlying = true
 			gui.arrowTimer = 90
 			
@@ -168,13 +175,24 @@ function switch_stage(index) {
 		break
 	}
 	
+	save_game()
 	
 }
 	
 function save_game() {
-		
+	ini_open("save.ini")
+	
+	ini_write_real("Data", "unlockedFlying", unlockedFlyingStage)
+	
+	ini_close()
 }
 
 function load_game() {
-		
+	ini_open("save.ini")
+	
+	unlockedFlyingStage = ini_read_real("Data", "unlockedFlying", 0)
+	
+	ini_close()
 }
+
+load_game()

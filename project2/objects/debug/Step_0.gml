@@ -1,1 +1,1 @@
-if (input.controlPress) on = !on
+//if (input.controlPress) on = !on
