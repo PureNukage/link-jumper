@@ -64,35 +64,39 @@ if lossState == -1 {
 					}
 				}
 				
-				else if time.seconds_stream < 60 {
+				else if time.seconds_stream < 42 {
+					var amount = 0
 					while !built {
 						var nextSpawn = ds_queue_tail(queueObs)
 						var nextSpawnTime = nextSpawn.spawnTime
 						
-						var spacerTime = 75
+						var spacerTime = 120
 						
 						var SpawnTime = nextSpawnTime + spacerTime
 						
-						if ((nextSpawnTime) / 60) < 62 {
+						if ((nextSpawnTime) / 60) < 45 {
 							
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 15
+							SpawnTime += 12
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
 						
-							SpawnTime += 15
+							SpawnTime += 12
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
+							
+							amount++
 							
 						} else {
 							built = true	
+							debug.log("DEBUG amount of triple objects: "+string(amount))
 						}	
 					}
 				}
 					
-				else if time.seconds_stream < 90 {
+				else if time.seconds_stream < 70 {
 					while !built {
 						var nextSpawn = ds_queue_tail(queueObs)
 						var nextSpawnTime = nextSpawn.spawnTime
@@ -101,7 +105,7 @@ if lossState == -1 {
 						
 						var SpawnTime = nextSpawnTime + spacerTime
 						
-						if ((nextSpawnTime) / 60) < 92 {
+						if ((nextSpawnTime) / 60) < 74 {
 							
 							var obs = new createQueueObject(SpawnTime, false)
 							queueObject(obs)
@@ -132,6 +136,8 @@ if lossState == -1 {
 				else {
 					
 					//if !ds_queue_empty(queueObs) { ds_queue_clear(queueObs) }
+					if instance_exists(obstacle) instance_deactivate_object(obstacle)	
+					
 					
 					delayTimer++					
 					if delayTimer > 180 {
@@ -223,7 +229,7 @@ if lossState == -1 {
 				}	
 			}
 			
-			
+			debug.log("DEBUG time.seconds_stream: "+string(time.seconds_stream))
 		break
 	#endregion
 		

@@ -62,4 +62,4 @@ function scale_canvas(new_width, new_height, center) {
 	
 }
 
-scale_canvas(1920, 1080, true)
+scale_canvas(1920,1080, true)

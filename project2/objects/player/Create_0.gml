@@ -12,6 +12,7 @@ alive = true
 depth = -2
 xx = 0
 yy = 0
+god = false
 
 zoneJumping = -1
 zoneJumpingTimer = -1

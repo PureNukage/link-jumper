@@ -149,9 +149,11 @@ if showMenu {
 	draw_sprite_ext(s_thejourney, 0, centerX,centerY-50, Scale,Scale, 0,c_white,1)
 	
 	draw_set_color(c_sergey_blue)
+	draw_set_font(font_text)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_text(centerX,centerY-150, "Chainlink")
+	draw_set_font(-1)
 	
 	var width = 120
 	var height = 60

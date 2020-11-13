@@ -1,4 +1,4 @@
-version = "0.0.1"
+version = "0.1.3"
 creator = "@PureNukage"
 
 stage = -1
@@ -61,6 +61,8 @@ function switch_stage(index) {
 			player.visible = true
 			
 			spawner.visible = true
+			
+			if !instance_exists(sound) instance_create_layer(0,0,"Instances",sound)
 			
 			//layer_y("Road", -181)
 			

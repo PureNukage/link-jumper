@@ -81,22 +81,24 @@ if alive {
 			}
 			
 			//	Collisions
-			if place_meeting(x,y,obstacle) {
-				var Obs = instance_place(x,y,obstacle)
-				if Obs.sprite_index == s_chainlink {
-					vspd = -10
-					onGround = false
-					Obs.destroy()
-				}
-				else {
-					var Direction = point_direction(Obs.x,Obs.y, -100,player.y)
-					var Force = 12
-					bounceSet(Direction, Force)
-					damaged = true
-					damagedTimer = 30
-					Obs.destroy()
-				}
-			}	
+			if !god {
+				if place_meeting(x,y,obstacle) {
+					var Obs = instance_place(x,y,obstacle)
+					if Obs.sprite_index == s_chainlink {
+						vspd = -10
+						onGround = false
+						Obs.destroy()
+					}
+					else {
+						var Direction = point_direction(Obs.x,Obs.y, -100,player.y)
+						var Force = 12
+						bounceSet(Direction, Force)
+						damaged = true
+						damagedTimer = 30
+						Obs.destroy()
+					}
+				}	
+			}
 		break
 		#endregion
 	
