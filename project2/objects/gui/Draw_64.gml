@@ -1,3 +1,5 @@
+if live_call() return live_result
+
 if showRestart {
 	
 	var width = 128
@@ -199,6 +201,166 @@ if showMenu {
 	
 		draw_set_color(c_white)
 		draw_text(xx+width/2,yy+height/2, "Start at Stage 2")	
+	}
+	
+	draw_reset()
+	
+}
+	
+if showPC { 
+	
+	// 832
+	// 416
+	
+	//	Background
+	draw_set_color(c_gray)
+	draw_rectangle(64,64, 64+831,64+416, false)
+	
+	//	Top bar
+	draw_set_color(c_dkgray)
+	//draw_sprite(s_topbar,0, 0,0)
+	draw_rectangle(64,64, 64+832,64+32, false)
+	
+	draw_set_color(c_white)
+	var xx = 128
+	var yy = 68
+	draw_text(xx,yy, "File") xx += 48
+	draw_text(xx,yy, "Edit") xx += 48
+	draw_text(xx,yy, "View") xx += 48
+	draw_text(xx,yy, "Go") xx += 32
+	draw_text(xx,yy, "Window") xx += 64
+	draw_text(xx,yy, "Help") xx += 256
+	
+	yy += 3
+	
+	draw_sprite_ext(s_wifi_icon,0,xx,yy, 2.5,2.5,0,c_white,1) xx += 48
+	draw_sprite_ext(s_computer_icon,0, xx,yy, 2.5,2.5,0,c_white,1) xx += 48
+	draw_sprite_ext(s_battery_icon,0, xx,yy, 2.5,2.5,0,c_white,1) xx += 48
+	
+	yy -= 3
+	
+	draw_text(xx,yy,"Mon 06:50")
+	
+	//	Bottom bar
+	var startX = 128
+	draw_set_color(c_dkgray)
+	draw_rectangle(startX,64+416-48, 928-startX, 64+416,false)
+	
+	xx = startX + 10
+	yy = 64+416-48 + 4
+	var scale = 1.5
+	
+	//	Icons
+	for(var i=1;i<20;i++) {
+		
+		//	Drawing the icons
+		var spriteName = "s_icon" + string(i)
+		if sprite_exists(asset_get_index(spriteName)) {
+			
+			//	Mouseover code
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+32,yy+32) {
+
+				var Y = icon_array[i, icon_y]
+				
+				icon_array[i, icon_y] = wave(-24, 6, 0.5, 0)
+				yy += icon_array[i, icon_y]
+				
+				//	Open the app
+				if input.leftPress {
+					if !icon_array[i, icon_window].open icon_array[i, icon_window].open = true
+				}
+				
+				//	Draw the name of the app
+				draw_set_color(c_white)
+				draw_set_halign(fa_center)
+				draw_text(xx+16,yy-32, icon_array[i, icon_string])
+			}
+			else {
+				yy = 64+416-48 + 4
+				icon_array[i, icon_y] = 0
+			}
+			
+			draw_sprite_ext(asset_get_index(spriteName),0, xx,yy, scale,scale, 0,c_white,1) 
+			
+			////	DEBUG
+			//draw_set_color(c_white)
+			//draw_text(xx+8,yy-48,string(i))
+			//draw_set_color(c_red)
+			//draw_set_alpha(0.5)
+			//draw_rectangle(xx,yy, xx+32,yy+32, false)
+			
+			xx += 48	
+		}
+		
+	}
+		
+	//	Windows
+	for(var i=1;i<20;i++) {
+		//	Determine the icons
+		var spriteName = "s_icon" + string(i)
+		if sprite_exists(asset_get_index(spriteName)) {
+			var Window = icon_array[i, icon_window]	
+			if Window.open {
+				
+				var windowX = Window.windowX
+				var windowY = Window.windowY
+				var window_width = Window.window_width
+				var window_height = Window.window_height
+				var border = 2
+	
+				//	Background
+				draw_set_color(c_black)
+				draw_roundrect(windowX, windowY, windowX+window_width, windowY+window_height, false)
+				draw_set_color(c_ltgray)
+				draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
+				
+				//	Top bar
+				draw_set_color(c_dkgray)
+				var height = 24
+				draw_roundrect(windowX+border,windowY+border, windowX+window_width-border,windowY+height,false)
+				
+				//	Exit
+				draw_set_color(c_gray)
+				draw_circle(windowX+window_width-18,windowY+12,8,false)
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_set_valign(fa_top)
+				var scale = 1
+				draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
+				
+				//	Window interaction
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY,windowX+window_width,windowY+window_height) or window_offsetX != -1 {
+					//	Dragging window
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+border,windowY+border, windowX+window_width-border,windowY+24) or window_offsetX != -1 {
+						//	Exit
+						if point_in_circle(gui_mouse_x,gui_mouse_y, windowX+window_width-18,windowY+12,8) {
+							if input.leftPress {
+								Window.open = false	
+							}
+						}
+						//	Dragging window
+						else {
+							//	The first click
+							if input.leftPress and window_offsetX == -1 and window_offsetY == -1 {
+								window_offsetX = abs(gui_mouse_x - windowX)
+								window_offsetY = abs(gui_mouse_y - windowY)
+							}
+							//	Dragging
+							else if input.leftPressed and window_offsetX != -1 and window_offsetY != -1 {
+								Window.windowX = gui_mouse_x - window_offsetX
+								Window.windowY = gui_mouse_y - window_offsetY
+							}
+							//	Releasing
+							else if input.leftReleased {
+								window_offsetX = -1 
+								window_offsetY = -1
+							}
+						}
+					}
+				}
+				
+			}
+		}
 	}
 	
 	draw_reset()

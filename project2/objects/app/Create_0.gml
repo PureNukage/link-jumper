@@ -33,6 +33,9 @@ function switch_stage(index) {
 	switch(index) 
 	{
 		case 0:
+		
+			camera.cameraRefresh = true
+			
 			app.stage = 0
 		
 			player.visible = true
@@ -43,7 +46,7 @@ function switch_stage(index) {
 			
 			time.stream = 0
 			
-			var Spawner = instance_create_layer(768,256,"Instances",spawner)
+			var Spawner = instance_create_layer(832,256,"Instances",spawner)
 			Spawner.visible = true
 			
 			gui.showMenu = false
@@ -175,6 +178,13 @@ function switch_stage(index) {
 			
 			
 		break
+		case 4:
+		
+			app.stage = 4
+			
+			camera.cameraRefresh = true
+			
+		break
 	}
 	
 	save_game()
@@ -198,3 +208,12 @@ function load_game() {
 }
 
 load_game()
+
+if room == RoomApp {
+	room_goto(room_next(room))
+	if room_next(room) != Room1 {
+		gui.showMenu = false
+		switch_stage(4)
+	}
+	camera.cameraRefresh = true
+}

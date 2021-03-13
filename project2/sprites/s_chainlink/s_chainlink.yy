@@ -320,8 +320,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"2a236e57-4b3c-4627-9b55-ff225e5ed03a","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_chainlink",

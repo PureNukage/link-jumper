@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"06d2c3d8-fa0c-4145-9109-79f5d93b72d7","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_heavens_frontpillar",

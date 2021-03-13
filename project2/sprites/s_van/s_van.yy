@@ -76,8 +76,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d227369c-14da-4172-a7cb-3663a21e4f2c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_van",

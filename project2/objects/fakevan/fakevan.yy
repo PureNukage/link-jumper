@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "jumper",
+    "path": "folders/Game/jumper.yy",
   },
   "resourceVersion": "1.0",
   "name": "fakevan",

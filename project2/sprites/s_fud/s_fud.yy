@@ -320,8 +320,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d8eaae9f-7376-4fdc-8b80-881f55ea8110","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_fud",

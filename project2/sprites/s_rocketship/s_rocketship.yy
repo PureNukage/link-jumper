@@ -75,8 +75,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"990d76d7-68a9-4235-90a7-7b7094bed9f6","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_rocketship",

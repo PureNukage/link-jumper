@@ -1,4 +1,6 @@
 leftPress = mouse_check_button_pressed(mb_left)
+leftPressed = mouse_check_button(mb_left)
+leftReleased = mouse_check_button_released(mb_left)
 
 if leftPress {
 	if doubleClickTime == -1 doubleClickTime = time.stream

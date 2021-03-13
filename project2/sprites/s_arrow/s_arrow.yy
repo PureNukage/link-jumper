@@ -25,9 +25,9 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":{"name":"218c60a5-8196-4f66-a0e5-4a40c29e0b9c","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":{"name":"af3f5edf-99b6-4ea6-b875-5a8dfa94b32f","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":{"name":"09b15589-19d5-4c7c-87cd-03221f3b71dd","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":{"name":"af3f5edf-99b6-4ea6-b875-5a8dfa94b32f","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","path":"sprites/s_arrow/s_arrow.yy",},"LayerId":{"name":"218c60a5-8196-4f66-a0e5-4a40c29e0b9c","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_arrow","path":"sprites/s_arrow/s_arrow.yy",},"resourceVersion":"1.0","name":"4c97d613-eea6-4c18-8f8d-df7b66d34922","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -72,8 +72,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"218c60a5-8196-4f66-a0e5-4a40c29e0b9c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "chapter 1 and 2",
+    "path": "folders/Art/chapter 1 and 2.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_arrow",
