@@ -20,14 +20,18 @@ function _create_window() constructor {
 	windowY = 128
 	window_width = 256
 	window_height = 192
-	window_width_max = 256
-	window_height_max = 192
+	window_width_max = 312
+	window_height_max = 256
+	window_width_min = 128
+	window_height_min = 96
 	
 }
 
 showPC = false
 window_offsetX = -1
 window_offsetY = -1
+window_width_new = -1
+window_height_new = -1
 icon_array = [[]]
 icon_array[0, icon_y] = 0
 for(var i=1;i<20;i++) {
