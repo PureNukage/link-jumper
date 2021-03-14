@@ -20,6 +20,9 @@ function _create_window() constructor {
 	windowY = 128
 	window_width = 256
 	window_height = 192
+	window_width_max = 256
+	window_height_max = 192
+	
 }
 
 showPC = false

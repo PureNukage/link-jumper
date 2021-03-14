@@ -1,6 +1,10 @@
 version = "0.1.3"
 creator = "@PureNukage"
 
+//	cr_size_we - horizontal
+//	cr_size_ns - vertical
+//	cr_size_nwse - corner
+
 stage = -1
 
 var heavenCollisionID = layer_get_id("HeavenCollision")

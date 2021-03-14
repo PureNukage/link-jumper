@@ -9,7 +9,6 @@ if showRestart {
 	draw_set_color(c_black)
 	draw_roundrect(xx-2,yy-2,xx+width+2,yy+height+2,false)
 	
-	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
 		draw_set_color(c_ltgray)
 		if input.leftPress {
@@ -209,9 +208,6 @@ if showMenu {
 	
 if showPC { 
 	
-	// 832
-	// 416
-	
 	//	Background
 	draw_set_color(c_gray)
 	draw_rectangle(64,64, 64+831,64+416, false)
@@ -307,6 +303,13 @@ if showPC {
 				var window_width = Window.window_width
 				var window_height = Window.window_height
 				var border = 2
+				
+				var mouseOverWindow = false
+				var mouseOverBar = false
+				var mouseOverExit = false
+				var mouseOverWidth = false
+				var mouseOverHeight = false
+				var mouseOverCorner = false
 	
 				//	Background
 				draw_set_color(c_black)
@@ -319,21 +322,15 @@ if showPC {
 				var height = 24
 				draw_roundrect(windowX+border,windowY+border, windowX+window_width-border,windowY+height,false)
 				
-				//	Exit
-				draw_set_color(c_gray)
-				draw_circle(windowX+window_width-18,windowY+12,8,false)
-				draw_set_color(c_white)
-				draw_set_halign(fa_middle)
-				draw_set_valign(fa_top)
-				var scale = 1
-				draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
-				
 				//	Window interaction
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY,windowX+window_width,windowY+window_height) or window_offsetX != -1 {
+					mouseOverWindow = true
 					//	Dragging window
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+border,windowY+border, windowX+window_width-border,windowY+24) or window_offsetX != -1 {
+						mouseOverBar = true
 						//	Exit
-						if point_in_circle(gui_mouse_x,gui_mouse_y, windowX+window_width-18,windowY+12,8) {
+						if point_in_circle(gui_mouse_x,gui_mouse_y, windowX+window_width-19,windowY+12,9) {
+							mouseOverExit = true
 							if input.leftPress {
 								Window.open = false	
 							}
@@ -357,7 +354,60 @@ if showPC {
 							}
 						}
 					}
+					//	Mouse is in window
+					else {
+						//	Stretching window
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8) {
+							mouseOverWidth = true
+							if input.leftPress {
+									
+							}
+						}
+						else if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height) {
+							mouseOverHeight = true
+							if input.leftPress {
+									
+							}
+						}
+						else if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height) {
+							mouseOverCorner = true
+							if input.leftPress {
+									
+							}
+						}
+						
+					}
 				}
+				
+				//	Mouse
+				if mouseOverWidth window_set_cursor(cr_size_we)
+				else if mouseOverHeight window_set_cursor(cr_size_ns)
+				else if mouseOverCorner window_set_cursor(cr_size_nwse)
+				else window_set_cursor(cr_arrow)
+				
+				//	Exit
+				if mouseOverExit draw_set_color(c_ltgray)
+				else draw_set_color(c_gray)
+				draw_circle(windowX+window_width-19,windowY+12,9,false)
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_set_valign(fa_top)
+				var scale = 1
+				draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
+				
+				//	Window shtuff
+				switch(i) {
+					case 1:
+					
+					break
+				}
+				
+				////	DEBUG WINDOWS
+				draw_set_color(c_red)
+				draw_set_alpha(0.5)
+				draw_rectangle(windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8,false)
+				draw_rectangle(windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height,false)
+				draw_rectangle(windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height,false)
 				
 			}
 		}
