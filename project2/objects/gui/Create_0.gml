@@ -24,7 +24,7 @@ function _create_window() constructor {
 	window_height_max = 256
 	window_width_min = 128
 	window_height_min = 96
-	
+	window_depth = -1
 }
 
 showPC = false
@@ -32,6 +32,14 @@ window_offsetX = -1
 window_offsetY = -1
 window_width_new = -1
 window_height_new = -1
+window_interaction = -1
+window_depth_list = ds_list_create()
+mouseOverWindow = false
+mouseOverBar = false
+mouseOverExit = false
+mouseOverWidth = false
+mouseOverHeight = false
+mouseOverCorner = false
 icon_array = [[]]
 icon_array[0, icon_y] = 0
 for(var i=1;i<20;i++) {

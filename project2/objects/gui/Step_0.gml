@@ -1,5 +1,6 @@
 //	Windows
-window_interaction = -1
+//window_interaction = -1
+var temp_window_interaction = -1
 for(var i=1;i<20;i++) {
 	//	Determine the icons
 	var spriteName = "s_icon" + string(i)
@@ -12,33 +13,13 @@ for(var i=1;i<20;i++) {
 			var window_width = Window.window_width
 			var window_height = Window.window_height
 			var border = 2
-				
-			var mouseOverWindow = false
-			var mouseOverBar = false
-			var mouseOverExit = false
-			var mouseOverWidth = false
-			var mouseOverHeight = false
-			var mouseOverCorner = false
-	
-			//	Background
-			draw_set_color(c_black)
-			draw_roundrect(windowX, windowY, windowX+window_width, windowY+window_height, false)
-			draw_set_color(c_ltgray)
-			draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
-				
-			draw_set_color(c_black)
-			draw_text(windowX+window_width/2, windowY+window_height/2, icon_array[i, icon_string])
-				
-			//	Top bar
-			draw_set_color(c_dkgray)
-			var height = 24
-			draw_roundrect(windowX+border,windowY+border, windowX+window_width-border,windowY+height,false)
-				
+			
 			//	Window interaction
-			if (point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY,windowX+window_width,windowY+window_height) or window_offsetX != -1 or (window_width_new != -1 or window_height_new != -1)) and !window_interaction {
-				window_interaction = true
-				debug.log(string(i) + " window interaction!")
+			if (point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY,windowX+window_width,windowY+window_height) or window_offsetX != -1 or (window_width_new != -1 or window_height_new != -1)) and (window_interaction == -1 or window_interaction == i) {
+				window_interaction = i
+				temp_window_interaction = i
 				mouseOverWindow = true
+				
 				//	Dragging window
 				if (point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+border,windowY+border, windowX+window_width-border,windowY+24) or window_offsetX != -1) {
 					mouseOverBar = true
@@ -51,6 +32,7 @@ for(var i=1;i<20;i++) {
 					}
 					//	Dragging window
 					else {
+						if mouseOverExit mouseOverExit = false	
 						//	The first click
 						if input.leftPress and window_offsetX == -1 and window_offsetY == -1 {
 							window_offsetX = abs(gui_mouse_x - windowX)
@@ -72,6 +54,8 @@ for(var i=1;i<20;i++) {
 				else {
 					//	Stretching window
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8) or (window_width_new != -1 and window_height_new == -1) {
+						mouseOverCorner = false
+						mouseOverHeight = false
 						mouseOverWidth = true
 						if input.leftPress {
 							window_width_new = window_width	
@@ -87,6 +71,8 @@ for(var i=1;i<20;i++) {
 						}
 					}
 					else if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height) or (window_width_new == -1 and window_height_new != -1) {
+						mouseOverWidth = false
+						mouseOverCorner = false
 						mouseOverHeight = true
 						if input.leftPress {
 							window_height_new = window_height
@@ -102,6 +88,8 @@ for(var i=1;i<20;i++) {
 						}
 					}
 					else if point_in_rectangle(gui_mouse_x,gui_mouse_y, windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height) or (window_width_new != -1 and window_height_new != -1) {
+						mouseOverHeight = false
+						mouseOverWidth = false
 						mouseOverCorner = true
 						if input.leftPress {
 							window_width_new = window_width
@@ -122,42 +110,45 @@ for(var i=1;i<20;i++) {
 							window_height_new = -1
 						}
 					}
+					else {
+						mouseOverWidth = false
+						mouseOverHeight = false
+						mouseOverCorner = false	
+					}
 						
 				}
 			}
-				
-			//	Mouse
-			if mouseOverWidth window_set_cursor(cr_size_we)
-			else if mouseOverHeight window_set_cursor(cr_size_ns)
-			else if mouseOverCorner window_set_cursor(cr_size_nwse)
-			else window_set_cursor(cr_arrow)
-				
-			//	Exit
-			if mouseOverExit draw_set_color(c_ltgray)
-			else draw_set_color(c_gray)
-			draw_circle(windowX+window_width-19,windowY+12,9,false)
-			draw_set_color(c_white)
-			draw_set_halign(fa_middle)
-			draw_set_valign(fa_top)
-			var scale = 1
-			draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
-				
-			//	Window shtuff
-			switch(i) {
-				case 1:
-					
-				break
+			else {
+				if window_interaction == i and mouseOverExit mouseOverExit = false	
+			}
+			
+			if window_interaction == i {
+				//	Mouse
+				if mouseOverWidth window_set_cursor(cr_size_we)
+				else if mouseOverHeight window_set_cursor(cr_size_ns)
+				else if mouseOverCorner window_set_cursor(cr_size_nwse)
+				else {
+					window_set_cursor(cr_arrow)
+				}
 			}
 				
-			////	DEBUG WINDOWS
-			draw_set_color(c_red)
-			draw_set_alpha(0.5)
-			draw_rectangle(windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8,false)
-			draw_rectangle(windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height,false)
-			draw_rectangle(windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height,false)
-				
-			draw_set_alpha(1)
+			//	Window shtuff
+			//switch(i) {
+			//	case 1:
+					
+			//	break
+			//}
 				
 		}
 	}
+}
+if temp_window_interaction == -1 and window_interaction > -1 {
+	window_interaction = -1	
+	mouseOverWindow = false
+	mouseOverBar = false
+	mouseOverExit = false
+	mouseOverWidth = false
+	mouseOverHeight = false
+	mouseOverCorner = false
+	window_set_cursor(cr_arrow)
 }

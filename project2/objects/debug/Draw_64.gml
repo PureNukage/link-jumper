@@ -16,6 +16,7 @@ if on {
 		draw_text(xx,yy, "window_offsetY: "+string(window_offsetY)) yy += 15
 		draw_text(xx,yy, "window_width_new: "+string(window_width_new)) yy += 15
 		draw_text(xx,yy, "window_height_new: "+string(window_height_new)) yy += 15
+		draw_text(xx,yy, "window_interaction: "+string(window_interaction)) yy += 15
 	}
 	
 	
