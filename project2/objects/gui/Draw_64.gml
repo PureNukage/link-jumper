@@ -326,9 +326,9 @@ if showPC {
 			draw_set_color(c_ltgray)
 			draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
 				
-			draw_set_color(c_black)
-			draw_set_halign(fa_center)
-			draw_text(windowX+window_width/2, windowY+window_height/2, Window.window_string)
+			//draw_set_color(c_black)
+			//draw_set_halign(fa_center)
+			//draw_text(windowX+window_width/2, windowY+window_height/2, Window.window_string)
 				
 			//	Top bar
 			draw_set_color(c_dkgray)
@@ -346,10 +346,41 @@ if showPC {
 			draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
 				
 			//	Window shtuff
-			switch(i) {
-				case 1:
-					
-				break
+			switch(Window.window_index) {
+				#region My Profile
+					case 1:
+						
+						draw_set_color(c_black)
+						draw_set_halign(fa_center)
+						draw_text(windowX+window_width/2, windowY+36, Window.window_string)
+						
+						draw_set_halign(fa_left)
+						draw_text(windowX+12, windowY+64, "Computer Name: ")
+						
+						draw_rectangle(windowX+150, windowY+64, windowX+236,windowY+85, true)
+						draw_text(windowX+155, windowY+64, "FIN-9000")
+						
+						draw_text(windowX+12, windowY+100, "Network Sharing: OFF")
+						
+						//	Change Password
+						draw_rectangle(windowX+window_width/2-75-2, windowY+132-2, windowX+window_width/2+75+2, windowY+162+2, false)
+						draw_set_color(c_dkgray)
+						draw_rectangle(windowX+window_width/2-75, windowY+132, windowX+window_width/2+75, windowY+162, false)
+						draw_set_color(c_white)
+						draw_set_halign(fa_center)
+						draw_text(windowX+window_width/2, windowY+136, "Change Password")
+						
+						//	Change username
+						draw_set_color(c_black)
+						draw_rectangle(windowX+window_width/2-75-2, windowY+172-2, windowX+window_width/2+75+2, windowY+200+2, false)
+						draw_set_color(c_dkgray)
+						draw_rectangle(windowX+window_width/2-75, windowY+172, windowX+window_width/2+75, windowY+200, false)
+						draw_set_color(c_white)
+						draw_set_halign(fa_center)
+						draw_text(windowX+window_width/2, windowY+176, "Change Username")
+						
+					break
+				#endregion
 			}
 						
 				

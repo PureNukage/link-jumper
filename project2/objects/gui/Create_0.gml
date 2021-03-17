@@ -26,6 +26,7 @@ function _create_window() constructor {
 	window_height_min = 96
 	window_depth = -1
 	window_string = ""
+	window_index = -1
 }
 
 showPC = false
@@ -67,7 +68,18 @@ for(var i=1;i<20;i++) {
 	
 	icon_array[i, icon_window] = new _create_window()
 	icon_array[i, icon_window].window_string = String
+	icon_array[i, icon_window].window_index = i
 	
+	var Window = icon_array[i, icon_window]
+	//	Other settings
+	switch(i) {
+		//	My profile
+		case 1:
+			Window.window_width_min = 246
+			Window.window_height_min = 216
+			Window.window_height = 216
+		break
+	}
 	
 }
 
