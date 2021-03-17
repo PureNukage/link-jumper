@@ -264,7 +264,7 @@ if showPC {
 				yy += icon_array[i, icon_y]
 				
 				//	Open the app
-				if input.leftPress {
+				if input.leftPress and Window.window_clickable {
 										
 					//	If this window was already open
 					if Window.window_depth > -1 {
@@ -326,10 +326,6 @@ if showPC {
 			draw_set_color(c_ltgray)
 			draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
 				
-			//draw_set_color(c_black)
-			//draw_set_halign(fa_center)
-			//draw_text(windowX+window_width/2, windowY+window_height/2, Window.window_string)
-				
 			//	Top bar
 			draw_set_color(c_dkgray)
 			var height = 24
@@ -346,6 +342,10 @@ if showPC {
 			draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
 				
 			//	Window shtuff
+			var surface = surface_create(display_get_gui_width(), display_get_gui_height()+200)
+			surface_set_target(surface)
+			draw_clear_alpha(c_black, 0)
+			
 			switch(Window.window_index) {
 				#region My Profile
 					case 1:
@@ -381,8 +381,109 @@ if showPC {
 						
 					break
 				#endregion
-			}
+				
+				#region Safari
+					case 4:
 						
+						var scale = 0.98
+						draw_sprite_ext(s_amazon_wallpaper,0,windowX+3,windowY+height, scale,scale, 0,c_white,1)
+						
+					break
+				#endregion
+				
+				#region Calendar
+					case 7:
+						
+						draw_set_color(c_black)
+						
+						draw_text(windowX+window_width/2, windowY+32, "June")
+						
+						var date = 1
+						for(var h=0;h<6;h++) {
+							for(var w=0;w<7;w++) {
+								var X = windowX+28 + w*32
+								var Y = windowY+52 + h*32
+								draw_rectangle(X,Y, X+30,Y+30, true)
+								
+								switch(date) {
+									case 4:
+										draw_set_color(c_green)
+										draw_rectangle(X,Y,X+30,Y+30, false)
+									break
+									
+								}
+								
+								draw_set_color(c_black)
+								if date < 31 {
+									draw_text(X+15,Y,string(date))
+									date++
+								}
+							}
+						}
+						
+					break
+				#endregion
+				
+				#region Task List
+					case 8:
+						
+						var X = windowX + 24 
+						var Y = windowY + 48
+						for(var t=0;t<5;t++) {
+							draw_set_color(c_black)
+							draw_rectangle(X,Y, X+24,Y+24,true)
+							
+							draw_set_halign(fa_left)
+							switch(t) {
+								case 0:
+									draw_text(X+32,Y+2, "Find more Lucky brand shirts")
+								break
+								case 1:
+									draw_text(X+32,Y+2, "Remake Smart Contract Builder")
+								break
+								case 2:
+									draw_text(X+32,Y+2, "Cook up the steaks before they go bad")
+								break
+							}
+							Y += 48
+						}
+						
+					break
+				#endregion
+				
+				#region Photos
+					case 9:
+						
+						var X = windowX+24
+						var Y = windowY+12
+						var scale = 0.25
+						draw_sprite_ext(s_meme_1,0,X,Y, scale,scale, 0,c_white,1)
+						
+						X += 140
+						var scale = 0.25
+						draw_sprite_ext(s_meme_2,0,X,Y, scale,scale, 0,c_white,1)
+						
+						X += 110
+						var scale = 0.14
+						draw_sprite_ext(s_meme_5,0,X,Y, scale,scale, 0,c_white,1)
+						
+						X = windowX+24
+						Y += 185
+						var scale = 0.5
+						draw_sprite_ext(s_meme_3,0,X,Y, scale,scale, 0,c_white,1)
+						
+						X += 115
+						var scale = 0.25
+						draw_sprite_ext(s_meme_4,0,X,Y, scale,scale, 0,c_white,1)
+						
+					break
+				#endregion
+			}
+			surface_reset_target()
+			
+			draw_surface_part(surface, windowX,windowY+Window.window_scroll,window_width,window_height-24, windowX,windowY+24)
+			
+			surface_free(surface)
 				
 			////	DEBUG WINDOWS
 			//draw_set_color(c_red)

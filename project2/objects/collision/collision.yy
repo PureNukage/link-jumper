@@ -25,7 +25,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Game",
-    "path": "folders/Game.yy",
+    "path": "folders/Art/chapter 3/Game.yy",
   },
   "resourceVersion": "1.0",
   "name": "collision",

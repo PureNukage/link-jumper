@@ -1,8 +1,10 @@
+if live_call() return live_result
+
 //	Windows
 var temp_window_interaction = -1
 //for(var i=1;i<20;i++) {
-//for(var i=0;i<ds_list_size(window_depth_list);i++) {
-for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
+for(var i=0;i<ds_list_size(window_depth_list);i++) {
+//for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 	//	Determine the icons
 	var Window = window_depth_list[| i]
 	if Window.open {
@@ -18,6 +20,15 @@ for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 			window_interaction = i
 			temp_window_interaction = i
 			mouseOverWindow = true
+			
+			//	Mouse wheel scrolling
+			if Window.window_scrollable {
+				if input.mouseWheelUp or input.mouseWheelDown {
+					var Direction = input.mouseWheelDown - input.mouseWheelUp
+					Window.window_scroll += Direction * 8
+					Window.window_scroll = clamp(Window.window_scroll, 0, Window.window_scroll_max)
+				}
+			}
 				
 			if input.leftPress {
 				//	If this window was already open
@@ -70,6 +81,10 @@ for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 						window_offsetX = -1 
 						window_offsetY = -1
 					}
+					
+					//	Clamping window inside of the PC screen
+					Window.windowX = clamp(Window.windowX, 64, 64+831-window_width)
+					Window.windowY = clamp(Window.windowY, 64, 64+416-window_height)
 				}
 			}
 			//	Mouse is in window

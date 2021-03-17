@@ -25,7 +25,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "system",
-    "path": "folders/Game/system.yy",
+    "path": "folders/Art/chapter 3/Game/system.yy",
   },
   "resourceVersion": "1.0",
   "name": "camera",

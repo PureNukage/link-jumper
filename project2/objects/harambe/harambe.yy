@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "jumper",
-    "path": "folders/Game/jumper.yy",
+    "path": "folders/Art/chapter 3/Game/jumper.yy",
   },
   "resourceVersion": "1.0",
   "name": "harambe",

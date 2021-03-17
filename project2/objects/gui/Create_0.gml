@@ -27,6 +27,10 @@ function _create_window() constructor {
 	window_depth = -1
 	window_string = ""
 	window_index = -1
+	window_clickable = true
+	window_scrollable = false
+	window_scroll = 0
+	window_scroll_max = 92
 }
 
 showPC = false
@@ -78,6 +82,34 @@ for(var i=1;i<20;i++) {
 			Window.window_width_min = 246
 			Window.window_height_min = 216
 			Window.window_height = 216
+		break
+		//	Safari
+		case 4:
+			Window.window_width_max = 250
+			Window.window_width = 250
+			Window.window_height_max = 240
+			Window.window_height = 240
+			Window.window_width_min = 250
+			Window.window_height_min = 240
+		break
+		//	Factorio
+		case 5:
+			Window.window_clickable = false
+		break
+		//	Half-Life 2
+		case 6:
+			Window.window_clickable = false
+		break
+		//	Task List
+		case 8:
+			Window.window_width_max = 420
+			Window.window_height_max = 400
+		break
+		//	Photos
+		case 9:
+			Window.window_width_max = 400
+			Window.window_scrollable = true
+			Window.window_scroll_max = 120
 		break
 	}
 	
