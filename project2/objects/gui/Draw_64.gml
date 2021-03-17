@@ -263,7 +263,18 @@ if showPC {
 				
 				//	Open the app
 				if input.leftPress {
-					if !icon_array[i, icon_window].open icon_array[i, icon_window].open = true
+
+					//	Check if this window was already open and in the depth list
+					var old_index = -1
+					if icon_array[i, icon_window].open {
+						old_index = ds_list_find_index(window_depth_list, icon_array[i, icon_window])
+					}
+					if old_index > -1 {
+						ds_list_delete(window_depth_list, old_index)
+					}
+					
+					ds_list_add(window_depth_list, icon_array[i, icon_window])
+					icon_array[i, icon_window].open = true
 				}
 				
 				//	Draw the name of the app
@@ -291,11 +302,13 @@ if showPC {
 	}
 		
 	//	Windows
-	for(var i=1;i<20;i++) {
+	for(var i=0;i<ds_list_size(window_depth_list);i++) {
+	//for(var i=1;i<20;i++) {
 		//	Determine the icons
 		var spriteName = "s_icon" + string(i)
 		if sprite_exists(asset_get_index(spriteName)) {
-			var Window = icon_array[i, icon_window]	
+			var Window = window_depth_list[| i]
+			//var Window = icon_array[i, icon_window]	
 			if Window.open {
 				
 				var windowX = Window.windowX
