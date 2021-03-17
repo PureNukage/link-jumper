@@ -2,6 +2,10 @@ if on {
 	
 	var xx = 15
 	var yy = 15
+	
+	draw_set_color(c_dkgray)
+	draw_rectangle(xx-20,yy-20, xx+200,yy+200, false)
+	
 	draw_set_color(c_black)
 	draw_set_halign(fa_left)
 	

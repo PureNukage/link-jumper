@@ -253,6 +253,8 @@ if showPC {
 		var spriteName = "s_icon" + string(i)
 		if sprite_exists(asset_get_index(spriteName)) {
 			
+			var Window = icon_array[i, icon_window]
+			
 			//	Mouseover code
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+32,yy+32) {
 
@@ -263,24 +265,29 @@ if showPC {
 				
 				//	Open the app
 				if input.leftPress {
-
-					//	Check if this window was already open and in the depth list
-					var old_index = -1
-					if icon_array[i, icon_window].open {
-						old_index = ds_list_find_index(window_depth_list, icon_array[i, icon_window])
+										
+					//	If this window was already open
+					if Window.window_depth > -1 {
+						ds_list_delete(window_depth_list, Window.window_depth)
 					}
-					if old_index > -1 {
-						ds_list_delete(window_depth_list, old_index)
+				
+					//	Opening this window
+					ds_list_insert(window_depth_list, 0, Window)
+					Window.open = true
+					
+					//	Adjusting the window_depth
+					for(var d=0;d<ds_list_size(window_depth_list);d++) {
+						var _Window = window_depth_list[| d]
+						_Window.window_depth = d
 					}
 					
-					ds_list_add(window_depth_list, icon_array[i, icon_window])
-					icon_array[i, icon_window].open = true
 				}
 				
 				//	Draw the name of the app
 				draw_set_color(c_white)
 				draw_set_halign(fa_center)
-				draw_text(xx+16,yy-32, icon_array[i, icon_string])
+				draw_text(xx+16,yy-32, Window.window_string)
+				
 			}
 			else {
 				yy = 64+416-48 + 4
@@ -302,64 +309,62 @@ if showPC {
 	}
 		
 	//	Windows
-	for(var i=0;i<ds_list_size(window_depth_list);i++) {
-	//for(var i=1;i<20;i++) {
-		//	Determine the icons
-		var spriteName = "s_icon" + string(i)
-		if sprite_exists(asset_get_index(spriteName)) {
-			var Window = window_depth_list[| i]
-			//var Window = icon_array[i, icon_window]	
-			if Window.open {
+	for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
+		//	Determine the icons                  
+		var Window = window_depth_list[| i]  	
+		if Window.open {
 				
-				var windowX = Window.windowX
-				var windowY = Window.windowY
-				var window_width = Window.window_width
-				var window_height = Window.window_height
-				var border = 2
+			var windowX = Window.windowX
+			var windowY = Window.windowY
+			var window_width = Window.window_width
+			var window_height = Window.window_height
+			var border = 2
 	
-				//	Background
-				draw_set_color(c_black)
-				draw_roundrect(windowX, windowY, windowX+window_width, windowY+window_height, false)
-				draw_set_color(c_ltgray)
-				draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
+			//	Background
+			draw_set_color(c_black)
+			draw_roundrect(windowX, windowY, windowX+window_width, windowY+window_height, false)
+			draw_set_color(c_ltgray)
+			draw_roundrect(windowX+border, windowY+border, windowX+window_width-border, windowY+window_height-border, false)
 				
-				draw_set_color(c_black)
-				draw_set_halign(fa_center)
-				draw_text(windowX+window_width/2, windowY+window_height/2, icon_array[i, icon_string])
+			draw_set_color(c_black)
+			draw_set_halign(fa_center)
+			draw_text(windowX+window_width/2, windowY+window_height/2, Window.window_string)
 				
-				//	Top bar
-				draw_set_color(c_dkgray)
-				var height = 24
-				draw_roundrect(windowX+border,windowY+border, windowX+window_width-border,windowY+height,false)
+			//	Top bar
+			draw_set_color(c_dkgray)
+			var height = 24
+			draw_roundrect(windowX+border,windowY+border, windowX+window_width-border,windowY+height,false)
 				
-				//	Exit
-				if mouseOverExit and window_interaction == i draw_set_color(c_ltgray)
-				else draw_set_color(c_gray)
-				draw_circle(windowX+window_width-19,windowY+12,9,false)
-				draw_set_color(c_white)
-				draw_set_halign(fa_middle)
-				draw_set_valign(fa_top)
-				var scale = 1
-				draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
+			//	Exit
+			if mouseOverExit and window_interaction == i draw_set_color(c_ltgray)
+			else draw_set_color(c_gray)
+			draw_circle(windowX+window_width-19,windowY+12,9,false)
+			draw_set_color(c_white)
+			draw_set_halign(fa_middle)
+			draw_set_valign(fa_top)
+			var scale = 1
+			draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
 				
-				//	Window shtuff
-				switch(i) {
-					case 1:
+			//	Window shtuff
+			switch(i) {
+				case 1:
 					
-					break
-				}
+				break
+			}
 						
 				
-				////	DEBUG WINDOWS
-				draw_set_color(c_red)
-				draw_set_alpha(0.5)
-				draw_rectangle(windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8,false)
-				draw_rectangle(windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height,false)
-				draw_rectangle(windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height,false)
+			////	DEBUG WINDOWS
+			//draw_set_color(c_red)
+			//draw_set_alpha(0.5)
+			//draw_rectangle(windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8,false)
+			//draw_rectangle(windowX,windowY+window_height-4,windowX+window_width-8,windowY+window_height,false)
+			//draw_rectangle(windowX+window_width-8,windowY+window_height-8,windowX+window_width+4,windowY+window_height,false)
 				
-				draw_set_alpha(1)
+			//draw_set_alpha(1)
+			
+			//draw_set_color(c_white)
+			//draw_text(windowX+48,windowY+48,string(Window.window_depth))
 				
-			}
 		}
 	}
 	

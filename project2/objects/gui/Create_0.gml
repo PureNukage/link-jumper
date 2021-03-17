@@ -25,6 +25,7 @@ function _create_window() constructor {
 	window_width_min = 128
 	window_height_min = 96
 	window_depth = -1
+	window_string = ""
 }
 
 showPC = false
@@ -50,8 +51,8 @@ for(var i=1;i<20;i++) {
 		case 1: String = "My Profile" break
 		case 4: String = "Safari" break
 		case 5: String = "Factorio" break
-		case 6: String = "Calendar" break
-		case 7: String = "Notepad" break
+		case 6: String = "Half-Life 2" break
+		case 7: String = "Calendar" break
 		case 8: String = "Task List" break
 		case 9: String = "Photos" break
 		case 10: String = "Messages" break
@@ -65,6 +66,7 @@ for(var i=1;i<20;i++) {
 	icon_array[i, icon_string] = String
 	
 	icon_array[i, icon_window] = new _create_window()
+	icon_array[i, icon_window].window_string = String
 	
 	
 }
