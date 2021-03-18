@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "chapter3",
-    "path": "folders/Art/chapter 3/Game/chapter3.yy",
+    "path": "folders/Game/chapter3.yy",
   },
   "resourceVersion": "1.0",
   "name": "sergey",

@@ -29,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "jumper",
-    "path": "folders/Art/chapter 3/Game/jumper.yy",
+    "path": "folders/Game/jumper.yy",
   },
   "resourceVersion": "1.0",
   "name": "zone",

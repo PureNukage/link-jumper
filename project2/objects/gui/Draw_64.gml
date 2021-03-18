@@ -478,6 +478,74 @@ if showPC {
 						
 					break
 				#endregion
+				
+				#region Music
+					case 14:
+					
+						var X = windowX+12
+						var Y = windowY+32
+						
+						//	Play Track 1 Button
+						draw_set_color(c_black)
+						draw_rectangle(X-2,Y-2, X+128+2,Y+32+2, false)
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X,Y+24, X+128,Y+32+24) {
+							draw_set_color(c_gray)		
+						}
+						else {
+							draw_set_color(c_dkgray)
+						}
+						draw_rectangle(X,Y, X+128,Y+32, false)
+						
+						draw_set_color(c_white)
+						draw_set_halign(fa_left)
+						draw_text(X+8,Y+6, "Play Track 1")
+						
+						//	Track 1 Loop 
+						draw_set_color(c_black)
+						draw_rectangle(X+148-2, Y-2, X+192+2, Y+32+2, false)
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X+148, Y+24, X+192, Y+32+24) {
+							draw_set_color(c_gray)
+						}
+						else {
+							draw_set_color(c_dkgray)	
+						}
+						draw_rectangle(X+148, Y, X+192, Y+32, false)
+						
+						draw_set_color(c_white)
+						draw_text(X+152, Y+6, "Loop")
+						
+						Y += 48
+						
+						//	Player Track 2 Button
+						draw_set_color(c_black)
+						draw_rectangle(X-2,Y-2, X+128+2,Y+32+2, false)
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X,Y+24, X+128,Y+32+24) {
+							draw_set_color(c_gray)	
+						}
+						else {
+							draw_set_color(c_dkgray)
+						}
+						draw_rectangle(X,Y, X+128,Y+32, false)
+						
+						draw_set_color(c_white)
+						draw_text(X+8,Y+6, "Play Track 2")
+						
+						//	Track 2 Loop
+						draw_set_color(c_black)
+						draw_rectangle(X+148-2, Y-2, X+192+2, Y+32+2, false)
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X+148, Y+24, X+192, Y+32+24) {
+							draw_set_color(c_gray)
+						}
+						else {
+							draw_set_color(c_dkgray)
+						}
+						draw_rectangle(X+148, Y, X+192, Y+32, false)
+						
+						draw_set_color(c_white)
+						draw_text(X+152, Y+6, "Loop")
+						
+					break
+				#endregion
 			}
 			surface_reset_target()
 			
