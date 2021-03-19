@@ -489,7 +489,17 @@ if showPC {
 						draw_set_color(c_black)
 						draw_rectangle(X-2,Y-2, X+128+2,Y+32+2, false)
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X,Y+24, X+128,Y+32+24) {
-							draw_set_color(c_gray)		
+							draw_set_color(c_gray)
+							if input.leftPress {
+								if !audio_is_playing(snd_music) {
+									sound.playSoundEffect(snd_music)
+									//	Check if other song is playing
+									if audio_is_playing(snd_music_2) audio_stop_sound(snd_music_2)
+								}
+								else {
+									audio_stop_sound(snd_music)	
+								}
+							}
 						}
 						else {
 							draw_set_color(c_dkgray)
@@ -505,9 +515,13 @@ if showPC {
 						draw_rectangle(X+148-2, Y-2, X+192+2, Y+32+2, false)
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X+148, Y+24, X+192, Y+32+24) {
 							draw_set_color(c_gray)
+							if input.leftPress {
+								sound.music_1_loop = !sound.music_1_loop
+							}
 						}
 						else {
-							draw_set_color(c_dkgray)	
+							if sound.music_1_loop draw_set_color(c_gray)
+							else draw_set_color(c_dkgray)	
 						}
 						draw_rectangle(X+148, Y, X+192, Y+32, false)
 						
@@ -520,7 +534,17 @@ if showPC {
 						draw_set_color(c_black)
 						draw_rectangle(X-2,Y-2, X+128+2,Y+32+2, false)
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X,Y+24, X+128,Y+32+24) {
-							draw_set_color(c_gray)	
+							draw_set_color(c_gray)
+							if input.leftPress {
+								if !audio_is_playing(snd_music_2) {
+									sound.playSoundEffect(snd_music_2)	
+									//	Check if other song is playing
+									if audio_is_playing(snd_music) audio_stop_sound(snd_music)
+								}
+								else {
+									audio_stop_sound(snd_music_2)	
+								}
+							}
 						}
 						else {
 							draw_set_color(c_dkgray)
@@ -535,9 +559,13 @@ if showPC {
 						draw_rectangle(X+148-2, Y-2, X+192+2, Y+32+2, false)
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X+148, Y+24, X+192, Y+32+24) {
 							draw_set_color(c_gray)
+							if input.leftPress {
+								sound.music_2_loop = !sound.music_2_loop
+							}
 						}
 						else {
-							draw_set_color(c_dkgray)
+							if sound.music_2_loop draw_set_color(c_gray)
+							else draw_set_color(c_dkgray)	
 						}
 						draw_rectangle(X+148, Y, X+192, Y+32, false)
 						

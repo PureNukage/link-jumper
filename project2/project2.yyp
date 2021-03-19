@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"astronaut","path":"objects/astronaut/astronaut.yy",},"order":8,},
     {"id":{"name":"s_stars","path":"sprites/s_stars/s_stars.yy",},"order":1,},
+    {"id":{"name":"snd_music_2","path":"sounds/snd_music_2/snd_music_2.yy",},"order":1,},
     {"id":{"name":"font_text","path":"fonts/font_text/font_text.yy",},"order":0,},
     {"id":{"name":"s_sergey_jump0","path":"sprites/s_sergey_jump0/s_sergey_jump0.yy",},"order":16,},
     {"id":{"name":"s_computer_icon","path":"sprites/s_computer_icon/s_computer_icon.yy",},"order":4,},

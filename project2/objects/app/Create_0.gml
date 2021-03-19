@@ -188,6 +188,8 @@ function switch_stage(index) {
 			
 			camera.cameraRefresh = true
 			
+			if !instance_exists(sound) instance_create_layer(0,0,"Instances",sound)
+			
 		break
 	}
 	
