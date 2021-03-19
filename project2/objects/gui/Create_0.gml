@@ -111,8 +111,24 @@ for(var i=1;i<20;i++) {
 			Window.window_scrollable = true
 			Window.window_scroll_max = 120
 		break
-		
-		
+		//	Messenges
+		case 10:
+			Window.window_width_max = 500
+			Window.window_height_max = 300
+		break
+		//	Phone
+		case 11:
+			Window.window_clickable = false
+		break
+		//	Charts
+		case 12:
+			Window.window_width_max = 250
+			Window.window_width = 250
+			Window.window_height_max = 240
+			Window.window_height = 240
+			Window.window_width_min = 250
+			Window.window_height_min = 240
+		break
 		//	Music
 		case 14:
 			
@@ -120,6 +136,76 @@ for(var i=1;i<20;i++) {
 	}
 	
 }
+
+
+#region Messenges
+
+messenge = [[]]
+messenge_index = -1
+messenge_count = 0
+for(var i=0;i<9;i++) {
+	messenge[i, messenge_used] = false
+	messenge[i, messenge_responses] = ds_list_create()
+	messenge[i, messenge_read] = false
+	var String = ""
+	var Type = messenge_received
+	var List = messenge[i, messenge_responses]
+	switch(i) {
+		case 0:
+			String = "morning Sergey"
+			messenge[i, messenge_used] = true
+			messenge_index = 0
+			List[| 0] = 1
+			List[| 1] = 2
+			List[| 2] = 3
+		break
+		case 1:
+			String = "Good evening Ari"
+			Type = messenge_sent
+		break
+		case 2:
+			String = "Ari, I seem to be stuck in a loop"
+			Type = messenge_sent
+			List[| 0] = 4
+		break
+		case 3:
+			String = "The clock in my living room has a countdown"
+			Type = messenge_sent
+			List[| 0] = 5
+		break
+		case 4:
+			String = "Stuck in a loop huh. Don't worry, it can happen to anyone"
+			Type = messenge_received
+		break
+		case 5:
+			String = "Uh-oh. That's not good"
+			Type = messenge_received
+			List[| 0] = 6
+		break
+		case 6:
+			String = "Unfortunately you're the only one that knows the combo to solve it"
+			Type = messenge_received
+			List[| 0] = 7
+		break
+		case 7:
+			String = "Do you have any hints?"
+			Type = messenge_sent
+			List[| 0] = 8
+		break
+		case 8:
+			String = "I'm going to guess that something you collect plays a part in the combination"
+			Type = messenge_received
+		break
+	}
+	messenge[i, messenge_string] = String
+	messenge[i, messenge_type] = Type
+}
+	
+function messenge_send(index) {
+	messenge[index, messenge_used] = true
+}
+
+#endregion
 
 function setMessage(String, timer) {
 	

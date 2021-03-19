@@ -7,6 +7,9 @@ creator = "@PureNukage"
 
 stage = -1
 
+chapter3_looped_once = false
+chapter3_seen_timer = false
+
 var heavenCollisionID = layer_get_id("HeavenCollision")
 instance_deactivate_layer(heavenCollisionID)
 

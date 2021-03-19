@@ -2,9 +2,7 @@ if live_call() return live_result
 
 //	Windows
 var temp_window_interaction = -1
-//for(var i=1;i<20;i++) {
 for(var i=0;i<ds_list_size(window_depth_list);i++) {
-//for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 	//	Determine the icons
 	var Window = window_depth_list[| i]
 	if Window.open {
@@ -194,4 +192,18 @@ if temp_window_interaction == -1 and window_interaction > -1 {
 	mouseOverHeight = false
 	mouseOverCorner = false
 	window_set_cursor(cr_arrow)
+}
+	
+	
+//	Messenge unread counting
+var temp_messenge_count = 0
+for(var m=0;m<array_length(messenge);m++) {
+	var Used = messenge[m, messenge_used]
+	var Read = messenge[m, messenge_read]
+	if Used and !Read {
+		temp_messenge_count++
+	}
+}
+if temp_messenge_count > 0 and temp_messenge_count != messenge_count {
+	messenge_count = temp_messenge_count		
 }

@@ -296,6 +296,16 @@ if showPC {
 			
 			draw_sprite_ext(asset_get_index(spriteName),0, xx,yy, scale,scale, 0,c_white,1) 
 			
+			//	Unread messenges
+			if i == 10 and messenge_count > 0 {
+				draw_set_color(c_red)
+				draw_circle(xx+32,yy+8,12,false)
+				draw_set_color(c_white)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_text(xx+32,yy+6,string(messenge_count))
+			}
+			
 			////	DEBUG
 			//draw_set_color(c_white)
 			//draw_text(xx+8,yy-48,string(i))
@@ -386,7 +396,7 @@ if showPC {
 					case 4:
 						
 						var scale = 0.98
-						draw_sprite_ext(s_amazon_wallpaper,0,windowX+3,windowY+height, scale,scale, 0,c_white,1)
+						draw_sprite_ext(s_amazon_wallpaper,0,windowX+3,windowY+height-24, scale,scale, 0,c_white,1)
 						
 					break
 				#endregion
@@ -476,6 +486,114 @@ if showPC {
 						var scale = 0.25
 						draw_sprite_ext(s_meme_4,0,X,Y, scale,scale, 0,c_white,1)
 						
+					break
+				#endregion
+				
+				#region Messages
+					case 10:
+						
+						var X = windowX+window_width/2
+						var Y = windowY
+						draw_set_color(c_black)
+						draw_text(X,Y, "Ari")
+						
+						var receivedX = windowX+12
+						var receivedY = windowY+24
+						var sentX = windowX+window_width-128
+						var sentY = windowY+56
+						draw_set_halign(fa_left)
+						//	Draw messenges
+						for(var m=0;m<array_length(messenge);m++) {
+							var Used = messenge[m, messenge_used]
+							var String = messenge[m, messenge_string]
+							var Type = messenge[m, messenge_type]
+							var List = messenge[m, messenge_responses]
+							
+							var buffer = 4
+							var width = string_width(String) + buffer
+							var height = string_height(String) + buffer
+							
+							if Used {
+								messenge[m, messenge_read] = true
+								messenge_count--
+								draw_set_halign(fa_left)
+								if Type == messenge_received {
+									draw_set_color(c_gray)
+									draw_roundrect(receivedX-buffer,receivedY, receivedX+width,receivedY+height, false)
+									draw_set_color(c_black)
+									draw_text(receivedX,receivedY+2,String)
+								}
+								else {
+									sentX = windowX+window_width-width-buffer
+									draw_set_color(c_green)
+									draw_roundrect(sentX-buffer,sentY, sentX+width,sentY+height, false)
+									draw_set_color(c_white)
+									draw_text(sentX,sentY+2,String)
+								}
+								
+								//	Responses
+								var responses = ds_list_size(List)
+								if messenge_index == m {
+									for(var rr=0;rr<ds_list_size(List);rr++) {
+										var response_index = List[| rr]
+										//	Check to see if the player can use this response
+										switch(m) {
+											case 0:
+												if response_index == 2 and !app.chapter3_looped_once responses--
+												else if response_index == 3 and !app.chapter3_seen_timer responses--
+											break
+										}
+									}
+								}
+								var Y = windowY+window_height-(responses*42)
+								if responses > 0 and messenge_index == m {
+									for(var r=0;r<responses;r++) {
+										var response_index = List[| r]
+										//if Type == messenge_received {
+											var canSay = true
+											
+											//	Check to see if the player can use this response
+											switch(m) {
+												case 0:
+													if response_index == 2 and !app.chapter3_looped_once canSay = false
+													else if response_index == 3 and !app.chapter3_seen_timer canSay = false
+												break
+											}
+											
+											if canSay {
+												draw_set_halign(fa_center)
+												var X = windowX+window_width/2
+												var Text = messenge[response_index, messenge_string]
+												var rWidth = string_width(Text)
+												var rHeight = string_height(Text)
+												if point_in_rectangle(gui_mouse_x,gui_mouse_y, X-rWidth/2-8,Y-rHeight/2+24, X+rWidth/2+8,Y+rHeight/2+24) {
+													draw_set_color(c_dkgray)
+													if input.leftPress {
+														messenge_send(response_index)
+														messenge_index = response_index
+													}
+												}
+												else {
+													draw_set_color(c_black)
+												}
+												draw_roundrect(X-rWidth/2-8,Y-rHeight/2, X+rWidth/2+8,Y+rHeight/2, false)
+												draw_set_color(c_white)
+												draw_text(X,Y-10, Text)
+												Y += 32
+											}
+										//}
+									}
+								}
+							}
+						}
+						
+					break
+				#endregion
+				
+				#region Charts
+					case 12:
+						var scale = 0.98
+						draw_sprite_ext(s_doge_chart,0,windowX+3,windowY+height-24, scale,scale, 0,c_white,1)
 					break
 				#endregion
 				
@@ -571,6 +689,44 @@ if showPC {
 						
 						draw_set_color(c_white)
 						draw_text(X+152, Y+6, "Loop")
+						
+						//	Volume slider
+						Y += 80
+						
+						draw_set_color(c_black)
+						draw_text(X+72,Y-24,"Volume")
+						draw_rectangle(X,Y,X+192,Y+24,false)
+						
+						var circleX = X + (192 * sound.music_volume)
+						var circleY = Y+12
+						if point_in_circle(gui_mouse_x,gui_mouse_y, circleX,circleY+24, 24) {
+							draw_set_color(c_gray)
+						}
+						else {
+							draw_set_color(c_dkgray)
+						}
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y, X,Y+24,X+192,Y+24+24) {
+							if input.leftPressed {
+								var Volume = ((gui_mouse_x-204) / (X+192-204))
+								debug.log(string(Volume))
+								sound.music_volume = Volume
+								if audio_is_playing(snd_music) audio_sound_gain(snd_music,Volume,0)
+								else if audio_is_playing(snd_music_2) audio_sound_gain(snd_music_2,Volume,0)
+							}
+						}
+						draw_circle(circleX,circleY,24,false)
+						
+						////	DEBUG
+						//draw_set_halign(fa_left)
+						//draw_text(windowX+window_width-64,windowY,string(gui_mouse_x))
+						
+					break
+				#endregion
+				
+				#region Settings
+					case 16:
+					
+						
 						
 					break
 				#endregion

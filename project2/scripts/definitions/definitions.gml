@@ -13,3 +13,12 @@
 #macro icon_y 0
 #macro icon_string 1
 #macro icon_window 2
+
+#macro messenge_received 0
+#macro messenge_sent 1
+
+#macro messenge_string 0
+#macro messenge_type 1
+#macro messenge_used 2
+#macro messenge_responses 3
+#macro messenge_read 4

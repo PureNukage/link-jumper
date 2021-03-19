@@ -93,6 +93,7 @@
     {"id":{"name":"s_road","path":"sprites/s_road/s_road.yy",},"order":24,},
     {"id":{"name":"station","path":"objects/station/station.yy",},"order":10,},
     {"id":{"name":"s_icon6","path":"sprites/s_icon6/s_icon6.yy",},"order":3,},
+    {"id":{"name":"s_doge_chart","path":"sprites/s_doge_chart/s_doge_chart.yy",},"order":14,},
     {"id":{"name":"s_chopper","path":"sprites/s_chopper/s_chopper.yy",},"order":26,},
     {"id":{"name":"s_icon9","path":"sprites/s_icon9/s_icon9.yy",},"order":6,},
     {"id":{"name":"s_icon10","path":"sprites/s_icon10/s_icon10.yy",},"order":7,},
