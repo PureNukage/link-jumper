@@ -82,6 +82,7 @@
     {"id":{"name":"s_icon16","path":"sprites/s_icon16/s_icon16.yy",},"order":11,},
     {"id":{"name":"s_rectangle","path":"sprites/s_rectangle/s_rectangle.yy",},"order":9,},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":2,},
+    {"id":{"name":"s_keyboard_e","path":"sprites/s_keyboard_e/s_keyboard_e.yy",},"order":0,},
     {"id":{"name":"s_meme_4","path":"sprites/s_meme_4/s_meme_4.yy",},"order":12,},
     {"id":{"name":"input","path":"objects/input/input.yy",},"order":2,},
     {"id":{"name":"s_meme_5","path":"sprites/s_meme_5/s_meme_5.yy",},"order":13,},
@@ -155,6 +156,7 @@
     {"folderPath":"folders/Extensions.yy","order":23,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions/GMLive.yy","order":1,"resourceVersion":"1.0","name":"GMLive","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Art/chapter 3/icons.yy","order":6,"resourceVersion":"1.0","name":"icons","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Art/prompts.yy","order":13,"resourceVersion":"1.0","name":"prompts","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
