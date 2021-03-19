@@ -27,10 +27,10 @@ controlPress = keyboard_check_pressed(vk_control)
 keyInteraction = keyboard_check_pressed(ord("E"))
 
 var fingerScreenBuffer = 150
-keyLeft = keyboard_check(ord("A")) or (mouse_check_button(mb_left) and gui_mouse_x < display_get_gui_width()/2 - fingerScreenBuffer)
-keyRight = keyboard_check(ord("D")) or (mouse_check_button(mb_left) and gui_mouse_x > display_get_gui_width()/2 + fingerScreenBuffer)
-keyDown = keyboard_check(ord("S")) or (mouse_check_button(mb_left) and gui_mouse_y > display_get_gui_height()/2 + fingerScreenBuffer)
+keyLeft = keyboard_check(ord("A")) or (mouse_check_button(mb_left) and (gui_mouse_x < display_get_gui_width()/2 - fingerScreenBuffer) and app.stage < 4)
+keyRight = keyboard_check(ord("D")) or (mouse_check_button(mb_left) and (gui_mouse_x > display_get_gui_width()/2 + fingerScreenBuffer) and app.stage < 4)
+keyDown = keyboard_check(ord("S")) or (mouse_check_button(mb_left) and (gui_mouse_y > display_get_gui_height()/2 + fingerScreenBuffer) and app.stage < 4)
 if app.stage == 0 {
 	keyUp = keyboard_check(ord("W")) or (mouse_check_button(mb_left) )//and gui_mouse_y < display_get_gui_height()/2 - fingerScreenBuffer)	
 }
-else keyUp = keyboard_check(ord("W")) or (mouse_check_button(mb_left) and gui_mouse_y < display_get_gui_height()/2 - fingerScreenBuffer)
+else keyUp = keyboard_check(ord("W")) or (mouse_check_button(mb_left) and (gui_mouse_y < display_get_gui_height()/2 - fingerScreenBuffer) and app.stage < 4)

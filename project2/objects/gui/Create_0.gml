@@ -14,6 +14,8 @@ showEnd = false
 
 showMenu = true
 
+interacting = -1
+
 function _create_window() constructor {
 	open = false
 	windowX = 192

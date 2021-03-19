@@ -207,3 +207,14 @@ for(var m=0;m<array_length(messenge);m++) {
 if temp_messenge_count > 0 and temp_messenge_count != messenge_count {
 	messenge_count = temp_messenge_count		
 }
+
+
+//	Interactable objects
+if position_meeting(mouse_x,mouse_y, class_interactable) {
+	interacting = instance_position(mouse_x,mouse_y, class_interactable)
+	if interacting.interactable window_set_cursor(cr_handpoint)
+}
+else if interacting > -1 {
+	interacting = -1
+	window_set_cursor(cr_arrow)
+}

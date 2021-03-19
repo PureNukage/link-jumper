@@ -1,16 +1,10 @@
 {
-  "spriteId": {
-    "name": "s_nightstand",
-    "path": "sprites/s_nightstand/s_nightstand.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "class_interactable",
-    "path": "objects/class_interactable/class_interactable.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -24,7 +18,8 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"nightstand","path":"objects/nightstand/nightstand.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"class_interactable","path":"objects/class_interactable/class_interactable.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"class_interactable","path":"objects/class_interactable/class_interactable.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,7 +28,7 @@
     "path": "folders/Game/chapter3.yy",
   },
   "resourceVersion": "1.0",
-  "name": "nightstand",
+  "name": "class_interactable",
   "tags": [],
   "resourceType": "GMObject",
 }
