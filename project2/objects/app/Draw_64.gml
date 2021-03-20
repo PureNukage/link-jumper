@@ -1,0 +1,1 @@
+if roomSwitch > -1 _switch_room()

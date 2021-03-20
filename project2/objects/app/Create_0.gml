@@ -215,6 +215,54 @@ function load_game() {
 	
 	ini_close()
 }
+	
+roomSwitch = -1
+roomSwitchStage = -1
+roomSwitchTimer = 0
+roomSwitchTimerMax = 90
+function switch_room(index) {
+	roomSwitch = index
+	roomSwitchStage = 0
+}
+function _switch_room() {
+	switch(roomSwitchStage) {
+		//	Switching to the other room
+		case 0:
+			
+			draw_set_alpha(roomSwitchTimer / roomSwitchTimerMax)
+			draw_set_color(c_black)
+			draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(), false)
+			roomSwitchTimer++
+			if roomSwitchTimer >= roomSwitchTimerMax {
+				roomSwitchStage = 1
+				roomSwitchTimer = roomSwitchTimerMax
+			}
+			draw_set_alpha(1)
+			
+		break
+		//	Changing to the new room
+		case 1:
+			room_goto(roomSwitch)
+			roomSwitchStage = 2
+			camera.cameraRefresh = true
+		break
+		//	Fading from black to the new room
+		case 2:
+			
+			draw_set_alpha(roomSwitchTimer / roomSwitchTimerMax)
+			draw_set_color(c_black)
+			draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(), false)
+			roomSwitchTimer--
+			if roomSwitchTimer <= 0 {
+				roomSwitchStage = -1
+				roomSwitchTimer = 0
+				roomSwitch = -1
+			}
+			draw_set_alpha(1)
+			
+		break
+	}
+}
 
 load_game()
 
