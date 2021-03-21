@@ -249,6 +249,17 @@ function _switch_room() {
 		//	Fading from black to the new room
 		case 2:
 			
+			//	Adjust Sergey depending on which room we're in
+			if roomSwitchTimer == roomSwitchTimerMax {
+				switch(room) {
+					case Room2:
+						sergey.x = 32
+						sergey.y = 448
+						sergey.depth = -1
+					break
+				}
+			}
+			
 			draw_set_alpha(roomSwitchTimer / roomSwitchTimerMax)
 			draw_set_color(c_black)
 			draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(), false)

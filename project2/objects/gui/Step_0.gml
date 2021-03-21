@@ -212,7 +212,12 @@ if temp_messenge_count > 0 and temp_messenge_count != messenge_count {
 //	Interactable objects
 if position_meeting(mouse_x,mouse_y, class_interactable) {
 	interacting = instance_position(mouse_x,mouse_y, class_interactable)
-	if interacting.interactable window_set_cursor(cr_handpoint)
+	if interacting.interactable {
+		window_set_cursor(cr_handpoint)
+		if input.leftPress and !point_in_circle(sergey.x,sergey.y, interacting.x,interacting.y, interacting.radius) {
+			sergey.setMessage("I'm not close enough")	
+		}
+	}
 }
 else if interacting > -1 {
 	interacting = -1

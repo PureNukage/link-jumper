@@ -23,10 +23,10 @@ if !gui.showPC applyMovement()
 if hspd != 0 image_xscale = sign(hspd)
 
 if hspd != 0 or vspd != 0 {
-	sprite_index = s_sergey_walk	
+	sprite_index = s_sergey_walk2
 }
 else {
-	sprite_index = s_sergey_idle
+	sprite_index = s_sergey_idle2
 }
 
 //	Room change

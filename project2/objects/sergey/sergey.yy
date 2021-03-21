@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_sergey_idle",
-    "path": "sprites/s_sergey_idle/s_sergey_idle.yy",
+    "name": "s_sergey_idle2",
+    "path": "sprites/s_sergey_idle2/s_sergey_idle2.yy",
   },
   "solid": false,
   "visible": true,
@@ -23,6 +23,7 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"sergey","path":"objects/sergey/sergey.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"sergey","path":"objects/sergey/sergey.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"sergey","path":"objects/sergey/sergey.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
