@@ -4,7 +4,7 @@ if instance_exists(player) and app.stage == 2 {
 }
 else if instance_exists(sergey) and app.stage == 4 {
 	x = sergey.x
-	y = sergey.y	
+	y = sergey.y-64
 }
 
 if cameraRefresh {

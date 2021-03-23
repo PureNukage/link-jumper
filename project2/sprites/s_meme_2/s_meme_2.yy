@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8f7952ec-b2ac-4bed-aeca-930446772d24","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "chapter 3",
-    "path": "folders/Art/chapter 3.yy",
+    "name": "memes",
+    "path": "folders/Art/chapter 3/memes.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_meme_2",

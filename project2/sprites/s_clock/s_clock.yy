@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 799,
+  "bbox_right": 255,
   "bbox_top": 0,
-  "bbox_bottom": 1280,
+  "bbox_bottom": 112,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 800,
-  "height": 1281,
+  "width": 256,
+  "height": 256,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"0019abe7-8297-4087-9757-e3ef026ad64e","path":"sprites/s_meme_5/s_meme_5.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"0019abe7-8297-4087-9757-e3ef026ad64e","path":"sprites/s_meme_5/s_meme_5.yy",},"LayerId":{"name":"070b36d1-f6ef-48f2-9a65-df923b37fd70","path":"sprites/s_meme_5/s_meme_5.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_meme_5","path":"sprites/s_meme_5/s_meme_5.yy",},"resourceVersion":"1.0","name":"0019abe7-8297-4087-9757-e3ef026ad64e","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"de9d0cbd-ba7e-46ca-b7db-4d448397c9cd","path":"sprites/s_clock/s_clock.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"de9d0cbd-ba7e-46ca-b7db-4d448397c9cd","path":"sprites/s_clock/s_clock.yy",},"LayerId":{"name":"7342b302-ab25-493c-a7ea-975ea4e54132","path":"sprites/s_clock/s_clock.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_clock","path":"sprites/s_clock/s_clock.yy",},"resourceVersion":"1.0","name":"de9d0cbd-ba7e-46ca-b7db-4d448397c9cd","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_meme_5","path":"sprites/s_meme_5/s_meme_5.yy",},
+    "spriteId": {"name":"s_clock","path":"sprites/s_clock/s_clock.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"c227ad13-d017-42b9-92cb-0c5cbbc167d6","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0019abe7-8297-4087-9757-e3ef026ad64e","path":"sprites/s_meme_5/s_meme_5.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"dbd36eb6-8c8a-47bd-9fa2-54821a4831c3","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"de9d0cbd-ba7e-46ca-b7db-4d448397c9cd","path":"sprites/s_clock/s_clock.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,21 +58,21 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_meme_5","path":"sprites/s_meme_5/s_meme_5.yy",},
+    "parent": {"name":"s_clock","path":"sprites/s_clock/s_clock.yy",},
     "resourceVersion": "1.3",
-    "name": "s_meme_5",
+    "name": "s_clock",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"070b36d1-f6ef-48f2-9a65-df923b37fd70","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"7342b302-ab25-493c-a7ea-975ea4e54132","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "memes",
-    "path": "folders/Art/chapter 3/memes.yy",
+    "name": "chapter 3",
+    "path": "folders/Art/chapter 3.yy",
   },
   "resourceVersion": "1.0",
-  "name": "s_meme_5",
+  "name": "s_clock",
   "tags": [],
   "resourceType": "GMSprite",
 }

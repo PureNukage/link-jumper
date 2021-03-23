@@ -6,23 +6,30 @@ if instance_exists(spawner) and instance_exists(player) and app.stage == 0 {
 	//stream = floor(stream + 1)
 }
 
-stream++
-frames++
+if !app.gameOver {
+	stream++
+	frames++
 
-if frames >= 60 {
-	seconds++
-	frames = 0
-	seconds_switch = 1
-	seconds_stream++
-} else {
-	seconds_switch = 0	
-}
+	if input.keySpeedTime {
+		stream += 5
+		frames += 5
+	}
 
-if seconds >= 60 {
-	minutes++
-	seconds = 0
-	minutes_switch = 1
-	minutes_stream++
-} else {
-	minutes_switch = 0	
+	if frames >= 60 {
+		seconds++
+		frames = 0
+		seconds_switch = 1
+		seconds_stream++
+	} else {
+		seconds_switch = 0	
+	}
+
+	if seconds >= 60 {
+		minutes++
+		seconds = 0
+		minutes_switch = 1
+		minutes_stream++
+	} else {
+		minutes_switch = 0	
+	}
 }

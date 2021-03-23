@@ -26,6 +26,9 @@ controlPress = keyboard_check_pressed(vk_control)
 
 keyInteraction = keyboard_check_pressed(ord("E"))
 
+keySpeedTime = keyboard_check(vk_right)
+keySpeedMinute = keyboard_check_pressed(vk_up)
+
 var fingerScreenBuffer = 150
 keyLeft = keyboard_check(ord("A")) or (mouse_check_button(mb_left) and (gui_mouse_x < display_get_gui_width()/2 - fingerScreenBuffer) and app.stage < 4)
 keyRight = keyboard_check(ord("D")) or (mouse_check_button(mb_left) and (gui_mouse_x > display_get_gui_width()/2 + fingerScreenBuffer) and app.stage < 4)

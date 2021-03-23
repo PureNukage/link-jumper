@@ -12,6 +12,9 @@ controlPress = keyboard_check_pressed(vk_control)
 
 keyInteraction = keyboard_check_pressed(ord("E"))
 
+keySpeedTime = keyboard_check(vk_right)
+keySpeedMinute = keyboard_check_pressed(vk_up)
+
 keyLeft = keyboard_check(ord("A"))
 keyRight = keyboard_check(ord("D"))
 keyDown = keyboard_check(ord("S"))

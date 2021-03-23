@@ -10,6 +10,9 @@ stage = -1
 chapter3_looped_once = false
 chapter3_seen_timer = false
 
+chapter3_timer = 4
+chapter3_timer_paused = true
+
 var heavenCollisionID = layer_get_id("HeavenCollision")
 instance_deactivate_layer(heavenCollisionID)
 
@@ -273,6 +276,27 @@ function _switch_room() {
 			
 		break
 	}
+}
+	
+gameOver = false
+gameOverTimer = 0
+gameOverTimerMax = 180
+function game_over() {
+	draw_set_color(c_white)
+	draw_set_alpha(gameOverTimer / gameOverTimerMax)
+	draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(),false)
+	gameOverTimer++
+	//	Reset everything
+	if gameOverTimer >= gameOverTimerMax {
+		instance_destroy(time)
+		instance_create_layer(0,0,"Instances",time)
+		gameOver = false
+		gameOverTimer = 0
+		chapter3_timer = 4
+		room_goto(Room2)
+		camera.cameraRefresh = true
+	}
+	draw_reset()
 }
 
 load_game()
