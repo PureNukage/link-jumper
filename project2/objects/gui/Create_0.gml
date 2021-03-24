@@ -142,6 +142,30 @@ for(var i=1;i<20;i++) {
 
 #region Messenges
 
+function _create_message(_text, _type) constructor {
+	used = false
+	responses = ds_list_create()
+	read = false
+	text = _text
+	type = _type
+	index = -1
+}
+
+messages = ds_list_create()
+function create_message(_text, _type) {
+	var Message = _create_message(_text, _type)
+	ds_list_add(messages, Message)
+	var Index = ds_list_size(messages)-1
+	Message.index = Index
+	return Message
+}
+var Message = create_message("morning Sergey", message_received)
+Message.responses[| 0] = 1
+Message.responses[| 1] = 2
+Message.responses[| 2] = 3
+create_message("Good evening Ari", message_sent)
+create_message("Ari, I seem to be stuck in a loop", message_sent)
+
 messenge = [[]]
 messenge_index = -1
 messenge_count = 0

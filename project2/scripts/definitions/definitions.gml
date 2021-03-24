@@ -17,6 +17,9 @@
 #macro messenge_received 0
 #macro messenge_sent 1
 
+#macro message_received 0
+#macro message_sent 1
+
 #macro messenge_string 0
 #macro messenge_type 1
 #macro messenge_used 2
