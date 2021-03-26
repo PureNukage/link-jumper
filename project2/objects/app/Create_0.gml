@@ -295,6 +295,7 @@ function game_over() {
 		chapter3_timer = 4
 		room_goto(Room2)
 		camera.cameraRefresh = true
+		chapter3_looped_once = true
 	}
 	draw_reset()
 }

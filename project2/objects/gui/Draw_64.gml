@@ -297,13 +297,13 @@ if showPC {
 			draw_sprite_ext(asset_get_index(spriteName),0, xx,yy, scale,scale, 0,c_white,1) 
 			
 			//	Unread messenges
-			if i == 10 and messenge_count > 0 {
+			if i == 10 and message_count > 0 {
 				draw_set_color(c_red)
 				draw_circle(xx+32,yy+8,12,false)
 				draw_set_color(c_white)
 				draw_set_halign(fa_center)
 				draw_set_valign(fa_middle)
-				draw_text(xx+32,yy+6,string(messenge_count))
+				draw_text(xx+32,yy+6,string(message_count))
 			}
 			
 			////	DEBUG
@@ -498,94 +498,66 @@ if showPC {
 						draw_text(X,Y, "Ari")
 						
 						var receivedX = windowX+12
-						var receivedY = windowY+24
+						var receivedY = windowY+24-Window.window_scroll
 						var sentX = windowX+window_width-128
-						var sentY = windowY+56
+						var sentY = windowY+60-Window.window_scroll
 						draw_set_halign(fa_left)
-						//	Draw messenges
-						for(var m=0;m<array_length(messenge);m++) {
-							var Used = messenge[m, messenge_used]
-							var String = messenge[m, messenge_string]
-							var Type = messenge[m, messenge_type]
-							var List = messenge[m, messenge_responses]
+						////	Draw messages
+						var history = ds_list_size(message_history)
+						for(var m=0;m<history;m++) {
+							var Message = message_history[| m]
+							var Type = Message.type
+							var Text = Message.text
+						
+							var buffer = 6
+							var sep = 200
+							var width = string_width_ext(Text,string_height(Text),sep) + buffer*2
+							var height = string_height_ext(Text,string_height(Text),sep) + buffer*2
 							
-							var buffer = 4
-							var width = string_width(String) + buffer
-							var height = string_height(String) + buffer
-							
-							if Used {
-								messenge[m, messenge_read] = true
-								messenge_count--
-								draw_set_halign(fa_left)
-								if Type == messenge_received {
-									draw_set_color(c_gray)
-									draw_roundrect(receivedX-buffer,receivedY, receivedX+width,receivedY+height, false)
-									draw_set_color(c_black)
-									draw_text(receivedX,receivedY+2,String)
-								}
-								else {
-									sentX = windowX+window_width-width-buffer
-									draw_set_color(c_green)
-									draw_roundrect(sentX-buffer,sentY, sentX+width,sentY+height, false)
-									draw_set_color(c_white)
-									draw_text(sentX,sentY+2,String)
-								}
-								
-								//	Responses
-								var responses = ds_list_size(List)
-								if messenge_index == m {
-									for(var rr=0;rr<ds_list_size(List);rr++) {
-										var response_index = List[| rr]
-										//	Check to see if the player can use this response
-										switch(m) {
-											case 0:
-												if response_index == 2 and !app.chapter3_looped_once responses--
-												else if response_index == 3 and !app.chapter3_seen_timer responses--
-											break
-										}
-									}
-								}
-								var Y = windowY+window_height-(responses*42)
-								if responses > 0 and messenge_index == m {
-									for(var r=0;r<responses;r++) {
-										var response_index = List[| r]
-										//if Type == messenge_received {
-											var canSay = true
-											
-											//	Check to see if the player can use this response
-											switch(m) {
-												case 0:
-													if response_index == 2 and !app.chapter3_looped_once canSay = false
-													else if response_index == 3 and !app.chapter3_seen_timer canSay = false
-												break
-											}
-											
-											if canSay {
-												draw_set_halign(fa_center)
-												var X = windowX+window_width/2
-												var Text = messenge[response_index, messenge_string]
-												var rWidth = string_width(Text)
-												var rHeight = string_height(Text)
-												if point_in_rectangle(gui_mouse_x,gui_mouse_y, X-rWidth/2-8,Y-rHeight/2+24, X+rWidth/2+8,Y+rHeight/2+24) {
-													draw_set_color(c_dkgray)
-													if input.leftPress {
-														messenge_send(response_index)
-														messenge_index = response_index
-													}
-												}
-												else {
-													draw_set_color(c_black)
-												}
-												draw_roundrect(X-rWidth/2-8,Y-rHeight/2, X+rWidth/2+8,Y+rHeight/2, false)
-												draw_set_color(c_white)
-												draw_text(X,Y-10, Text)
-												Y += 32
-											}
-										//}
-									}
-								}
+							//	Received
+							if Type == message_received {
+								draw_set_color(c_gray)
+								draw_roundrect(receivedX-buffer,receivedY, receivedX+width,receivedY+height, false)
+								draw_set_color(c_black)
+								draw_text_ext(receivedX,receivedY+2,Text,string_height(Text),sep)
+							}
+							//	Sent
+							else {
+								sentX = windowX+window_width-width-buffer
+								draw_set_color(c_green)
+								draw_roundrect(sentX-buffer,sentY, sentX+width,sentY+height, false)
+								draw_set_color(c_white)
+								draw_text_ext(sentX,sentY+2,Text,string_height(Text),sep)
+								sentY += height + 8
 							}
 						}
+						////	Draw Messages we can say
+						for(var m=0;m<ds_list_size(messages_to_say);m++) {
+							var Message = messages_to_say[| m]
+							var Text = Message.text
+							var X = windowX+window_width/2
+							var Y = windowY+window_height-64-(64*m)
+							var buffer = 6
+							var sep = 200
+							var Width = string_width_ext(Text,-1,sep)+buffer*2
+							var Height = string_height_ext(Text,-1,sep)+buffer*2
+							
+							if point_in_rectangle(gui_mouse_x,gui_mouse_y, X-Width/2,Y+24,X+Width/2,Y+Height+24) {
+								draw_set_color(c_gray)
+								if input.leftPress {
+									message_send(Message)
+									ds_list_delete(messages_to_say, m)
+								}
+							}
+							else {
+								draw_set_color(c_black)
+							}
+							draw_roundrect(X-Width/2,Y,X+Width/2,Y+Height,false)
+							draw_set_color(c_white)
+							draw_set_halign(fa_center)
+							draw_set_valign(fa_middle)
+							draw_text_ext(X,Y+Height/2,Text,string_height(Text),sep)
+						}						
 						
 					break
 				#endregion

@@ -117,6 +117,8 @@ for(var i=1;i<20;i++) {
 		case 10:
 			Window.window_width_max = 500
 			Window.window_height_max = 300
+			Window.window_scrollable = true
+			Window.window_scroll_max = 120
 		break
 		//	Phone
 		case 11:
@@ -144,7 +146,7 @@ for(var i=1;i<20;i++) {
 
 function _create_message(_text, _type) constructor {
 	used = false
-	responses = ds_list_create()
+	usable = false
 	read = false
 	text = _text
 	type = _type
@@ -152,83 +154,64 @@ function _create_message(_text, _type) constructor {
 }
 
 messages = ds_list_create()
+message_history = ds_list_create()
+messages_to_say = ds_list_create()
+message_count = 0
+messagesY = 0
 function create_message(_text, _type) {
-	var Message = _create_message(_text, _type)
+	var Message = new _create_message(_text, _type)
 	ds_list_add(messages, Message)
 	var Index = ds_list_size(messages)-1
 	Message.index = Index
 	return Message
 }
+function message_send(_message) {
+	_message.used = true
+	ds_list_add(message_history, _message)
+}
 var Message = create_message("morning Sergey", message_received)
-Message.responses[| 0] = 1
-Message.responses[| 1] = 2
-Message.responses[| 2] = 3
+message_send(Message)
 create_message("Good evening Ari", message_sent)
 create_message("Ari, I seem to be stuck in a loop", message_sent)
+create_message("The clock in my living room has a countdown", message_sent)
+create_message("Stuck in a loop huh. Don't worry, it can happen to anyone", message_received)
+create_message("Uh-oh. That's not good", message_received)
+create_message("Unfortunately you're the only one that knows the combo to solve it", message_received)
+create_message("Do you have any hints?", message_sent)
+create_message("I'm going to guess that something you collect plays a part in the combination", message_received)
 
-messenge = [[]]
-messenge_index = -1
-messenge_count = 0
-for(var i=0;i<9;i++) {
-	messenge[i, messenge_used] = false
-	messenge[i, messenge_responses] = ds_list_create()
-	messenge[i, messenge_read] = false
-	var String = ""
-	var Type = messenge_received
-	var List = messenge[i, messenge_responses]
-	switch(i) {
-		case 0:
-			String = "morning Sergey"
-			messenge[i, messenge_used] = true
-			messenge_index = 0
-			List[| 0] = 1
-			List[| 1] = 2
-			List[| 2] = 3
-		break
-		case 1:
-			String = "Good evening Ari"
-			Type = messenge_sent
-		break
-		case 2:
-			String = "Ari, I seem to be stuck in a loop"
-			Type = messenge_sent
-			List[| 0] = 4
-		break
-		case 3:
-			String = "The clock in my living room has a countdown"
-			Type = messenge_sent
-			List[| 0] = 5
-		break
-		case 4:
-			String = "Stuck in a loop huh. Don't worry, it can happen to anyone"
-			Type = messenge_received
-		break
-		case 5:
-			String = "Uh-oh. That's not good"
-			Type = messenge_received
-			List[| 0] = 6
-		break
-		case 6:
-			String = "Unfortunately you're the only one that knows the combo to solve it"
-			Type = messenge_received
-			List[| 0] = 7
-		break
-		case 7:
-			String = "Do you have any hints?"
-			Type = messenge_sent
-			List[| 0] = 8
-		break
-		case 8:
-			String = "I'm going to guess that something you collect plays a part in the combination"
-			Type = messenge_received
-		break
+function message_check() {
+	for(var i=0;i<ds_list_size(messages);i++) {
+		var Message = messages[| i]
+		var Usable = Message.usable
+		
+		var canUse = false
+		switch(i) {
+			//	good evening Ari
+			case 1:
+				if messages[| 0].used canUse = true		
+			break
+			//	Ari, I seem to be stuck in a loop
+			case 2:
+				if app.chapter3_looped_once canUse = true
+			break
+			//	The clock in my living room has a countdown
+			case 3:
+				if app.chapter3_seen_timer canUse = true
+			break
+			//	Do you have any hints?
+			case 4:
+				if messages[| 6].used canUse = true
+			break
+		}
+		
+		if !Usable and canUse {
+			debug.log("Can say: "+string_upper(Message.text))
+			Message.usable = true
+			ds_list_add(messages_to_say, Message)
+		}
+		
 	}
-	messenge[i, messenge_string] = String
-	messenge[i, messenge_type] = Type
-}
-	
-function messenge_send(index) {
-	messenge[index, messenge_used] = true
 }
 
 #endregion
