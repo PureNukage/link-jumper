@@ -757,26 +757,32 @@ if showBookshelf {
 	var bookX = shelfX + 4
 	var bookY = shelfY + 5
 	var text = ""
-	for(var i=0;i<2;i++) {
+	var book = s_book_0
+	for(var i=0;i<5;i++) {
 		switch(i) {
-			case 0: text = "Gorgias" break
-			case 1: text = "Protagoras" break
+			case 0: text = "Tetraktys" break
+			case 1: text = "2001" break
+			case 2: text = "2010" break
+			case 3: text = "2067" break
+			case 4: text = "3001" break
+			case 10: text = "Gorgias" break
+			case 11: text = "Protagoras" break
 		}
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y, bookX,bookY,bookX+54,bookY+100) {
 			draw_set_color(c_white)
 			draw_rectangle(bookX-4,bookY-4,bookX+59+4,bookY+110+8,false)
 		}	
-		draw_sprite_ext(s_book_0,0,bookX,bookY, scale,scale, 0,c_white,1)
+		draw_sprite_ext(book,0,bookX,bookY, scale,scale, 0,c_white,1)
 		draw_set_color(c_black)
 		draw_text_ext_transformed(bookX+43,bookY+15,text,string_height(text),100,1,1,270)
 		bookX += 64
 		
 	}
 	
-	draw_set_color(c_red)
-	draw_set_alpha(0.5)
-	draw_rectangle(bookX,bookY, bookX+59,bookY+110, false)
-	draw_set_alpha(1)
+	//draw_set_color(c_red)
+	//draw_set_alpha(0.5)
+	//draw_rectangle(bookX,bookY, bookX+59,bookY+110, false)
+	//draw_set_alpha(1)
 	
 
 	
