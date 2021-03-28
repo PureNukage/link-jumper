@@ -14,6 +14,8 @@ showEnd = false
 
 showMenu = true
 
+showBookshelf = false
+
 interacting = -1
 
 function _create_window() constructor {

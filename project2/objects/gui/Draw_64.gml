@@ -206,7 +206,7 @@ if showMenu {
 	
 }
 	
-if showPC { 
+if showPC {
 	
 	//	Background
 	draw_set_color(c_gray)
@@ -736,5 +736,19 @@ if showPC {
 	}
 	
 	draw_reset()
+	
+}
+	
+if showBookshelf {
+	
+	var X = 164
+	var Y = 64
+	var Width = 640
+	var Height = 360
+	//draw_set_color(c_dkgray)
+	//draw_rectangle(X,Y, X+Width,Y+Height, false)
+	
+	var scale = 5
+	draw_sprite_ext(s_bookshelf,0,X,Y, scale,scale, 0,c_white,1)
 	
 }
