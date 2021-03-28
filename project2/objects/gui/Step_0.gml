@@ -196,17 +196,18 @@ if temp_window_interaction == -1 and window_interaction > -1 {
 	
 message_check()
 //	Messenge unread counting
-//var temp_messenge_count = 0
-//for(var m=0;m<array_length(messenge);m++) {
-//	var Used = messenge[m, messenge_used]
-//	var Read = messenge[m, messenge_read]
-//	if Used and !Read {
-//		temp_messenge_count++
-//	}
-//}
-//if temp_messenge_count > 0 and temp_messenge_count != messenge_count {
-//	messenge_count = temp_messenge_count		
-//}
+var temp_message_count = 0
+for(var m=0;m<ds_list_size(messages);m++) {
+	var Message = messages[| m]
+	var Used = Message.used
+	var Read = Message.read
+	if Used and !Read and Message.type == message_received {
+		temp_message_count++
+	}
+}
+if temp_message_count > 0 and temp_message_count != message_count {
+	message_count = temp_message_count		
+}
 
 
 //	Interactable objects

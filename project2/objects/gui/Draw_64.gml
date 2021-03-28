@@ -352,7 +352,9 @@ if showPC {
 			draw_text_transformed(windowX+window_width-18,windowY+3,"X",scale,scale,0)
 				
 			//	Window shtuff
-			var surface = surface_create(display_get_gui_width(), display_get_gui_height()+200)
+			var extraHeight = 200
+			if Window.window_index == 10 extraHeight = Window.window_scroll_max
+			var surface = surface_create(display_get_gui_width(), display_get_gui_height()+extraHeight)
 			surface_set_target(surface)
 			draw_clear_alpha(c_black, 0)
 			
@@ -498,9 +500,8 @@ if showPC {
 						draw_text(X,Y, "Ari")
 						
 						var receivedX = windowX+12
-						var receivedY = windowY+24-Window.window_scroll
 						var sentX = windowX+window_width-128
-						var sentY = windowY+60-Window.window_scroll
+						var _Y = windowY+24-Window.window_scroll
 						draw_set_halign(fa_left)
 						////	Draw messages
 						var history = ds_list_size(message_history)
@@ -517,36 +518,45 @@ if showPC {
 							//	Received
 							if Type == message_received {
 								draw_set_color(c_gray)
-								draw_roundrect(receivedX-buffer,receivedY, receivedX+width,receivedY+height, false)
+								draw_roundrect(receivedX-buffer,_Y, receivedX+width,_Y+height, false)
 								draw_set_color(c_black)
-								draw_text_ext(receivedX,receivedY+2,Text,string_height(Text),sep)
+								draw_text_ext(receivedX,_Y+2,Text,string_height(Text),sep)
+								_Y += height + 8
+								
+								//	Read
+								if !Message.read {
+									Message.read = true
+									message_count--
+								}
+								
 							}
 							//	Sent
 							else {
 								sentX = windowX+window_width-width-buffer
 								draw_set_color(c_green)
-								draw_roundrect(sentX-buffer,sentY, sentX+width,sentY+height, false)
+								draw_roundrect(sentX-buffer,_Y, sentX+width,_Y+height, false)
 								draw_set_color(c_white)
-								draw_text_ext(sentX,sentY+2,Text,string_height(Text),sep)
-								sentY += height + 8
+								draw_text_ext(sentX,_Y+2,Text,string_height(Text),sep)
+								_Y += height + 8
 							}
 						}
 						////	Draw Messages we can say
+						var X = windowX+window_width/2
+						var Y = _Y + 32
 						for(var m=0;m<ds_list_size(messages_to_say);m++) {
 							var Message = messages_to_say[| m]
 							var Text = Message.text
-							var X = windowX+window_width/2
-							var Y = windowY+window_height-64-(64*m)
 							var buffer = 6
 							var sep = 200
 							var Width = string_width_ext(Text,-1,sep)+buffer*2
 							var Height = string_height_ext(Text,-1,sep)+buffer*2
 							
-							if point_in_rectangle(gui_mouse_x,gui_mouse_y, X-Width/2,Y+24,X+Width/2,Y+Height+24) {
+							if point_in_rectangle(gui_mouse_x,gui_mouse_y, X-Width/2,Y+24-Window.window_scroll,X+Width/2,Y+Height+24-Window.window_scroll) {
 								draw_set_color(c_gray)
 								if input.leftPress {
 									message_send(Message)
 									ds_list_delete(messages_to_say, m)
+									Window.window_scroll_max += Height + 8
 								}
 							}
 							else {
@@ -557,6 +567,7 @@ if showPC {
 							draw_set_halign(fa_center)
 							draw_set_valign(fa_middle)
 							draw_text_ext(X,Y+Height/2,Text,string_height(Text),sep)
+							Y += Height + 8
 						}						
 						
 					break

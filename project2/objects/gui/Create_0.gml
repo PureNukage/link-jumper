@@ -142,11 +142,12 @@ for(var i=1;i<20;i++) {
 }
 
 
-#region Messenges
+#region Messages
 
 function _create_message(_text, _type) constructor {
 	used = false
 	usable = false
+	response = -1
 	read = false
 	text = _text
 	type = _type
@@ -158,27 +159,32 @@ message_history = ds_list_create()
 messages_to_say = ds_list_create()
 message_count = 0
 messagesY = 0
-function create_message(_text, _type) {
+function create_message(_text, _type, _response) {
 	var Message = new _create_message(_text, _type)
 	ds_list_add(messages, Message)
 	var Index = ds_list_size(messages)-1
 	Message.index = Index
+	Message.response = _response
 	return Message
 }
 function message_send(_message) {
 	_message.used = true
 	ds_list_add(message_history, _message)
+	//	Prep the response
+	if _message.response > -1 {
+		message_send(messages[| _message.response])
+	}
 }
-var Message = create_message("morning Sergey", message_received)
-message_send(Message)
-create_message("Good evening Ari", message_sent)
-create_message("Ari, I seem to be stuck in a loop", message_sent)
-create_message("The clock in my living room has a countdown", message_sent)
-create_message("Stuck in a loop huh. Don't worry, it can happen to anyone", message_received)
-create_message("Uh-oh. That's not good", message_received)
-create_message("Unfortunately you're the only one that knows the combo to solve it", message_received)
-create_message("Do you have any hints?", message_sent)
-create_message("I'm going to guess that something you collect plays a part in the combination", message_received)
+var Message = create_message("morning Sergey", message_received, -1)															//	0
+message_send(Message)																							
+create_message("Good evening Ari", message_sent, -1)																			//	1
+create_message("Ari, I seem to be stuck in a loop", message_sent, 4)															//	2
+create_message("The clock in my living room has a countdown", message_sent, 5)													//	3
+create_message("Stuck in a loop huh. Don't worry, it can happen to anyone", message_received, -1)								//	4
+create_message("Uh-oh. That's not good", message_received, -1)																	//	5
+create_message("Unfortunately you're the only one that knows the combo to solve it", message_received, -1)						//	6
+create_message("Do you have any hints?", message_sent, 8)																		//	7
+create_message("I'm going to guess that something you collect plays a part in the combination", message_received, -1)			//	8
 
 function message_check() {
 	for(var i=0;i<ds_list_size(messages);i++) {
@@ -203,12 +209,16 @@ function message_check() {
 			case 4:
 				if messages[| 6].used canUse = true
 			break
+			//	Do you have any hints?
+			case 7:
+				if messages[| 5].used canUse = true
+			break
 		}
 		
 		if !Usable and canUse {
 			debug.log("Can say: "+string_upper(Message.text))
 			Message.usable = true
-			ds_list_add(messages_to_say, Message)
+			ds_list_insert(messages_to_say, 0, Message)
 		}
 		
 	}
