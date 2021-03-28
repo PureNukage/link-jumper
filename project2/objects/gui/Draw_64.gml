@@ -454,7 +454,10 @@ if showPC {
 									draw_text(X+32,Y+2, "Remake Smart Contract Builder")
 								break
 								case 2:
-									draw_text(X+32,Y+2, "Cook up the steaks before they go bad")
+									draw_text(X+32,Y+2, "Cook up the remaining steaks")
+								break
+								case 3:
+									draw_text(X+32,Y+2, "Schedule the next podcast with Pomp")
 								break
 							}
 							Y += 48
@@ -472,10 +475,10 @@ if showPC {
 						draw_sprite_ext(s_meme_1,0,X,Y, scale,scale, 0,c_white,1)
 						
 						X += 140
-						var scale = 0.25
+						var scale = 0.20
 						draw_sprite_ext(s_meme_2,0,X,Y, scale,scale, 0,c_white,1)
 						
-						X += 110
+						X += 160
 						var scale = 0.14
 						draw_sprite_ext(s_meme_5,0,X,Y, scale,scale, 0,c_white,1)
 						
@@ -741,14 +744,40 @@ if showPC {
 	
 if showBookshelf {
 	
-	var X = 164
-	var Y = 64
+	var shelfX = 164
+	var shelfY = 64
 	var Width = 640
 	var Height = 360
 	//draw_set_color(c_dkgray)
 	//draw_rectangle(X,Y, X+Width,Y+Height, false)
 	
 	var scale = 5
-	draw_sprite_ext(s_bookshelf,0,X,Y, scale,scale, 0,c_white,1)
+	draw_sprite_ext(s_bookshelf_empty,0,shelfX,shelfY, scale,scale, 0,c_white,1)
+	
+	var bookX = shelfX + 4
+	var bookY = shelfY + 5
+	var text = ""
+	for(var i=0;i<2;i++) {
+		switch(i) {
+			case 0: text = "Gorgias" break
+			case 1: text = "Protagoras" break
+		}
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y, bookX,bookY,bookX+54,bookY+100) {
+			draw_set_color(c_white)
+			draw_rectangle(bookX-4,bookY-4,bookX+59+4,bookY+110+8,false)
+		}	
+		draw_sprite_ext(s_book_0,0,bookX,bookY, scale,scale, 0,c_white,1)
+		draw_set_color(c_black)
+		draw_text_ext_transformed(bookX+43,bookY+15,text,string_height(text),100,1,1,270)
+		bookX += 64
+		
+	}
+	
+	draw_set_color(c_red)
+	draw_set_alpha(0.5)
+	draw_rectangle(bookX,bookY, bookX+59,bookY+110, false)
+	draw_set_alpha(1)
+	
+
 	
 }

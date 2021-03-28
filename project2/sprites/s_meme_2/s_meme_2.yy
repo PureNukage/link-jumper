@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 399,
+  "bbox_right": 743,
   "bbox_top": 0,
-  "bbox_bottom": 710,
+  "bbox_bottom": 897,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 400,
-  "height": 711,
+  "width": 744,
+  "height": 898,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"2256e5b8-cb26-405e-a697-802d44c68ebc","path":"sprites/s_meme_2/s_meme_2.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"2256e5b8-cb26-405e-a697-802d44c68ebc","path":"sprites/s_meme_2/s_meme_2.yy",},"LayerId":{"name":"8f7952ec-b2ac-4bed-aeca-930446772d24","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_meme_2","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","name":"2256e5b8-cb26-405e-a697-802d44c68ebc","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"1d483d55-f713-4b18-bd3d-077ad0547e7f","path":"sprites/s_meme_2/s_meme_2.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"1d483d55-f713-4b18-bd3d-077ad0547e7f","path":"sprites/s_meme_2/s_meme_2.yy",},"LayerId":{"name":"40bbf4ab-7f38-43c6-b066-43a990896af3","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_meme_2","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","name":"1d483d55-f713-4b18-bd3d-077ad0547e7f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_meme_2","path":"sprites/s_meme_2/s_meme_2.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"9dfadd26-b538-4d12-bafc-31fde0f7d427","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2256e5b8-cb26-405e-a697-802d44c68ebc","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"bf91e2ec-0a70-4ccd-9f6c-ebbcf7d88368","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1d483d55-f713-4b18-bd3d-077ad0547e7f","path":"sprites/s_meme_2/s_meme_2.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8f7952ec-b2ac-4bed-aeca-930446772d24","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"40bbf4ab-7f38-43c6-b066-43a990896af3","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "memes",

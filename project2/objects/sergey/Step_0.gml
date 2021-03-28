@@ -17,7 +17,7 @@ else {
 	movespeed = clamp(movespeed,0,movespeedMax)
 }
 
-if !gui.showPC applyMovement()
+if !gui.showPC and !gui.showBookshelf applyMovement()
 
 //	Sprite decisions
 if hspd != 0 image_xscale = sign(hspd)

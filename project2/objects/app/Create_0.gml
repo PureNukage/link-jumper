@@ -192,6 +192,8 @@ function switch_stage(index) {
 		
 			app.stage = 4
 			
+			gui.showMenu = false
+			
 			camera.cameraRefresh = true
 			
 			if !instance_exists(sound) instance_create_layer(0,0,"Instances",sound)
@@ -296,6 +298,9 @@ function game_over() {
 		room_goto(Room2)
 		camera.cameraRefresh = true
 		chapter3_looped_once = true
+		instance_destroy(gui)
+		instance_create_layer(0,0,"Instances",gui)
+		app.switch_stage(4)
 	}
 	draw_reset()
 }

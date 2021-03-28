@@ -111,7 +111,7 @@ for(var i=1;i<20;i++) {
 		break
 		//	Photos
 		case 9:
-			Window.window_width_max = 400
+			Window.window_width_max = 460
 			Window.window_scrollable = true
 			Window.window_scroll_max = 120
 		break
@@ -183,10 +183,10 @@ create_message("Good evening Ari", message_sent, -1)																			//	1
 create_message("Ari, I seem to be stuck in a loop", message_sent, 4)															//	2
 create_message("The clock in my living room has a countdown", message_sent, 5)													//	3
 create_message("Stuck in a loop huh. Don't worry, it can happen to anyone", message_received, -1)								//	4
-create_message("Uh-oh. That's not good", message_received, -1)																	//	5
+create_message("Uh-oh. That's not good", message_received, 6)																	//	5
 create_message("Unfortunately you're the only one that knows the combo to solve it", message_received, -1)						//	6
 create_message("Do you have any hints?", message_sent, 8)																		//	7
-create_message("I'm going to guess that something you collect plays a part in the combination", message_received, -1)			//	8
+create_message("You once told me that something you collect plays a part in the combination", message_received, -1)			//	8
 
 function message_check() {
 	for(var i=0;i<ds_list_size(messages);i++) {
@@ -206,10 +206,6 @@ function message_check() {
 			//	The clock in my living room has a countdown
 			case 3:
 				if app.chapter3_seen_timer canUse = true
-			break
-			//	Do you have any hints?
-			case 4:
-				if messages[| 6].used canUse = true
 			break
 			//	Do you have any hints?
 			case 7:
