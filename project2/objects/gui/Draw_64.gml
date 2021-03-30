@@ -744,45 +744,156 @@ if showPC {
 	
 if showBookshelf {
 	
-	var shelfX = 164
+	var shelfX = 32
 	var shelfY = 64
 	var Width = 640
 	var Height = 360
 	//draw_set_color(c_dkgray)
 	//draw_rectangle(X,Y, X+Width,Y+Height, false)
 	
-	var scale = 5
+	var scale = 7
 	draw_sprite_ext(s_bookshelf_empty,0,shelfX,shelfY, scale,scale, 0,c_white,1)
 	
 	var bookX = shelfX + 4
 	var bookY = shelfY + 5
 	var text = ""
 	var book = s_book_0
-	for(var i=0;i<5;i++) {
+	var space = 96
+	var spaceHeight = 0
+	var books = 25
+	for(var i=0;i<books;i++) {
 		switch(i) {
-			case 0: text = "Tetraktys" break
-			case 1: text = "2001" break
-			case 2: text = "2010" break
-			case 3: text = "2067" break
-			case 4: text = "3001" break
-			case 10: text = "Gorgias" break
-			case 11: text = "Protagoras" break
+			case 0: 
+				text = "Tetraktys"
+			break
+			case 1: 
+				text = "2001: A Space Odyssey"
+				space = 90
+				book = s_book_1
+			break
+			case 2: 
+				text = "2010: Odyssey Two" 
+			break
+			case 3: 
+				text = "2061: Odyssey Three" 
+			break
+			case 4: 
+				text = "3001: The Final Odyssey" 
+				space = 120
+			break
+			case 5: 
+				text = "The Moon is a Harsh Mistress" 
+				space = 96
+				book = s_book_2
+			break
+			case 6: 
+				text = "Stranger in a Strange Land" 
+				space = 120
+			break
+			case 7:
+				text = "The Fourth Industrial Revolution"
+				space = 90
+				book = s_book_1
+			break
+			case 8:
+				text = "Shaping The Future of the 4IR"
+				spaceHeight = 156
+			break
+			case 9:
+				spaceHeight = 0
+				bookX = shelfX + 4
+				text = "Apology"
+				book = s_book_3
+			break
+			case 10: 
+				text = "Charmides" 
+			break
+			case 11: 
+				text = "Epinomis" 
+			break
+			case 12:
+				text = "Gorgias"
+			break
+			case 13:
+				text = "Ion"
+			break
+			case 14:
+				text = "Laches"
+			break
+			case 15:
+				text = "Meno"
+				space = 88
+			break
+			case 16:
+				text = "Protagoras"
+			break
+			case 17:
+				text = "Phaedrus"
+			break
+			case 18:
+				text = "Republic"
+				spaceHeight = 156
+			break
+			case 19:
+				spaceHeight = 0
+				space = 240
+				bookX = shelfX + 12
+				text = "Seneca"
+				book = s_book_0
+			break
+			case 20:
+				space = 96
+				spaceHeight = 0
+				text = "Diablo 2"
+				book = s_book_4
+			break
+			case 21:
+				text = "Half-Life 2"
+			break
+			case 22:
+				text = "Legend of Zelda"
+			break
+			case 23:
+				text = "Unreal Tournament 2004"
+			break
+			case 24:
+				text = "BioShock"
+			break
 		}
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y, bookX,bookY,bookX+54,bookY+100) {
+		var Alpha = 1
+		if books_array[i] {
+			Alpha = 0.2
+		}
+		draw_set_alpha(Alpha)
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y, bookX,bookY,bookX+83,bookY+155) {
 			draw_set_color(c_white)
-			draw_rectangle(bookX-4,bookY-4,bookX+59+4,bookY+110+8,false)
-		}	
-		draw_sprite_ext(book,0,bookX,bookY, scale,scale, 0,c_white,1)
+			draw_rectangle(bookX-4,bookY-4,bookX+83+4,bookY+155+8,false)
+			if input.leftPress {
+				books_array[i] = !books_array[i]
+				if books_array[i] books_selected++
+				if !books_array[i] books_selected--
+				if books_selected > books_selected_max {
+					books_array[i] = false
+					books_selected--
+				}
+			}
+		}
+		draw_sprite_ext(book,0,bookX,bookY, scale,scale, 0,c_white,Alpha)
 		draw_set_color(c_black)
-		draw_text_ext_transformed(bookX+43,bookY+15,text,string_height(text),100,1,1,270)
-		bookX += 64
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_middle)
+		draw_text_ext_transformed(bookX+42,bookY+80,text,string_height(text),120,1,1,270)
+		bookX += space
+		bookY += spaceHeight
 		
 	}
 	
 	//draw_set_color(c_red)
 	//draw_set_alpha(0.5)
-	//draw_rectangle(bookX,bookY, bookX+59,bookY+110, false)
+	//draw_rectangle(bookX,bookY, bookX+83,bookY+155, false)
 	//draw_set_alpha(1)
+	
+	//draw_circle(bookX+42,bookY+78,8,false)
 	
 
 	

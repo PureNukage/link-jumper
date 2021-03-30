@@ -143,6 +143,14 @@ for(var i=1;i<20;i++) {
 	
 }
 
+//	Books
+var books = 25
+books_array = []
+books_selected = 0
+books_selected_max = 2
+for(var i=0;i<books;i++) {
+	books_array[i] = false
+}
 
 #region Messages
 
