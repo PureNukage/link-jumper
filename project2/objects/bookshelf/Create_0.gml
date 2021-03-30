@@ -10,4 +10,5 @@ function _open() {
 	if moveX >= 130 {
 		opening = false
 	}
+	if sergey.y < bbox_bottom depth = -2000
 }

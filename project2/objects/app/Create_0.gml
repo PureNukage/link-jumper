@@ -225,6 +225,7 @@ roomSwitch = -1
 roomSwitchStage = -1
 roomSwitchTimer = 0
 roomSwitchTimerMax = 90
+roomSwitchPrevious = -1
 function switch_room(index) {
 	roomSwitch = index
 	roomSwitchStage = 0
@@ -247,6 +248,7 @@ function _switch_room() {
 		break
 		//	Changing to the new room
 		case 1:
+			roomSwitchPrevious = room
 			room_goto(roomSwitch)
 			roomSwitchStage = 2
 			camera.cameraRefresh = true
@@ -258,9 +260,21 @@ function _switch_room() {
 			if roomSwitchTimer == roomSwitchTimerMax {
 				switch(room) {
 					case Room2:
-						sergey.x = 32
-						sergey.y = 448
-						sergey.depth = -1
+						switch(roomSwitchPrevious) {
+							case Room3:
+								sergey.x = 32
+								sergey.y = 448
+								sergey.depth = -1
+							break
+							case Room4:
+								sergey.x = 227
+								sergey.y = 316
+								sergey.depth = -1
+								//bookshelf.x -= 128
+								//bookshelf.opened = true
+							break
+						}
+
 					break
 				}
 			}
@@ -273,6 +287,7 @@ function _switch_room() {
 				roomSwitchStage = -1
 				roomSwitchTimer = 0
 				roomSwitch = -1
+				roomSwitchPrevious = -1
 			}
 			draw_set_alpha(1)
 			

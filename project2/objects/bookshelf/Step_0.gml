@@ -19,4 +19,6 @@ if gui.books_array[12] and gui.books_array[16] and !opened {
 	opened = true
 }
 
+depth = -y
+
 if opening _open()
