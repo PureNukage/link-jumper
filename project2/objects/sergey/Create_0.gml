@@ -5,6 +5,8 @@ yy = 0
 movespeed = 0
 movespeedMax = 4
 
+canMove = true
+
 mask_index = s_collision2
 
 

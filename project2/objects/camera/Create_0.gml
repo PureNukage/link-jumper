@@ -4,6 +4,18 @@ window_scale = 2
 centerWindow = false
 cameraRefresh = false
 
+cameraFocusOn = false
+cameraFocusX = -1
+cameraFocusY = -1
+cameraFocusTimer = -1
+cameraFocusTimerValue = -1
+function cameraFocus(_x, _y, _timer) {
+	cameraFocusOn = true
+	cameraFocusX = _x
+	cameraFocusY = _y
+	cameraFocusTimer = _timer
+}
+
 zoom_level = 1
 
 function scale_canvas(new_width, new_height, center) {

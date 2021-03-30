@@ -3,8 +3,30 @@ if instance_exists(player) and app.stage == 2 {
 	y = player.y
 }
 else if instance_exists(sergey) and app.stage == 4 {
-	x = sergey.x
-	y = sergey.y-64
+	//if instance_exists(elevator) and elevator.rising {
+	//	x = elevator.x
+	//	y = elevator.y
+	//}
+	//else {
+	//	x = sergey.x
+	//	y = sergey.y-64
+	//}
+	if !cameraFocusOn {
+		x = sergey.x
+		y = sergey.y-64
+	}
+	else {
+		x = cameraFocusX
+		y = cameraFocusY
+		cameraFocusTimerValue++
+		if cameraFocusTimerValue >= cameraFocusTimer {
+			cameraFocusOn = false
+			cameraFocusX = -1
+			cameraFocusY = -1
+			cameraFocusTimer = -1
+			cameraFocusTimerValue = -1
+		}
+	}
 }
 
 if cameraRefresh {
