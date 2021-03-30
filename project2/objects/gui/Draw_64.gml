@@ -883,6 +883,10 @@ if showBookshelf {
 		draw_set_halign(fa_center)
 		draw_set_valign(fa_middle)
 		draw_text_ext_transformed(bookX+42,bookY+80,text,string_height(text),120,1,1,270)
+		
+		//draw_set_color(c_white)
+		//draw_text(bookX,bookY,string(i))
+		
 		bookX += space
 		bookY += spaceHeight
 		
