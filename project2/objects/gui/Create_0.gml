@@ -13,6 +13,7 @@ text = ""
 showEnd = false
 
 showMenu = true
+if app.stage == 4 showMenu = false
 
 showBookshelf = false
 

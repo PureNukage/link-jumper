@@ -119,8 +119,12 @@ if showEnd {
 	var X = centerX - width/2
 	var Y = centerY-height/2
 	
-	if debug.draw_debug_button(X,Y,width,height, "Journey complete. Press to exit") {
-		game_restart()	
+	if debug.draw_debug_button(X,Y,width,height, "Journey complete. Press to finish") {
+		app.unlockedChapter3 = true
+		app.switch_room(Room2)
+		app.switch_stage(4)
+		gui.showEnd = false
+		//game_restart()	
 	}
 	
 }
@@ -159,7 +163,7 @@ if showMenu {
 	var width = 120
 	var height = 60
 	var xx = centerX - width/2
-	var yy = centerY + 80
+	var yy = centerY + 40
 	
 	draw_set_color(c_black)
 	draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
@@ -199,7 +203,32 @@ if showMenu {
 		draw_roundrect(xx,yy, xx+width,yy+height, false)
 	
 		draw_set_color(c_white)
-		draw_text(xx+width/2,yy+height/2, "Start at Stage 2")	
+		draw_text(xx+width/2,yy+height/2, "Start at Chapter 2")	
+	}
+	
+	if app.unlockedChapter3 {
+		var width = 180
+		var height = 60
+		var xx = centerX - width/2
+		var yy = yy + 80
+	
+		draw_set_color(c_black)
+		draw_roundrect(xx-2,yy-2, xx+width+2,yy+height+2, false)
+	
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+width,yy+height) {
+			draw_set_color(c_sergey_blue2)
+			if input.leftPress {
+				app.switch_stage(4)
+				app.switch_room(Room2)
+			}
+		}
+		else {
+			draw_set_color(c_sergey_blue)
+		}
+		draw_roundrect(xx,yy, xx+width,yy+height, false)
+	
+		draw_set_color(c_white)
+		draw_text(xx+width/2,yy+height/2, "Start at Chapter 3")	
 	}
 	
 	draw_reset()
@@ -319,6 +348,7 @@ if showPC {
 	}
 		
 	//	Windows
+	var loop = 0
 	for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 		//	Determine the icons                  
 		var Window = window_depth_list[| i]  	
@@ -329,6 +359,22 @@ if showPC {
 			var window_width = Window.window_width
 			var window_height = Window.window_height
 			var border = 2
+			
+			var WindowWidth = window_get_width()
+			var WindowHeight = window_get_height()
+			var GuiWidth = display_get_gui_width()
+			var GuiHeight = display_get_gui_height()
+			var ScaleWidth = WindowWidth / GuiWidth
+			var ScaleHeight = WindowHeight / GuiHeight
+			
+			if loop > 0 {
+				windowX *= ScaleWidth
+				windowY *= ScaleHeight
+				window_width *= ScaleWidth
+				window_height *= ScaleHeight
+			}
+			
+			loop++
 	
 			//	Background
 			draw_set_color(c_black)
@@ -354,7 +400,9 @@ if showPC {
 			//	Window shtuff
 			var extraHeight = 200
 			if Window.window_index == 10 extraHeight = Window.window_scroll_max
-			var surface = surface_create(display_get_gui_width(), display_get_gui_height()+extraHeight)
+			//var surface = surface_create(display_get_gui_width(), display_get_gui_height()+extraHeight)
+			var surface = surface_create(window_get_width(), window_get_height()+extraHeight)
+			//var surface = surface_create(surface_get_width(application_surface), surface_get_height(application_surface)+extraHeight)
 			surface_set_target(surface)
 			draw_clear_alpha(c_black, 0)
 			
@@ -718,12 +766,24 @@ if showPC {
 				#endregion
 			}
 			surface_reset_target()
-			
-			draw_surface_part(surface, windowX,windowY+Window.window_scroll,window_width,window_height-24, windowX,windowY+24)
+
+			draw_surface_part_ext(surface, windowX,windowY+Window.window_scroll,window_width,window_height-24, windowX*ScaleWidth,(windowY+24)*ScaleHeight, ScaleWidth,ScaleHeight,c_white,1)
 			
 			surface_free(surface)
+			//sprite_delete(Sprite)
 				
 			////	DEBUG WINDOWS
+			
+			var _y = 50
+			draw_text(200,_y,"window_width: "+string(window_get_width())) _y += 48
+			draw_text(200,_y,"window_height: "+string(window_get_height())) _y += 48
+			draw_text(200,_y,"gui_width: "+string(display_get_gui_width())) _y += 48
+			draw_text(200,_y,"gui_height: "+string(display_get_gui_height())) _y += 48
+			draw_text(200,_y,"app_width: "+string(surface_get_width(application_surface))) _y += 48
+			draw_text(200,_y,"app_height: "+string(surface_get_height(application_surface))) _y += 48
+			draw_text(200,_y,"scaleWidth: "+string(ScaleWidth)) _y += 48
+			draw_text(200,_y,"scaleHeight: "+string(ScaleHeight)) _y += 48
+			
 			//draw_set_color(c_red)
 			//draw_set_alpha(0.5)
 			//draw_rectangle(windowX+window_width-4,windowY,windowX+window_width+4,windowY+window_height-8,false)
@@ -756,7 +816,7 @@ if showBookshelf {
 	
 	var bookX = shelfX + 4
 	var bookY = shelfY + 5
-	var text = ""
+	var _text = ""
 	var book = s_book_0
 	var space = 96
 	var spaceHeight = 0
@@ -764,100 +824,100 @@ if showBookshelf {
 	for(var i=0;i<books;i++) {
 		switch(i) {
 			case 0: 
-				text = "Tetraktys"
+				_text = "Tetraktys"
 			break
 			case 1: 
-				text = "2001: A Space Odyssey"
+				_text = "2001: A Space Odyssey"
 				space = 90
 				book = s_book_1
 			break
 			case 2: 
-				text = "2010: Odyssey Two" 
+				_text = "2010: Odyssey Two" 
 			break
 			case 3: 
-				text = "2061: Odyssey Three" 
+				_text = "2061: Odyssey Three" 
 			break
 			case 4: 
-				text = "3001: The Final Odyssey" 
+				_text = "3001: The Final Odyssey" 
 				space = 120
 			break
 			case 5: 
-				text = "The Moon is a Harsh Mistress" 
+				_text = "The Moon is a Harsh Mistress" 
 				space = 96
 				book = s_book_2
 			break
 			case 6: 
-				text = "Stranger in a Strange Land" 
+				_text = "Stranger in a Strange Land" 
 				space = 120
 			break
 			case 7:
-				text = "The Fourth Industrial Revolution"
+				_text = "The Fourth Industrial Revolution"
 				space = 90
 				book = s_book_1
 			break
 			case 8:
-				text = "Shaping The Future of the 4IR"
+				_text = "Shaping The Future of the 4IR"
 				spaceHeight = 156
 			break
 			case 9:
 				spaceHeight = 0
 				bookX = shelfX + 4
-				text = "Apology"
+				_text = "Apology"
 				book = s_book_3
 			break
 			case 10: 
-				text = "Charmides" 
+				_text = "Charmides" 
 			break
 			case 11: 
-				text = "Epinomis" 
+				_text = "Epinomis" 
 			break
 			case 12:
-				text = "Gorgias"
+				_text = "Gorgias"
 			break
 			case 13:
-				text = "Ion"
+				_text = "Ion"
 			break
 			case 14:
-				text = "Laches"
+				_text = "Laches"
 			break
 			case 15:
-				text = "Meno"
+				_text = "Meno"
 				space = 88
 			break
 			case 16:
-				text = "Protagoras"
+				_text = "Protagoras"
 			break
 			case 17:
-				text = "Phaedrus"
+				_text = "Phaedrus"
 			break
 			case 18:
-				text = "Republic"
+				_text = "Republic"
 				spaceHeight = 156
 			break
 			case 19:
 				spaceHeight = 0
 				space = 240
 				bookX = shelfX + 12
-				text = "Seneca"
+				_text = "Seneca"
 				book = s_book_0
 			break
 			case 20:
 				space = 96
 				spaceHeight = 0
-				text = "Diablo 2"
+				_text = "Diablo 2"
 				book = s_book_4
 			break
 			case 21:
-				text = "Half-Life 2"
+				_text = "Half-Life 2"
 			break
 			case 22:
-				text = "Legend of Zelda"
+				_text = "Legend of Zelda"
 			break
 			case 23:
-				text = "Unreal Tournament 2004"
+				_text = "Unreal Tournament 2004"
 			break
 			case 24:
-				text = "BioShock"
+				_text = "BioShock"
 			break
 		}
 		var Alpha = 1
@@ -882,7 +942,7 @@ if showBookshelf {
 		draw_set_color(c_black)
 		draw_set_halign(fa_center)
 		draw_set_valign(fa_middle)
-		draw_text_ext_transformed(bookX+42,bookY+80,text,string_height(text),120,1,1,270)
+		draw_text_ext_transformed(bookX+42,bookY+80,_text,string_height(_text),120,1,1,270)
 		
 		//draw_set_color(c_white)
 		//draw_text(bookX,bookY,string(i))

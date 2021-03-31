@@ -7,6 +7,8 @@ creator = "@PureNukage"
 
 stage = -1
 
+unlockedChapter3 = false
+
 chapter3_looped_once = false
 chapter3_seen_timer = false
 
@@ -190,6 +192,8 @@ function switch_stage(index) {
 		break
 		case 4:
 		
+			if audio_is_playing(snd_music) audio_stop_sound(snd_music)
+		
 			app.stage = 4
 			
 			gui.showMenu = false
@@ -209,6 +213,7 @@ function save_game() {
 	ini_open("save.ini")
 	
 	ini_write_real("Data", "unlockedFlying", unlockedFlyingStage)
+	ini_write_real("Data", "unlockedChapter3", unlockedChapter3)
 	
 	ini_close()
 }
@@ -217,6 +222,7 @@ function load_game() {
 	ini_open("save.ini")
 	
 	unlockedFlyingStage = ini_read_real("Data", "unlockedFlying", 0)
+	unlockedChapter3 = ini_read_real("Data", "unlockedChapter3", 0)
 	
 	ini_close()
 }
@@ -314,6 +320,7 @@ function game_over() {
 		chapter3_looped_once = true
 		instance_destroy(gui)
 		instance_create_layer(0,0,"Instances",gui)
+		gui.showMenu = false
 		app.switch_stage(4)
 		if audio_is_playing(snd_trackA) audio_stop_sound(snd_trackA)
 		if audio_is_playing(snd_trackB) audio_stop_sound(snd_trackB)

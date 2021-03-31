@@ -27,7 +27,7 @@ else if stage == 3 {
 
 	_y += space
 
-	draw_text(_x, _y, "Music for Chapter 3 by Kei")
+	draw_text(_x, _y, "Music for Chapter 3 by Sushiki")
 
 	_y += space
 
