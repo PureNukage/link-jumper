@@ -1,0 +1,2 @@
+type = "C"
+receiver = true

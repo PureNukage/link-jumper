@@ -1,0 +1,2 @@
+type = "B"
+receiver = true

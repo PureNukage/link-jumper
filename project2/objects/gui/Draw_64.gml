@@ -902,3 +902,9 @@ if showBookshelf {
 
 	
 }
+	
+if showNodeControls {
+	
+
+	
+}

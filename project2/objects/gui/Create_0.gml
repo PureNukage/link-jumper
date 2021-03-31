@@ -18,6 +18,9 @@ showBookshelf = false
 
 interacting = -1
 
+showNodeControls = false
+tankSelected = -1
+
 function _create_window() constructor {
 	open = false
 	windowX = 192

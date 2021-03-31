@@ -10,7 +10,7 @@ else if interaction interaction = false
 sergey.mask_index = oldMask
 
 //	Wait for puzzle solution for elevator to rise up
-if statue_0.redeye and statue_3.redeye and !used {
+if statue_0.redeye and !statue_1.redeye and !statue_2.redeye and !statue_3.redeye and !used {
 	used = true
 	rising = true
 	camera.cameraFocus(x,y, 90)

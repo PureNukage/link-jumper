@@ -270,8 +270,6 @@ function _switch_room() {
 								sergey.x = 227
 								sergey.y = 316
 								sergey.depth = -1
-								//bookshelf.x -= 128
-								//bookshelf.opened = true
 							break
 						}
 

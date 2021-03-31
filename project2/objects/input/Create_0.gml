@@ -5,6 +5,8 @@ leftPress = mouse_check_button_pressed(mb_left)
 leftPressed = mouse_check_button(mb_left)
 leftReleased = mouse_check_button_released(mb_left)
 
+rightReleased = mouse_check_button_released(mb_right)
+
 mouseWheelUp = mouse_wheel_up()
 mouseWheelDown = mouse_wheel_down()
 

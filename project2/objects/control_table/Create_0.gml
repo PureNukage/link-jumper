@@ -1,0 +1,3 @@
+interaction = false
+
+gameDone = false

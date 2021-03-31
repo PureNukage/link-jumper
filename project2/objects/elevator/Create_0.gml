@@ -22,9 +22,12 @@ function rise() {
 }
 
 lowering = false
+lowered = false
 function lower() {
 	y += 4	
 	if y >= 246 {
+		if !lowered app.switch_room(RoomElevator)
+		lowered = true
 		lowering = false
 		y = 246
 	}

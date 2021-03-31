@@ -4,6 +4,10 @@ if canMove {
 	hspd = input.keyRight - input.keyLeft
 	vspd = input.keyDown - input.keyUp
 }
+else {
+	hspd = 0
+	vspd = 0
+}
 
 if (hspd != 0 or vspd != 0) {
 	var Direction = point_direction(0,0, hspd,vspd)

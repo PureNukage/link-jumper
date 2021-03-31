@@ -4,6 +4,8 @@ window_scale = 2
 centerWindow = false
 cameraRefresh = false
 
+nodeControl = false
+
 cameraFocusOn = false
 cameraFocusX = -1
 cameraFocusY = -1
