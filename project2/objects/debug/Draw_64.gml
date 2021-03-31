@@ -25,6 +25,25 @@ if on {
 		draw_text(xx,yy, "books_selected: "+string(books_selected)) yy += 15
 	}
 	
+	//	Time
+	var Seconds = string(60 - time.seconds)
+	var Minutes = string(app.chapter3_timer)
+	if (60-time.seconds) < 10 {
+		var Seconds = "0" + string(60 - time.seconds)	
+	}
+	if (60-time.seconds) == 60 {
+		var Seconds = "00"	
+		var Minutes = string(app.chapter3_timer + 1)
+	}
+
+	if app.gameOver {
+		Minutes = "0"
+		Seconds = "00"
+	}
+
+	var Time = Minutes + ":" + Seconds
+	draw_text(xx,yy,"Time: "+Time)
+	
 	//	Buttons
 	var width = 200
 	var height = 140

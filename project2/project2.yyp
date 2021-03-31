@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"astronaut","path":"objects/astronaut/astronaut.yy",},"order":8,},
     {"id":{"name":"s_stars","path":"sprites/s_stars/s_stars.yy",},"order":1,},
+    {"id":{"name":"snd_trackB","path":"sounds/snd_trackB/snd_trackB.yy",},"order":3,},
     {"id":{"name":"snd_music_2","path":"sounds/snd_music_2/snd_music_2.yy",},"order":1,},
     {"id":{"name":"collisionRoom","path":"objects/collisionRoom/collisionRoom.yy",},"order":2,},
     {"id":{"name":"font_text","path":"fonts/font_text/font_text.yy",},"order":0,},
@@ -40,6 +41,7 @@
     {"id":{"name":"s_meme_3","path":"sprites/s_meme_3/s_meme_3.yy",},"order":2,},
     {"id":{"name":"s_icon7","path":"sprites/s_icon7/s_icon7.yy",},"order":4,},
     {"id":{"name":"table","path":"objects/table/table.yy",},"order":2,},
+    {"id":{"name":"snd_trackA","path":"sounds/snd_trackA/snd_trackA.yy",},"order":2,},
     {"id":{"name":"s_lightpoles","path":"sprites/s_lightpoles/s_lightpoles.yy",},"order":27,},
     {"id":{"name":"s_icon18","path":"sprites/s_icon18/s_icon18.yy",},"order":13,},
     {"id":{"name":"s_arrow","path":"sprites/s_arrow/s_arrow.yy",},"order":13,},
@@ -204,11 +206,11 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"RoomApp","path":"rooms/RoomApp/RoomApp.yy",},},
-    {"roomId":{"name":"Room5","path":"rooms/Room5/Room5.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"roomId":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
+    {"roomId":{"name":"Room5","path":"rooms/Room5/Room5.yy",},},
     {"roomId":{"name":"RoomElevator","path":"rooms/RoomElevator/RoomElevator.yy",},},
     {"roomId":{"name":"RoomFinished","path":"rooms/RoomFinished/RoomFinished.yy",},},
   ],

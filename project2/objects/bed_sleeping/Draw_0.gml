@@ -1,31 +1,43 @@
-draw_self()
+//	End Game text
+if stage == 0 {
 
-var _x = x - 600
-var _y = y + creditsY
+}
+//	Credits
+else if stage == 3 {
 
-creditsY -= 1
+	draw_set_halign(fa_left)
+	draw_set_valign(fa_middle)
+	draw_set_alpha(1)
 
-var space = 128
+	draw_self()
 
-draw_set_color(c_white)
-draw_text(_x, _y, "Created by Nukage")
+	var _x = x - 600
+	var _y = y + creditsY
 
-_y += space
+	creditsY -= 1
 
-draw_text(_x, _y, "Music for Chapters 1 and 2 by Wombocombo")
+	var space = 128
 
-_y += space
+	draw_set_color(c_white)
+	draw_text(_x, _y, "Created by Nukage")
 
-draw_text(_x, _y, "Music for Chapter 3 by Kei")
+	_y += space
 
-_y += space
+	draw_text(_x, _y, "Music for Chapters 1 and 2 by Wombocombo")
 
-draw_text(_x, _y, "Thanks to the Chainlink team for the inspiration")
+	_y += space
 
-_y += space
+	draw_text(_x, _y, "Music for Chapter 3 by Kei")
 
-//draw_text(200, 200, string(creditsY))
+	_y += space
 
-if creditsY <= -1000 {
-	game_restart()	
+	draw_text_ext(_x, _y, "Thanks to the Chainlink team for the work they do and for humoring this", string_height("1"),500)
+
+	_y += space
+
+	//draw_text(200, 200, string(creditsY))
+
+	if creditsY <= -1000 {
+		game_restart()	
+	}
 }

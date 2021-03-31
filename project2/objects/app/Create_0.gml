@@ -296,6 +296,7 @@ function _switch_room() {
 gameOver = false
 gameOverTimer = 0
 gameOverTimerMax = 180
+gameDone = false
 function game_over() {
 	draw_set_color(c_white)
 	draw_set_alpha(gameOverTimer / gameOverTimerMax)
@@ -314,6 +315,8 @@ function game_over() {
 		instance_destroy(gui)
 		instance_create_layer(0,0,"Instances",gui)
 		app.switch_stage(4)
+		if audio_is_playing(snd_trackA) audio_stop_sound(snd_trackA)
+		if audio_is_playing(snd_trackB) audio_stop_sound(snd_trackB)
 	}
 	draw_reset()
 }
