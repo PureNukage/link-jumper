@@ -38,6 +38,7 @@ else if stage == 3 {
 	//draw_text(200, 200, string(creditsY))
 
 	if creditsY <= -1000 {
-		game_restart()	
+		game_restart()
+		if audio_is_playing(snd_trackB) audio_stop_sound(snd_trackB)
 	}
 }

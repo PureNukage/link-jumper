@@ -299,6 +299,14 @@ if showPC {
 					if Window.window_depth > -1 {
 						ds_list_delete(window_depth_list, Window.window_depth)
 					}
+					
+					////	HTML5 limit to only one window
+					if ds_list_size(window_depth_list) > 0 {
+						while !ds_list_empty(window_depth_list) {
+							window_depth_list[| 0].open = false
+							ds_list_delete(window_depth_list, 0)
+						}
+					}
 				
 					//	Opening this window
 					ds_list_insert(window_depth_list, 0, Window)
@@ -348,7 +356,6 @@ if showPC {
 	}
 		
 	//	Windows
-	var loop = 0
 	for(var i=ds_list_size(window_depth_list)-1;i>-1;i--) {
 		//	Determine the icons                  
 		var Window = window_depth_list[| i]  	
@@ -366,15 +373,6 @@ if showPC {
 			var GuiHeight = display_get_gui_height()
 			var ScaleWidth = WindowWidth / GuiWidth
 			var ScaleHeight = WindowHeight / GuiHeight
-			
-			if loop > 0 {
-				windowX *= ScaleWidth
-				windowY *= ScaleHeight
-				window_width *= ScaleWidth
-				window_height *= ScaleHeight
-			}
-			
-			loop++
 	
 			//	Background
 			draw_set_color(c_black)
@@ -400,9 +398,7 @@ if showPC {
 			//	Window shtuff
 			var extraHeight = 200
 			if Window.window_index == 10 extraHeight = Window.window_scroll_max
-			//var surface = surface_create(display_get_gui_width(), display_get_gui_height()+extraHeight)
 			var surface = surface_create(window_get_width(), window_get_height()+extraHeight)
-			//var surface = surface_create(surface_get_width(application_surface), surface_get_height(application_surface)+extraHeight)
 			surface_set_target(surface)
 			draw_clear_alpha(c_black, 0)
 			
@@ -770,19 +766,18 @@ if showPC {
 			draw_surface_part_ext(surface, windowX,windowY+Window.window_scroll,window_width,window_height-24, windowX*ScaleWidth,(windowY+24)*ScaleHeight, ScaleWidth,ScaleHeight,c_white,1)
 			
 			surface_free(surface)
-			//sprite_delete(Sprite)
 				
 			////	DEBUG WINDOWS
 			
-			var _y = 50
-			draw_text(200,_y,"window_width: "+string(window_get_width())) _y += 48
-			draw_text(200,_y,"window_height: "+string(window_get_height())) _y += 48
-			draw_text(200,_y,"gui_width: "+string(display_get_gui_width())) _y += 48
-			draw_text(200,_y,"gui_height: "+string(display_get_gui_height())) _y += 48
-			draw_text(200,_y,"app_width: "+string(surface_get_width(application_surface))) _y += 48
-			draw_text(200,_y,"app_height: "+string(surface_get_height(application_surface))) _y += 48
-			draw_text(200,_y,"scaleWidth: "+string(ScaleWidth)) _y += 48
-			draw_text(200,_y,"scaleHeight: "+string(ScaleHeight)) _y += 48
+			//var _y = 50
+			//draw_text(200,_y,"window_width: "+string(window_get_width())) _y += 48
+			//draw_text(200,_y,"window_height: "+string(window_get_height())) _y += 48
+			//draw_text(200,_y,"gui_width: "+string(display_get_gui_width())) _y += 48
+			//draw_text(200,_y,"gui_height: "+string(display_get_gui_height())) _y += 48
+			//draw_text(200,_y,"app_width: "+string(surface_get_width(application_surface))) _y += 48
+			//draw_text(200,_y,"app_height: "+string(surface_get_height(application_surface))) _y += 48
+			//draw_text(200,_y,"scaleWidth: "+string(ScaleWidth)) _y += 48
+			//draw_text(200,_y,"scaleHeight: "+string(ScaleHeight)) _y += 48
 			
 			//draw_set_color(c_red)
 			//draw_set_alpha(0.5)
