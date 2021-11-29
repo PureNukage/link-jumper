@@ -7,7 +7,7 @@ creator = "@PureNukage"
 
 stage = -1
 
-unlockedChapter3 = false
+unlockedChapter3 = true
 chapter3active = false
 
 chapter3_looped_once = false
@@ -27,6 +27,7 @@ instance_create_layer(0,0,Layer,input)
 instance_create_layer(0,0,Layer,debug)
 instance_create_layer(0,0,Layer,camera)
 instance_create_layer(0,0,Layer,gui)
+instance_create_layer(0,0,Layer,web3controller)
 
 function switch_stage(index) {
 	
@@ -214,7 +215,7 @@ function save_game() {
 	ini_open("save.ini")
 	
 	ini_write_real("Data", "unlockedFlying", unlockedFlyingStage)
-	ini_write_real("Data", "unlockedChapter3", unlockedChapter3)
+	ini_write_real("Data", "unlockedChapter3", 1)
 	
 	ini_close()
 }
@@ -223,7 +224,7 @@ function load_game() {
 	ini_open("save.ini")
 	
 	unlockedFlyingStage = ini_read_real("Data", "unlockedFlying", 1)
-	unlockedChapter3 = ini_read_real("Data", "unlockedChapter3", 0)
+	unlockedChapter3 = ini_read_real("Data", "unlockedChapter3", 1)
 	
 	unlockedFlyingStage = 1
 	

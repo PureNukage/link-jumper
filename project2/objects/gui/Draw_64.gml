@@ -969,8 +969,8 @@ if showMenuChapter3 {
 	//	MetaMask Button
 	var width = 240
 	var height = 60
-	var xx = window_get_width()/2 - width/2
-	var yy = window_get_height()/2
+	var xx = display_get_gui_width()/2 - width/2
+	var yy = display_get_gui_height()/2
 	var thickness = 4
 	
 	draw_set_color(c_black)
@@ -978,7 +978,7 @@ if showMenuChapter3 {
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
 		draw_set_color(c_orange_dark)
 		if input.leftPress {
-			
+			web3controller.state = 0
 		}
 	}
 	else {

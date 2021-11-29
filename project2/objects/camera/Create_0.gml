@@ -20,6 +20,7 @@ function cameraFocus(_x, _y, _timer) {
 
 zoom_level = 1
 
+scaled = false
 function scale_canvas(new_width, new_height, center) {
 	
 	window_set_size(new_width, new_height)
@@ -30,6 +31,7 @@ function scale_canvas(new_width, new_height, center) {
 	
 	surface_resize(application_surface,new_width,new_height)
 	
+	scaled = true
 }
 	
 function cameraSetup() {
