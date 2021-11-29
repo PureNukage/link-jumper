@@ -4,6 +4,8 @@ window_scale = 2
 centerWindow = false
 cameraRefresh = false
 
+Camera = -1
+
 nodeControl = false
 
 cameraFocusOn = false
@@ -115,6 +117,10 @@ function cameraFix() {
 	#endregion
 	#region Camera Create
 
+		if Camera > -1 {
+			camera_destroy(Camera)
+			Camera = -1
+		}
 		Camera = camera_create()
 
 		var viewmat = matrix_build_lookat(width,height,-10,width,height,0,0,1,0)

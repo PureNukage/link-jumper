@@ -1,5 +1,6 @@
 state = -1
 
+get_metamaskaccount_check = false
 token_balance_check = false
 
 browser_has_metamask = false

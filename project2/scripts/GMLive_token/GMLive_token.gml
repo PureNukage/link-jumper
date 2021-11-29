@@ -4,17 +4,22 @@
 // `scripts/GMLive*` and `extensions/GMLive/` lines to your `.gitignore`.
 
 // Parser tokens
-if(live_enabled)function mc_gml_token()constructor{
+if(live_enabled)/// @interface {gml_token}
+function mc_gml_token()constructor{
+	/// @hint {array} gml_token:__enumParams__
+	/// @hint {int} gml_token:__enumIndex__
 	static getIndex=method(undefined,gml_std_enum_getIndex);
 	static toString=method(undefined,gml_std_enum_toString);
 	static __enum__=mt_gml_token;
 }
 
 if(live_enabled)
-global.__mp_gml_token_header=["h_d","h_name","h_lb"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_header():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_header;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_name
+	/// @hint {bool} :h_lb
+	static __enumParams__=["h_d","h_name","h_lb"];
 	static __enumIndex__=0;
 }
 
@@ -28,10 +33,10 @@ function gml_token_header(l_h_d,l_h_name,l_h_lb){
 }
 
 if(live_enabled)
-global.__mp_gml_token_macro=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_macro():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_macro;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=1;
 }
 
@@ -43,10 +48,10 @@ function gml_token_macro(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_hash=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_hash():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_hash;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=2;
 }
 
@@ -58,10 +63,10 @@ function gml_token_hash(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_semico=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_semico():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_semico;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=3;
 }
 
@@ -73,10 +78,10 @@ function gml_token_semico(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_comma=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_comma():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_comma;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=4;
 }
 
@@ -88,10 +93,10 @@ function gml_token_comma(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_period=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_period():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_period;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=5;
 }
 
@@ -103,10 +108,10 @@ function gml_token_period(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_colon=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_colon():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_colon;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=6;
 }
 
@@ -118,10 +123,10 @@ function gml_token_colon(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_qmark=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_qmark():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_qmark;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=7;
 }
 
@@ -133,10 +138,10 @@ function gml_token_qmark(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_at_sign=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_at_sign():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_at_sign;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=8;
 }
 
@@ -148,10 +153,10 @@ function gml_token_at_sign(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_dollar_sign=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_dollar_sign():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_dollar_sign;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=9;
 }
 
@@ -163,10 +168,11 @@ function gml_token_dollar_sign(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_keyword=["h_d","h_kw"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_keyword():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_keyword;
+	/// @hint {gml_pos} :h_d
+	/// @hint {ast_GmlKeyword} :h_kw
+	static __enumParams__=["h_d","h_kw"];
 	static __enumIndex__=10;
 }
 
@@ -179,10 +185,11 @@ function gml_token_keyword(l_h_d,l_h_kw){
 }
 
 if(live_enabled)
-global.__mp_gml_token_ident=["h_d","h_id"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_ident():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_ident;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_id
+	static __enumParams__=["h_d","h_id"];
 	static __enumIndex__=11;
 }
 
@@ -195,10 +202,10 @@ function gml_token_ident(l_h_d,l_h_id){
 }
 
 if(live_enabled)
-global.__mp_gml_token_undefined=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_undefined():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_undefined;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=12;
 }
 
@@ -210,10 +217,12 @@ function gml_token_undefined(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_number=["h_d","h_nu","h_src"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_number():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_number;
+	/// @hint {gml_pos} :h_d
+	/// @hint {number} :h_nu
+	/// @hint {string} :h_src
+	static __enumParams__=["h_d","h_nu","h_src"];
 	static __enumIndex__=13;
 }
 
@@ -227,10 +236,11 @@ function gml_token_number(l_h_d,l_h_nu,l_h_src){
 }
 
 if(live_enabled)
-global.__mp_gml_token_cstring=["h_d","h_st"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_cstring():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_cstring;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_st
+	static __enumParams__=["h_d","h_st"];
 	static __enumIndex__=14;
 }
 
@@ -243,10 +253,11 @@ function gml_token_cstring(l_h_d,l_h_st){
 }
 
 if(live_enabled)
-global.__mp_gml_token_un_op=["h_d","h_op"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_un_op():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_un_op;
+	/// @hint {gml_pos} :h_d
+	/// @hint {ast_GmlUnOp} :h_op
+	static __enumParams__=["h_d","h_op"];
 	static __enumIndex__=15;
 }
 
@@ -259,10 +270,11 @@ function gml_token_un_op(l_h_d,l_h_op){
 }
 
 if(live_enabled)
-global.__mp_gml_token_adjfix=["h_d","h_inc"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_adjfix():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_adjfix;
+	/// @hint {gml_pos} :h_d
+	/// @hint {bool} :h_inc
+	static __enumParams__=["h_d","h_inc"];
 	static __enumIndex__=16;
 }
 
@@ -275,10 +287,11 @@ function gml_token_adjfix(l_h_d,l_h_inc){
 }
 
 if(live_enabled)
-global.__mp_gml_token_bin_op=["h_d","h_op"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_bin_op():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_bin_op;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_op
+	static __enumParams__=["h_d","h_op"];
 	static __enumIndex__=17;
 }
 
@@ -291,10 +304,11 @@ function gml_token_bin_op(l_h_d,l_h_op){
 }
 
 if(live_enabled)
-global.__mp_gml_token_set_op=["h_d","h_op"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_set_op():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_set_op;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_op
+	static __enumParams__=["h_d","h_op"];
 	static __enumIndex__=18;
 }
 
@@ -307,10 +321,10 @@ function gml_token_set_op(l_h_d,l_h_op){
 }
 
 if(live_enabled)
-global.__mp_gml_token_par_open=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_par_open():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_par_open;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=19;
 }
 
@@ -322,10 +336,10 @@ function gml_token_par_open(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_par_close=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_par_close():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_par_close;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=20;
 }
 
@@ -337,10 +351,10 @@ function gml_token_par_close(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_sqb_open=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_sqb_open():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_sqb_open;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=21;
 }
 
@@ -352,10 +366,10 @@ function gml_token_sqb_open(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_sqb_close=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_sqb_close():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_sqb_close;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=22;
 }
 
@@ -367,10 +381,10 @@ function gml_token_sqb_close(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_cub_open=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_cub_open():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_cub_open;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=23;
 }
 
@@ -382,10 +396,10 @@ function gml_token_cub_open(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_cub_close=["h_d"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_cub_close():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_cub_close;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=24;
 }
 
@@ -397,10 +411,11 @@ function gml_token_cub_close(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_token_arg_const=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_token}
 function mc_gml_token_arg_const():mc_gml_token()constructor{
-	static __enumParams__=global.__mp_gml_token_arg_const;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=25;
 }
 

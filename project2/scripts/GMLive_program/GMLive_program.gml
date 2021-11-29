@@ -6,21 +6,21 @@
 // VM "programs"
 if(live_enabled)
 function gml_program(l_sources)constructor{
-	static h_sources=undefined;
-	static h_script_array=undefined;
-	static h_script_map=undefined;
-	static h_enum_array=undefined;
-	static h_enum_map=undefined;
-	static h_macro_map=undefined;
-	static h_wait_list=undefined;
-	static h_wait_list_swap=undefined;
-	static h_callback=undefined;
-	static h_time_tag=undefined;
-	static h_error_text=undefined;
-	static h_error_pos=undefined;
-	static h_is_ready=undefined;
-	static h_tag=undefined;
-	static h_live_ident=undefined;
+	static h_sources=undefined; /// @is {array<gml_source>}
+	static h_script_array=undefined; /// @is {array<gml_script>}
+	static h_script_map=undefined; /// @is {tools_Dictionary<gml_script>}
+	static h_enum_array=undefined; /// @is {array<gml_enum>}
+	static h_enum_map=undefined; /// @is {tools_Dictionary<gml_enum>}
+	static h_macro_map=undefined; /// @is {tools_Dictionary<gml_macro>}
+	static h_wait_list=undefined; /// @is {tools_ArrayList<gml_thread>}
+	static h_wait_list_swap=undefined; /// @is {tools_ArrayList<gml_thread>}
+	static h_callback=undefined; /// @is {function<gml_thread; void>}
+	static h_time_tag=undefined; /// @is {vm_GmlThreadTimeTag}
+	static h_error_text=undefined; /// @is {string}
+	static h_error_pos=undefined; /// @is {gml_pos}
+	static h_is_ready=undefined; /// @is {bool}
+	static h_tag=undefined; /// @is {any}
+	static h_live_ident=undefined; /// @is {string}
 	static h_error=function(l_text,l_d){
 		var l_pos=l_d;
 		self.h_error_text=l_pos.h_to_string()+" "+l_text;
@@ -106,7 +106,7 @@ function gml_program(l_sources)constructor{
 		gml_program_seek_inst=undefined;
 		return false;
 	}
-	static h_eval_value=undefined;
+	static h_eval_value=undefined; /// @is {any}
 	static h_eval=function(l_q){
 		var l_r,l_v;
 		var l__g=l_q;

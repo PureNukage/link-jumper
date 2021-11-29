@@ -6,16 +6,16 @@
 // converts tokens to AST!
 if(live_enabled)
 function gml_builder(l_pg,l_src)constructor{
-	static h_tokens=undefined;
-	static h_source=undefined;
-	static h_offset=undefined;
-	static h_length=undefined;
-	static h_scripts=undefined;
-	static h_enums=undefined;
-	static h_macro_names=undefined;
-	static h_macro_nodes=undefined;
-	static h_error_text=undefined;
-	static h_error_pos=undefined;
+	static h_tokens=undefined; /// @is {array<gml_token>}
+	static h_source=undefined; /// @is {gml_source}
+	static h_offset=undefined; /// @is {int}
+	static h_length=undefined; /// @is {int}
+	static h_scripts=undefined; /// @is {array<gml_script>}
+	static h_enums=undefined; /// @is {array<gml_enum>}
+	static h_macro_names=undefined; /// @is {array<string>}
+	static h_macro_nodes=undefined; /// @is {array<gml_macro>}
+	static h_error_text=undefined; /// @is {string}
+	static h_error_pos=undefined; /// @is {gml_pos}
 	static h_error_at=function(l_text,l_pos){
 		self.h_error_text=l_pos.h_to_string()+": "+l_text;
 		self.h_error_pos=l_pos;
@@ -30,8 +30,8 @@ function gml_builder(l_pg,l_src)constructor{
 	static h_expect_node=function(l_text,l_node){
 		return self.h_error_at("Expected "+l_text+", got "+gml_std_Type_enumConstructor(l_node),gml_std_haxe_enum_tools_getParameter(l_node,0));
 	}
-	static h_out_node=undefined;
-	static h_current_script=undefined;
+	static h_out_node=undefined; /// @is {ast_GmlNode}
+	static h_current_script=undefined; /// @is {string}
 	static h_build_ops=function(l_firstPos,l_firstOp){
 		self.h_offset+=1;
 		var l_nodes=ds_list_create();
@@ -120,7 +120,8 @@ function gml_builder(l_pg,l_src)constructor{
 					break;
 				case 4:
 					if(l_seenComma){
-						return self.h_error("Unexpected comma",l_tk);
+						gml_std_gml_internal_ArrayImpl_push(l_args1,gml_node_undefined(l_tk.h_d));
+						self.h_offset+=1;
 					} else {
 						l_seenComma=true;
 						self.h_offset+=1;
@@ -1123,9 +1124,9 @@ function gml_builder(l_pg,l_src)constructor{
 		self.h_build_script_args_prefix=l_nextPrefix;
 		return false;
 	}
-	static h_build_script_args_prefix=undefined;
-	static h_build_script_args_map=undefined;
-	static h_build_script_args_argc=undefined;
+	static h_build_script_args_prefix=undefined; /// @is {array<ast_GmlNode>}
+	static h_build_script_args_map=undefined; /// @is {tools_Dictionary<int>}
+	static h_build_script_args_argc=undefined; /// @is {int}
 	static h_build_loop=function(l_first){
 		if(self.h_build_outer(l_first,undefined,0,false,undefined))return true;
 		var l_hasFirstFunc=false;
@@ -1190,7 +1191,7 @@ function gml_builder(l_pg,l_src)constructor{
 		}
 		return false;
 	}
-	static h_program=undefined;
+	static h_program=undefined; /// @is {gml_program}
 	self.h_build_script_args_argc=0;
 	self.h_build_script_args_map=undefined;
 	self.h_build_script_args_prefix=[];

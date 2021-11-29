@@ -1,1 +1,0 @@
-if bookshelf.opened depth = -2000

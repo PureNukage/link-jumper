@@ -2,7 +2,8 @@
 // PLEASE DO NOT FORGET to remove paid extensions from your project when publishing the source code!
 // And if you are using git, you can exclude GMLive by adding
 // `scripts/GMLive*` and `extensions/GMLive/` lines to your `.gitignore`.
-// Generated at 2021-08-21 15:17:36 (10692ms) for v2.3.1+
+// Generated at 2021-11-29 15:37:40 (10663ms) for v2.3.7+
+/// @lint nullToAny true
 globalvar gml_std_haxe_type_markerValue;if(live_enabled)gml_std_haxe_type_markerValue=[];
 globalvar mt_gml_std_Date;if(live_enabled)mt_gml_std_Date=new gml_std_haxe_class(-1,"gml_std_Date");
 globalvar mt_gml_builder;if(live_enabled)mt_gml_builder=new gml_std_haxe_class(-1,"gml_builder");
@@ -35,7 +36,7 @@ enum gml_thread_status{none,running,waiting,done,error}
 
 if(live_enabled)
 function gml_std_Date(l_year,l_month,l_day,l_hour,l_min1,l_sec)constructor{
-	static h_date=undefined;
+	static h_date=undefined; /// @is {date}
 	static h_getTime=function(){
 		return (self.h_date-25569)*86400000;
 	}
@@ -315,11 +316,11 @@ function gml_std_Type_enumIndex(l_e){
 
 if(live_enabled)
 function gml_enum(l_name,l_pos)constructor{
-	static h_name=undefined;
-	static h_pos=undefined;
-	static h_ctr_list=undefined;
-	static h_ctr_map=undefined;
-	static h_has_values=undefined;
+	static h_name=undefined; /// @is {string}
+	static h_pos=undefined; /// @is {gml_pos}
+	static h_ctr_list=undefined; /// @is {array<gml_enum_ctr>}
+	static h_ctr_map=undefined; /// @is {tools_Dictionary<gml_enum_ctr>}
+	static h_has_values=undefined; /// @is {bool}
 	static h_add=function(l_name,l_val){
 		var l_ctr=new gml_enum_ctr(l_name,self.h_pos,gml_node_number(self.h_pos,l_val,string(l_val)));
 		l_ctr.h_value=l_val;
@@ -356,10 +357,10 @@ function gml_enum_create_builtin(l_name){
 
 if(live_enabled)
 function gml_enum_ctr(l_name,l_pos,l_node)constructor{
-	static h_name=undefined;
-	static h_pos=undefined;
-	static h_node=undefined;
-	static h_value=undefined;
+	static h_name=undefined; /// @is {string}
+	static h_pos=undefined; /// @is {gml_pos}
+	static h_node=undefined; /// @is {ast_GmlNode}
+	static h_value=undefined; /// @is {int?}
 	self.h_value=undefined;
 	self.h_name=l_name;
 	self.h_pos=l_pos;
@@ -368,10 +369,10 @@ function gml_enum_ctr(l_name,l_pos,l_node)constructor{
 }
 
 function gml_macro(l_name,l_node,l_isExpr,l_isStat)constructor{
-	static h_name=undefined;
-	static h_node=undefined;
-	static h_is_expr=undefined;
-	static h_is_stat=undefined;
+	static h_name=undefined; /// @is {string}
+	static h_node=undefined; /// @is {ast_GmlNode}
+	static h_is_expr=undefined; /// @is {bool}
+	static h_is_stat=undefined; /// @is {bool}
 	if(live_enabled){
 		self.h_name=l_name;
 		self.h_node=l_node;
@@ -429,10 +430,10 @@ function gml_op_get_name(l_this1){
 
 if(live_enabled)
 function gml_pos(l_src,l_row,l_col)constructor{
-	static h_src=undefined;
-	static h_row=undefined;
-	static h_col=undefined;
-	static h_next=undefined;
+	static h_src=undefined; /// @is {gml_source}
+	static h_row=undefined; /// @is {int}
+	static h_col=undefined; /// @is {int}
+	static h_next=undefined; /// @is {gml_pos}
 	static h_copy=function(){
 		var l_r=new gml_pos(self.h_src,self.h_row,self.h_col);
 		if(self.h_next!=undefined)l_r.h_next=self.h_next.h_copy();
@@ -461,16 +462,16 @@ function gml_pos(l_src,l_row,l_col)constructor{
 
 if(live_enabled)
 function gml_script(l_src,l_name,l_pos)constructor{
-	static h_name=undefined;
-	static h_pos=undefined;
-	static h_index=undefined;
-	static h_node=undefined;
-	static h_source=undefined;
-	static h_local_map=undefined;
-	static h_locals=undefined;
-	static h_arguments=undefined;
-	static h_named_args=undefined;
-	static h_actions=undefined;
+	static h_name=undefined; /// @is {string}
+	static h_pos=undefined; /// @is {gml_pos}
+	static h_index=undefined; /// @is {int}
+	static h_node=undefined; /// @is {ast_GmlNode}
+	static h_source=undefined; /// @is {gml_source}
+	static h_local_map=undefined; /// @is {tools_Dictionary<int>}
+	static h_locals=undefined; /// @is {int}
+	static h_arguments=undefined; /// @is {int}
+	static h_named_args=undefined; /// @is {tools_Dictionary<int>}
+	static h_actions=undefined; /// @is {gml_action_list}
 	static h_destroy=function(){
 		if(self.h_actions!=undefined){
 			var l_this1=self.h_actions;
@@ -500,14 +501,14 @@ function gml_script(l_src,l_name,l_pos)constructor{
 }
 
 function gml_source(l_name,l_code,l_main,l_opt)constructor{
-	static h_name=undefined;
-	static h_code=undefined;
-	static h_main=undefined;
-	static h_length=undefined;
-	static h_opt=undefined;
-	static h_tokens=undefined;
-	static h_token_count=undefined;
-	static h___eof=undefined;
+	static h_name=undefined; /// @is {string}
+	static h_code=undefined; /// @is {string}
+	static h_main=undefined; /// @is {string}
+	static h_length=undefined; /// @is {int}
+	static h_opt=undefined; /// @is {bool}
+	static h_tokens=undefined; /// @is {array<gml_token>}
+	static h_token_count=undefined; /// @is {int}
+	static h___eof=undefined; /// @is {gml_pos}
 	static h_get_eof=function(){
 		if(live_enabled){
 			if(self.h___eof==undefined)self.h___eof=new gml_pos(self,string_count("\n",self.h_code)+2,1);
@@ -722,10 +723,10 @@ function gml_asset_add(l_name,l_index){
 
 if(live_enabled)
 function gml_std_haxe_class(l_id,l_name)constructor{
-	static h_superClass=undefined;
-	static h_marker=undefined;
-	static h_index=undefined;
-	static h_name=undefined;
+	static h_superClass=undefined; /// @is {haxe_class<any>}
+	static h_marker=undefined; /// @is {any}
+	static h_index=undefined; /// @is {int}
+	static h_name=undefined; /// @is {string}
 	self.h_superClass=undefined;
 	self.h_marker=gml_std_haxe_type_markerValue;
 	self.h_index=l_id;
@@ -735,10 +736,10 @@ function gml_std_haxe_class(l_id,l_name)constructor{
 
 if(live_enabled)
 function gml_std_haxe_enum(l_id,l_name,l_constructors)constructor{
-	static h_constructors=undefined;
-	static h_marker=undefined;
-	static h_index=undefined;
-	static h_name=undefined;
+	static h_constructors=undefined; /// @is {array<string>}
+	static h_marker=undefined; /// @is {any}
+	static h_index=undefined; /// @is {int}
+	static h_name=undefined; /// @is {string}
 	if(false)show_debug_message(argument[2]);
 	self.h_marker=gml_std_haxe_type_markerValue;
 	self.h_index=l_id;
@@ -1217,7 +1218,7 @@ function haxe__dynamic_access_dynamic_access_impl__copy(l_this1){
 
 if(live_enabled)
 function gml_std_haxe_Exception(l_message,l_previous,l_native)constructor{
-	static h_native=undefined;
+	static h_native=undefined; /// @is {any}
 	if(false)show_debug_message(argument[2]);
 	self.h_native=(l_native!=undefined?l_native:self);
 	static __class__=mt_gml_std_haxe_Exception;
@@ -1260,7 +1261,7 @@ function haxe_ds_basic_map_new(){
 
 if(live_enabled)
 function haxe_ds_basic_map()constructor{
-	static h_obj=undefined;
+	static h_obj=undefined; /// @is {haxe_DynamicAccess<V>}
 	static h_clear=method(undefined,haxe_ds_basic_map_h_clear);
 	method(self, haxe_ds_basic_map_new)();
 	static __class__=mt_haxe_ds_basic_map;
@@ -1279,7 +1280,7 @@ function haxe_ds_basic_map_h_clear(){
 
 if(live_enabled)
 function haxe_ds_string_map()constructor{
-	static h_obj=undefined;
+	static h_obj=undefined; /// @is {haxe_DynamicAccess<V>}
 	static h_clear=method(undefined,haxe_ds_basic_map_h_clear);
 	method(self, haxe_ds_basic_map_new)();
 	static __class__=mt_haxe_ds_string_map;
@@ -1413,14 +1414,15 @@ function live_validate_scripts(){
 if(live_enabled)
 function live_cache_data_create(){
 	var l_this=array_create(1);
+	/// @typedef {tuple<program:gml_program>} live_cache_data
 	l_this[@0]=undefined;
 	return l_this;
 }
 
 if(live_enabled)
 function gml_link(l_value,l_next)constructor{
-	static h_value=undefined;
-	static h_next=undefined;
+	static h_value=undefined; /// @is {T}
+	static h_next=undefined; /// @is {gml_link<T>}
 	self.h_value=l_value;
 	self.h_next=l_next;
 	//
@@ -1531,16 +1533,16 @@ function gml_action_list_print(l_this1){
 
 if(live_enabled)
 function gml_thread_scope(l_actions,l_offset,l_args1,l_locals,l_self1,l_other1,l_next)constructor{
-	static h_actions=undefined;
-	static h_offset=undefined;
-	static h_args=undefined;
-	static h_locals=undefined;
-	static h_stack=undefined;
-	static h_inst=undefined;
-	static h_with=undefined;
-	static h_xhdl=undefined;
-	static h_program=undefined;
-	static h_next=undefined;
+	static h_actions=undefined; /// @is {gml_action_list}
+	static h_offset=undefined; /// @is {int}
+	static h_args=undefined; /// @is {array<any>}
+	static h_locals=undefined; /// @is {array<any>}
+	static h_stack=undefined; /// @is {gml_stack<any>}
+	static h_inst=undefined; /// @is {gml_stack<any>}
+	static h_with=undefined; /// @is {gml_with_scope}
+	static h_xhdl=undefined; /// @is {gml_link<int>}
+	static h_program=undefined; /// @is {gml_program}
+	static h_next=undefined; /// @is {gml_thread_scope}
 	self.h_xhdl=undefined;
 	self.h_with=undefined;
 	self.h_stack=array_create(16);
@@ -1745,11 +1747,11 @@ function gml_value_list_pad_to_size_with_null(l_this1,l_newSize){
 
 if(live_enabled)
 function gml_with_scope(l_data,l_nxt)constructor{
-	static h_index=undefined;
-	static h_length=undefined;
-	static h_array=undefined;
-	static h_next=undefined;
-	static h_data=undefined;
+	static h_index=undefined; /// @is {int}
+	static h_length=undefined; /// @is {int}
+	static h_array=undefined; /// @is {array<any>}
+	static h_next=undefined; /// @is {gml_with_scope}
+	static h_data=undefined; /// @is {vm_GmlWithData}
 	self.h_index=0;
 	self.h_data=l_data;
 	self.h_length=l_data.length;
@@ -1804,46 +1806,49 @@ function vm__gml_with_data_gml_with_data_impl__destroy(l_this1){
 	ds_stack_push(vm__gml_with_data_gml_with_data_impl__pools[l_sln],l_this1.items);
 }
 
-if(live_enabled)function mc_gml_thread_proc_result()constructor{
+if(live_enabled)/// @interface {gml_thread_proc_result}
+function mc_gml_thread_proc_result()constructor{
+	/// @hint {array} gml_thread_proc_result:__enumParams__
+	/// @hint {int} gml_thread_proc_result:__enumIndex__
 	static getIndex=method(undefined,gml_std_enum_getIndex);
 	static toString=method(undefined,gml_std_enum_toString);
 	static __enum__=mt_gml_thread_proc_result;
 }
 
-if(live_enabled)global.__mp_gml_thread_proc_result_ok=[];
-if(live_enabled)function mc_gml_thread_proc_result_ok():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_ok;
+if(live_enabled)/// @implements {gml_thread_proc_result}
+function mc_gml_thread_proc_result_ok():mc_gml_thread_proc_result()constructor{
+	static __enumParams__=[];
 	static __enumIndex__=0;
 }
-globalvar gml_thread_proc_result_ok;if(live_enabled)gml_thread_proc_result_ok=new mc_gml_thread_proc_result_ok();
+globalvar gml_thread_proc_result_ok;if(live_enabled)gml_thread_proc_result_ok=new mc_gml_thread_proc_result_ok(); /// @is {gml_thread_proc_result}
 
-if(live_enabled)global.__mp_gml_thread_proc_result_error=[];
-if(live_enabled)function mc_gml_thread_proc_result_error():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_error;
+if(live_enabled)/// @implements {gml_thread_proc_result}
+function mc_gml_thread_proc_result_error():mc_gml_thread_proc_result()constructor{
+	static __enumParams__=[];
 	static __enumIndex__=1;
 }
-globalvar gml_thread_proc_result_error;if(live_enabled)gml_thread_proc_result_error=new mc_gml_thread_proc_result_error();
+globalvar gml_thread_proc_result_error;if(live_enabled)gml_thread_proc_result_error=new mc_gml_thread_proc_result_error(); /// @is {gml_thread_proc_result}
 
-if(live_enabled)global.__mp_gml_thread_proc_result_sync_pos=[];
-if(live_enabled)function mc_gml_thread_proc_result_sync_pos():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_sync_pos;
+if(live_enabled)/// @implements {gml_thread_proc_result}
+function mc_gml_thread_proc_result_sync_pos():mc_gml_thread_proc_result()constructor{
+	static __enumParams__=[];
 	static __enumIndex__=2;
 }
-globalvar gml_thread_proc_result_sync_pos;if(live_enabled)gml_thread_proc_result_sync_pos=new mc_gml_thread_proc_result_sync_pos();
+globalvar gml_thread_proc_result_sync_pos;if(live_enabled)gml_thread_proc_result_sync_pos=new mc_gml_thread_proc_result_sync_pos(); /// @is {gml_thread_proc_result}
 
-if(live_enabled)global.__mp_gml_thread_proc_result_sync_scope=[];
-if(live_enabled)function mc_gml_thread_proc_result_sync_scope():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_sync_scope;
+if(live_enabled)/// @implements {gml_thread_proc_result}
+function mc_gml_thread_proc_result_sync_scope():mc_gml_thread_proc_result()constructor{
+	static __enumParams__=[];
 	static __enumIndex__=3;
 }
-globalvar gml_thread_proc_result_sync_scope;if(live_enabled)gml_thread_proc_result_sync_scope=new mc_gml_thread_proc_result_sync_scope();
+globalvar gml_thread_proc_result_sync_scope;if(live_enabled)gml_thread_proc_result_sync_scope=new mc_gml_thread_proc_result_sync_scope(); /// @is {gml_thread_proc_result}
 
 globalvar gml_builder_build_line_is_stat; /// @is {bool}
 globalvar gml_builder_build_line_is_expr; /// @is {bool}
 globalvar gml_compile_error_text; /// @is {string}
-globalvar gml_compile_error_pos; /// @is {pos}
-globalvar gml_compile_curr_script; /// @is {script}
-globalvar gml_compile_curr_program; /// @is {program}
+globalvar gml_compile_error_pos; /// @is {gml_pos}
+globalvar gml_compile_curr_script; /// @is {gml_script}
+globalvar gml_compile_curr_program; /// @is {gml_program}
 globalvar gml_compile_curr_break; /// @is {int}
 if(live_enabled)gml_compile_curr_break=-1;
 globalvar gml_compile_curr_continue; /// @is {int}
@@ -1857,7 +1862,7 @@ if(live_enabled)gml_parser_has_try_catch=true;
 globalvar gml_parser_gml23; /// @is {bool}
 if(live_enabled)gml_parser_gml23=false;
 globalvar gml_parser_error_text; /// @is {string}
-globalvar gml_parser_error_pos; /// @is {pos}
+globalvar gml_parser_error_pos; /// @is {gml_pos}
 globalvar gml_parser_src_buf; /// @is {buffer}
 if(live_enabled)gml_parser_src_buf=buffer_create(1024,buffer_fast,1);
 globalvar gml_parser_str_buf; /// @is {buffer}
@@ -1868,77 +1873,77 @@ globalvar gml_parser_tem_row; /// @is {int}
 globalvar gml_parser_tem_row_start; /// @is {int}
 globalvar gml_parser_tem_end; /// @is {int}
 globalvar gml_parser_tokens_found; /// @is {int}
-globalvar gml_program_seek_inst; /// @is {program}
-globalvar gml_program_seek_func; /// @is {function<node; ds_list; bool>}
-globalvar gml_program_seek_script; /// @is {script}
-globalvar ast_gml_node_tools_ni_concat_pos_pos; /// @is {pos}
+globalvar gml_program_seek_inst; /// @is {gml_program}
+globalvar gml_program_seek_func; /// @is {function<ast_GmlNode; tools_ArrayList<ast_GmlNode>; bool>}
+globalvar gml_program_seek_script; /// @is {gml_script}
+globalvar ast_gml_node_tools_ni_concat_pos_pos; /// @is {gml_pos}
 globalvar gml_script_index_offset; /// @is {int}
 if(live_enabled)gml_script_index_offset=0;
-globalvar gml_func_sig; /// @is {IMap<K; V>}
+globalvar gml_func_sig; /// @is {tools_Dictionary<string>}
 if(live_enabled)gml_func_sig=new haxe_ds_string_map();
-globalvar gml_func_arg0; /// @is {IMap<K; V>}
+globalvar gml_func_arg0; /// @is {tools_Dictionary<int>}
 if(live_enabled)gml_func_arg0=new haxe_ds_string_map();
-globalvar gml_func_arg1; /// @is {IMap<K; V>}
+globalvar gml_func_arg1; /// @is {tools_Dictionary<int>}
 if(live_enabled)gml_func_arg1=new haxe_ds_string_map();
-globalvar gml_func_args; /// @is {IMap<K; V>}
+globalvar gml_func_args; /// @is {tools_Dictionary<array<gml_type_check>>}
 if(live_enabled)gml_func_args=new haxe_ds_string_map();
-globalvar gml_func_rest; /// @is {IMap<K; V>}
+globalvar gml_func_rest; /// @is {tools_Dictionary<gml_type_check>}
 if(live_enabled)gml_func_rest=new haxe_ds_string_map();
-globalvar gml_func_eval; /// @is {IMap<K; V>}
+globalvar gml_func_eval; /// @is {tools_Dictionary<bool>}
 if(live_enabled)gml_func_eval=new haxe_ds_string_map();
-globalvar gml_func_script; /// @is {IMap<K; V>}
+globalvar gml_func_script; /// @is {tools_Dictionary<any>}
 if(live_enabled)gml_func_script=new haxe_ds_string_map();
-globalvar gml_func_script_id; /// @is {IMap<K; V>}
+globalvar gml_func_script_id; /// @is {tools_Dictionary<script>}
 if(live_enabled)gml_func_script_id=new haxe_ds_string_map();
-globalvar gml_inst_data; /// @is {IMap<K; V>}
+globalvar gml_inst_data; /// @is {tools_Dictionary<data_GmlFuncFlags>}
 if(live_enabled)gml_inst_data=new haxe_ds_string_map();
-globalvar gml_var_flags; /// @is {IMap<K; V>}
+globalvar gml_var_flags; /// @is {tools_Dictionary<int>}
 if(live_enabled)gml_var_flags=new haxe_ds_string_map();
-globalvar gml_var_refs; /// @is {IMap<K; V>}
+globalvar gml_var_refs; /// @is {tools_Dictionary<any>}
 if(live_enabled)gml_var_refs=new haxe_ds_string_map();
-globalvar gml_var_types; /// @is {IMap<K; V>}
+globalvar gml_var_types; /// @is {tools_Dictionary<gml_type_check>}
 if(live_enabled)gml_var_types=new haxe_ds_string_map();
-globalvar gml_const_map; /// @is {IMap<K; V>}
+globalvar gml_const_map; /// @is {tools_Dictionary<bool>}
 if(live_enabled)gml_const_map=new haxe_ds_string_map();
-globalvar gml_const_val; /// @is {IMap<K; V>}
+globalvar gml_const_val; /// @is {tools_Dictionary<any>}
 if(live_enabled)gml_const_val=new haxe_ds_string_map();
-globalvar gml_asset_index; /// @is {IMap<K; V>}
+globalvar gml_asset_index; /// @is {tools_Dictionary<int>}
 if(live_enabled)gml_asset_index=new haxe_ds_string_map();
-globalvar gml_enum_map; /// @is {IMap<K; V>}
+globalvar gml_enum_map; /// @is {tools_Dictionary<gml_enum>}
 if(live_enabled)gml_enum_map=new haxe_ds_string_map();
 globalvar gml_seek_eval_error_text; /// @is {string}
-globalvar gml_seek_eval_error_pos; /// @is {pos}
+globalvar gml_seek_eval_error_pos; /// @is {gml_pos}
 globalvar gml_seek_eval_eval_rec; /// @is {bool}
-globalvar gml_seek_eval_eval_thread; /// @is {thread}
+globalvar gml_seek_eval_eval_thread; /// @is {gml_thread}
 if(live_enabled)gml_seek_eval_eval_thread=undefined;
-globalvar gml_seek_eval_eval_actions; /// @is {ds_list}
+globalvar gml_seek_eval_eval_actions; /// @is {gml_action_list}
 if(live_enabled)gml_seek_eval_eval_actions=ds_list_create();
 globalvar gml_seek_eval_invalid_value; /// @is {any}
 if(live_enabled)gml_seek_eval_invalid_value=[];
 globalvar gml_seek_set_op_resolve_set_op_safe; /// @is {bool}
-globalvar gml_seek_set_op_resolve_set_op_xw; /// @is {node}
+globalvar gml_seek_set_op_resolve_set_op_xw; /// @is {ast_GmlNode}
 globalvar gml_std_gml_internal_ArrayImpl_join_buf; /// @is {buffer}
 if(live_enabled)gml_std_gml_internal_ArrayImpl_join_buf=undefined;
 globalvar gml_std_haxe_boot_isJS; /// @is {bool}
 if(live_enabled)gml_std_haxe_boot_isJS=os_browser!=browser_not_a_browser;
-globalvar live_async_http_1_found; /// @is {IMap<K; V>}
+globalvar live_async_http_1_found; /// @is {tools_Dictionary<bool>}
 if(live_enabled)live_async_http_1_found=new haxe_ds_string_map();
-globalvar live_async_http_1_acc; /// @is {ArrayList<source>}
+globalvar live_async_http_1_acc; /// @is {sf_ds_ArrayList<gml_source>}
 if(live_enabled)live_async_http_1_acc=ds_list_create();
 globalvar live_gmlive_patcher_error_text; /// @is {string}
 globalvar live_shader_updated; /// @is {function<shader; string; string; void>}
 if(live_enabled)live_shader_updated=live_shader_updated_default;
-globalvar live_shader_live_shaders; /// @is {ds_map}
+globalvar live_shader_live_shaders; /// @is {ds_map<shader; bool>}
 if(live_enabled)live_shader_live_shaders=ds_map_create();
-globalvar live_shader_live_shaders_start; /// @is {ds_list}
+globalvar live_shader_live_shaders_start; /// @is {ds_list<shader>}
 if(live_enabled)live_shader_live_shaders_start=ds_list_create();
-globalvar live_shader_live_shaders_stop; /// @is {ds_list}
+globalvar live_shader_live_shaders_stop; /// @is {ds_list<shader>}
 if(live_enabled)live_shader_live_shaders_stop=ds_list_create();
 globalvar live_is_ready; /// @is {bool}
 if(live_enabled)live_is_ready=false;
 globalvar live_request_url; /// @is {string}
 if(live_enabled)live_request_url=undefined;
-globalvar live_request_guid; /// @is {string}
+globalvar live_request_guid; /// @is {live_yy_YyGUID}
 if(live_enabled)live_request_guid=undefined;
 globalvar live_request_id; /// @is {http}
 if(live_enabled)live_request_id=undefined;
@@ -1957,29 +1962,29 @@ if(live_enabled)live_request_password="";
 globalvar live_result; /// @is {any}
 if(live_enabled)live_result="";
 globalvar live_directory; /// @is {string}
-globalvar live_live_map; /// @is {IMap<K; V>}
+globalvar live_live_map; /// @is {tools_Dictionary<live_cache_data>}
 if(live_enabled)live_live_map=new haxe_ds_string_map();
-globalvar live_live_enums; /// @is {IMap<K; V>}
+globalvar live_live_enums; /// @is {tools_Dictionary<gml_source>}
 if(live_enabled)live_live_enums=new haxe_ds_string_map();
-globalvar live_live_macros; /// @is {IMap<K; V>}
+globalvar live_live_macros; /// @is {tools_Dictionary<gml_source>}
 if(live_enabled)live_live_macros=new haxe_ds_string_map();
-globalvar live_live_globals; /// @is {source}
+globalvar live_live_globals; /// @is {gml_source}
 if(live_enabled)live_live_globals=undefined;
-globalvar live_live_sprites; /// @is {ds_map}
+globalvar live_live_sprites; /// @is {ds_map<sprite; bool>}
 if(live_enabled)live_live_sprites=ds_map_create();
-globalvar live_live_sprites_start; /// @is {ArrayList<sprite>}
+globalvar live_live_sprites_start; /// @is {sf_ds_ArrayList<sprite>}
 if(live_enabled)live_live_sprites_start=ds_list_create();
-globalvar live_live_sprites_stop; /// @is {ArrayList<sprite>}
+globalvar live_live_sprites_stop; /// @is {sf_ds_ArrayList<sprite>}
 if(live_enabled)live_live_sprites_stop=ds_list_create();
 globalvar live_live_room; /// @is {room}
 if(live_enabled)live_live_room=-1;
-globalvar live_live_room_data; /// @is {ds_map}
+globalvar live_live_room_data; /// @is {ds_map<room; string>}
 if(live_enabled)live_live_room_data=ds_map_create();
-globalvar live_live_rooms; /// @is {ds_map}
+globalvar live_live_rooms; /// @is {ds_map<room; bool>}
 if(live_enabled)live_live_rooms=ds_map_create();
-globalvar live_live_rooms_start; /// @is {ArrayList<room>}
+globalvar live_live_rooms_start; /// @is {sf_ds_ArrayList<room>}
 if(live_enabled)live_live_rooms_start=ds_list_create();
-globalvar live_live_rooms_stop; /// @is {ArrayList<room>}
+globalvar live_live_rooms_stop; /// @is {sf_ds_ArrayList<room>}
 if(live_enabled)live_live_rooms_stop=ds_list_create();
 globalvar live_blank_object; /// @is {object}
 if(live_enabled)live_blank_object=-1;
@@ -1987,7 +1992,7 @@ globalvar live_blank_room; /// @is {room}
 if(live_enabled)live_blank_room=-1;
 globalvar live_temp_path; /// @is {string}
 if(live_enabled)live_temp_path=live_temp_path_init();
-globalvar live_log_script; /// @is {function<string; int; void>}
+globalvar live_log_script; /// @is {function<string; live_GMLiveLogLevel; void>}
 if(live_enabled)live_log_script=live_log_impl;
 globalvar live_update_script; /// @is {function<string; string; string; void>}
 if(live_enabled)live_update_script=live_update_script_impl;
@@ -1999,9 +2004,9 @@ globalvar live_custom_other; /// @is {any}
 if(live_enabled)live_custom_other=undefined;
 globalvar live_room_updated; /// @is {function<room; void>}
 if(live_enabled)live_room_updated=live_room_updated_impl;
-globalvar live_room_loader_object_cache; /// @is {ds_map}
+globalvar live_room_loader_object_cache; /// @is {ds_map<string; object>}
 if(live_enabled)live_room_loader_object_cache=ds_map_create();
-globalvar live_room_loader_sprite_cache; /// @is {ds_map}
+globalvar live_room_loader_sprite_cache; /// @is {ds_map<string; sprite>}
 if(live_enabled)live_room_loader_sprite_cache=ds_map_create();
 globalvar live_room_loader_use_physics; /// @is {bool}
 if(live_enabled)live_room_loader_use_physics=false;
@@ -2021,35 +2026,38 @@ globalvar live_room_loader_apply_settings; /// @is {bool}
 if(live_enabled)live_room_loader_apply_settings=true;
 globalvar live_room_loader_apply_sprites; /// @is {bool}
 if(live_enabled)live_room_loader_apply_sprites=true;
-globalvar live_room_loader_inst_map_gml; /// @is {ds_map}
+globalvar live_room_loader_apply_filters; /// @is {bool}
+if(live_enabled)live_room_loader_apply_filters=true;
+globalvar live_room_loader_inst_map_gml; /// @is {ds_map<string; instance>}
 if(live_enabled)live_room_loader_inst_map_gml=ds_map_create();
-globalvar live_room_loader_inst_map_yy; /// @is {ds_map}
+globalvar live_room_loader_inst_map_yy; /// @is {ds_map<string; live_yy_YyRoomInstance>}
 if(live_enabled)live_room_loader_inst_map_yy=ds_map_create();
 globalvar gml_stack_fill_value_arr; /// @is {array<any>}
 if(live_enabled)gml_stack_fill_value_arr=array_create(1024,0);
 globalvar gml_thread_allow_exceptions; /// @is {bool}
 if(live_enabled)gml_thread_allow_exceptions=false;
-globalvar gml_thread_current; /// @is {thread}
+globalvar gml_thread_current; /// @is {gml_thread}
 if(live_enabled)gml_thread_current=undefined;
 globalvar vm_gml_thread_exec_slice_funcs; /// @is {array<function<any; array<any>; int; any>>}
-globalvar gml_thread_status_none;gml_thread_status_none=[gml_thread_status.none];
-globalvar gml_thread_status_running;gml_thread_status_running=[gml_thread_status.running];
-globalvar gml_thread_status_waiting;gml_thread_status_waiting=[gml_thread_status.waiting];
-globalvar gml_thread_status_done;gml_thread_status_done=[gml_thread_status.done];
-globalvar gml_thread_status_error;gml_thread_status_error=[gml_thread_status.error];
-globalvar gml_type_check_map; /// @is {IMap<K; V>}
+/// @typedef {array} gml_thread_status
+globalvar gml_thread_status_none;gml_thread_status_none=[gml_thread_status.none]; /// @is {gml_thread_status}
+globalvar gml_thread_status_running;gml_thread_status_running=[gml_thread_status.running]; /// @is {gml_thread_status}
+globalvar gml_thread_status_waiting;gml_thread_status_waiting=[gml_thread_status.waiting]; /// @is {gml_thread_status}
+globalvar gml_thread_status_done;gml_thread_status_done=[gml_thread_status.done]; /// @is {gml_thread_status}
+globalvar gml_thread_status_error;gml_thread_status_error=[gml_thread_status.error]; /// @is {gml_thread_status}
+globalvar gml_type_check_map; /// @is {tools_Dictionary<gml_type_check>}
 if(live_enabled)gml_type_check_map=gml_type_check_init();
-globalvar gml_value_print_refs; /// @is {ds_map}
+globalvar gml_value_print_refs; /// @is {ds_map<any; string>}
 if(live_enabled)gml_value_print_refs=ds_map_create();
 globalvar gml_value_print_num; /// @is {int}
 if(live_enabled)gml_value_print_num=0;
-globalvar vm__gml_with_data_gml_with_data_impl__pools; /// @is {VectorData<T>}
+globalvar vm__gml_with_data_gml_with_data_impl__pools; /// @is {array<vm__GmlWithData_GmlWithPool>}
 if(live_enabled)vm__gml_with_data_gml_with_data_impl__pools=vm__gml_with_data_gml_with_data_impl__init();
 globalvar vm_impl_gml_thread_construct_funcs; /// @is {array<function<any; array<any>; int; any>>}
 globalvar vm_group_call_call_func_result; /// @is {any}
 globalvar vm_group_call_call_func_status; /// @is {gml_thread_proc_result}
-globalvar vm_group_op_funcs; /// @is {VectorData<T>}
-globalvar vm_v2_gml_thread_v2_handlers; /// @is {VectorData<T>}
+globalvar vm_group_op_funcs; /// @is {array<function<any; any; any>>}
+globalvar vm_v2_gml_thread_v2_handlers; /// @is {array<vm_v2_GmlThreadProc>}
 
 if(live_enabled){
 	live_validate_scripts();
@@ -2061,3 +2069,25 @@ if(live_enabled){
 	live_preinit_api();
 	live_preinit_project();
 }
+
+/// @typedef {function<th:gml_thread; act:gml_action; gml_thread_proc_result>} vm_v2_GmlThreadProc
+/// @typedef {ds_stack<array<any>>} vm__GmlWithData_GmlWithPool
+/// @typedef {any} vm_GmlWithData
+/// @typedef {ds_map<K; V>} vm_GmlValueMap
+/// @typedef {function<any; string>} gml_type_check
+/// @typedef {any} vm_GmlThreadTimeTag
+/// @typedef {ds_list<T>} gml_action_list
+/// @typedef {array} gml_stack
+/// @typedef {haxe_imap<K; V>} tools_Dictionary
+/// @typedef {ds_list} tools_ArrayList
+/// @typedef {ds_list<T>} sf_ds_ArrayList
+/// @typedef {any} live_yy_YyRoomInstance
+/// @typedef {string} live_yy_YyGUID
+/// @typedef {int} live_GMLiveLogLevel
+/// @typedef {int} data_GmlFuncFlags
+/// @typedef {int} ast_GmlUnOp
+/// @typedef {int} gml_op
+/// @typedef {any} ast_GmlNodeCase
+/// @typedef {gml_pos} ast_GmlNodeData
+/// @typedef {gml_node} ast_GmlNode
+/// @typedef {int} ast_GmlKeyword

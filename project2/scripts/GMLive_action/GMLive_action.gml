@@ -4,17 +4,20 @@
 // `scripts/GMLive*` and `extensions/GMLive/` lines to your `.gitignore`.
 
 // VM "instructions"
-if(live_enabled)function mc_gml_action()constructor{
+if(live_enabled)/// @interface {gml_action}
+function mc_gml_action()constructor{
+	/// @hint {array} gml_action:__enumParams__
+	/// @hint {int} gml_action:__enumIndex__
 	static getIndex=method(undefined,gml_std_enum_getIndex);
 	static toString=method(undefined,gml_std_enum_toString);
 	static __enum__=mt_gml_action;
 }
 
 if(live_enabled)
-global.__mp_gml_action_discard=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_discard():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_discard;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=0;
 }
 
@@ -26,10 +29,10 @@ function gml_action_discard(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_dup=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_dup():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_dup;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=1;
 }
 
@@ -41,10 +44,10 @@ function gml_action_dup(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_dup2x=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_dup2x():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_dup2x;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=2;
 }
 
@@ -56,10 +59,10 @@ function gml_action_dup2x(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_dup3x=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_dup3x():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_dup3x;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=3;
 }
 
@@ -71,10 +74,11 @@ function gml_action_dup3x(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_dup_in=["h_d","h_z"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_dup_in():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_dup_in;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_z
+	static __enumParams__=["h_d","h_z"];
 	static __enumIndex__=4;
 }
 
@@ -87,10 +91,10 @@ function gml_action_dup_in(l_h_d,l_h_z){
 }
 
 if(live_enabled)
-global.__mp_gml_action_undefined=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_undefined():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_undefined;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=5;
 }
 
@@ -102,10 +106,11 @@ function gml_action_undefined(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_number=["h_d","h_f"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_number():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_number;
+	/// @hint {gml_pos} :h_d
+	/// @hint {number} :h_f
+	static __enumParams__=["h_d","h_f"];
 	static __enumIndex__=6;
 }
 
@@ -118,10 +123,11 @@ function gml_action_number(l_h_d,l_h_f){
 }
 
 if(live_enabled)
-global.__mp_gml_action_cstring=["h_d","h_s"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_cstring():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_cstring;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_s
+	static __enumParams__=["h_d","h_s"];
 	static __enumIndex__=7;
 }
 
@@ -134,10 +140,11 @@ function gml_action_cstring(l_h_d,l_h_s){
 }
 
 if(live_enabled)
-global.__mp_gml_action_array_decl=["h_d","h_size"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_array_decl():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_array_decl;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_size
+	static __enumParams__=["h_d","h_size"];
 	static __enumIndex__=8;
 }
 
@@ -150,10 +157,11 @@ function gml_action_array_decl(l_h_d,l_h_size){
 }
 
 if(live_enabled)
-global.__mp_gml_action_object_decl=["h_d","h_fields"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_object_decl():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_object_decl;
+	/// @hint {gml_pos} :h_d
+	/// @hint {array<any>} :h_fields
+	static __enumParams__=["h_d","h_fields"];
 	static __enumIndex__=9;
 }
 
@@ -166,10 +174,11 @@ function gml_action_object_decl(l_h_d,l_h_fields){
 }
 
 if(live_enabled)
-global.__mp_gml_action_const=["h_d","h_v"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_const():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_const;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_v
+	static __enumParams__=["h_d","h_v"];
 	static __enumIndex__=10;
 }
 
@@ -182,10 +191,10 @@ function gml_action_const(l_h_d,l_h_v){
 }
 
 if(live_enabled)
-global.__mp_gml_action_self=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_self():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_self;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=11;
 }
 
@@ -197,10 +206,10 @@ function gml_action_self(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_other=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_other():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_other;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=12;
 }
 
@@ -212,10 +221,11 @@ function gml_action_other(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_local=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_local():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_local;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=13;
 }
 
@@ -228,10 +238,11 @@ function gml_action_local(l_h_d,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_local_set=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_local_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_local_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=14;
 }
 
@@ -244,10 +255,12 @@ function gml_action_local_set(l_h_d,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_local_aop=["h_d","h_o","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_local_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_local_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_o","h_i"];
 	static __enumIndex__=15;
 }
 
@@ -261,10 +274,11 @@ function gml_action_local_aop(l_h_d,l_h_o,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_global=["h_d","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_global():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_global;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_fd"];
 	static __enumIndex__=16;
 }
 
@@ -277,10 +291,11 @@ function gml_action_global(l_h_d,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_global_set=["h_d","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_global_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_global_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_fd"];
 	static __enumIndex__=17;
 }
 
@@ -293,10 +308,12 @@ function gml_action_global_set(l_h_d,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_global_aop=["h_d","h_o","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_global_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_global_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_o","h_fd"];
 	static __enumIndex__=18;
 }
 
@@ -310,10 +327,11 @@ function gml_action_global_aop(l_h_d,l_h_o,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_field=["h_d","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_field():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_field;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_fd"];
 	static __enumIndex__=19;
 }
 
@@ -326,10 +344,11 @@ function gml_action_field(l_h_d,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_field_set=["h_d","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_field_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_field_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_fd"];
 	static __enumIndex__=20;
 }
 
@@ -342,10 +361,12 @@ function gml_action_field_set(l_h_d,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_field_aop=["h_d","h_o","h_fd"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_field_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_field_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {string} :h_fd
+	static __enumParams__=["h_d","h_o","h_fd"];
 	static __enumIndex__=21;
 }
 
@@ -359,10 +380,10 @@ function gml_action_field_aop(l_h_d,l_h_o,l_h_fd){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=22;
 }
 
@@ -374,10 +395,10 @@ function gml_action_index(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index_set=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index_set;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=23;
 }
 
@@ -389,10 +410,11 @@ function gml_action_index_set(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index_aop=["h_d","h_o"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	static __enumParams__=["h_d","h_o"];
 	static __enumIndex__=24;
 }
 
@@ -405,10 +427,10 @@ function gml_action_index_aop(l_h_d,l_h_o){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index2d=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index2d():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index2d;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=25;
 }
 
@@ -420,10 +442,10 @@ function gml_action_index2d(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index2d_set=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index2d_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index2d_set;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=26;
 }
 
@@ -435,10 +457,11 @@ function gml_action_index2d_set(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_index2d_aop=["h_d","h_o"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_index2d_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_index2d_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	static __enumParams__=["h_d","h_o"];
 	static __enumIndex__=27;
 }
 
@@ -451,10 +474,11 @@ function gml_action_index2d_aop(l_h_d,l_h_o){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env=["h_d","h_f"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_f
+	static __enumParams__=["h_d","h_f"];
 	static __enumIndex__=28;
 }
 
@@ -467,10 +491,12 @@ function gml_action_env(l_h_d,l_h_f){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env_set=["h_d","h_f","h_ch"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_f
+	/// @hint {gml_type_check} :h_ch
+	static __enumParams__=["h_d","h_f","h_ch"];
 	static __enumIndex__=29;
 }
 
@@ -484,10 +510,12 @@ function gml_action_env_set(l_h_d,l_h_f,l_h_ch){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env_aop=["h_d","h_o","h_f"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {any} :h_f
+	static __enumParams__=["h_d","h_o","h_f"];
 	static __enumIndex__=30;
 }
 
@@ -501,10 +529,11 @@ function gml_action_env_aop(l_h_d,l_h_o,l_h_f){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env1d=["h_d","h_f"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env1d():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env1d;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_f
+	static __enumParams__=["h_d","h_f"];
 	static __enumIndex__=31;
 }
 
@@ -517,10 +546,12 @@ function gml_action_env1d(l_h_d,l_h_f){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env1d_set=["h_d","h_f","h_ch"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env1d_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env1d_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_f
+	/// @hint {gml_type_check} :h_ch
+	static __enumParams__=["h_d","h_f","h_ch"];
 	static __enumIndex__=32;
 }
 
@@ -534,10 +565,12 @@ function gml_action_env1d_set(l_h_d,l_h_f,l_h_ch){
 }
 
 if(live_enabled)
-global.__mp_gml_action_env1d_aop=["h_d","h_o","h_f"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_env1d_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_env1d_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {any} :h_f
+	static __enumParams__=["h_d","h_o","h_f"];
 	static __enumIndex__=33;
 }
 
@@ -551,10 +584,15 @@ function gml_action_env1d_aop(l_h_d,l_h_o,l_h_f){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ds_aop=["h_d","h_o","h_argc","h_get","h_set","h_out"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ds_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ds_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {int} :h_argc
+	/// @hint {any} :h_get
+	/// @hint {any} :h_set
+	/// @hint {bool} :h_out
+	static __enumParams__=["h_d","h_o","h_argc","h_get","h_set","h_out"];
 	static __enumIndex__=34;
 }
 
@@ -571,10 +609,11 @@ function gml_action_ds_aop(l_h_d,l_h_o,l_h_argc,l_h_get,l_h_set,l_h_out){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_const=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_const():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_const;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=35;
 }
 
@@ -587,10 +626,11 @@ function gml_action_arg_const(l_h_d,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_const_set=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_const_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_const_set;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=36;
 }
 
@@ -603,10 +643,12 @@ function gml_action_arg_const_set(l_h_d,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_const_aop=["h_d","h_o","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_const_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_const_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_o","h_i"];
 	static __enumIndex__=37;
 }
 
@@ -620,10 +662,10 @@ function gml_action_arg_const_aop(l_h_d,l_h_o,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_index=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_index():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_index;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=38;
 }
 
@@ -635,10 +677,10 @@ function gml_action_arg_index(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_index_set=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_index_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_index_set;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=39;
 }
 
@@ -650,10 +692,11 @@ function gml_action_arg_index_set(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_index_aop=["h_d","h_o"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_index_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_index_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	static __enumParams__=["h_d","h_o"];
 	static __enumIndex__=40;
 }
 
@@ -666,10 +709,10 @@ function gml_action_arg_index_aop(l_h_d,l_h_o){
 }
 
 if(live_enabled)
-global.__mp_gml_action_arg_count=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_arg_count():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_arg_count;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=41;
 }
 
@@ -681,10 +724,11 @@ function gml_action_arg_count(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_add_int=["h_d","h_i"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_add_int():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_add_int;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_i
+	static __enumParams__=["h_d","h_i"];
 	static __enumIndex__=42;
 }
 
@@ -697,10 +741,10 @@ function gml_action_add_int(l_h_d,l_h_i){
 }
 
 if(live_enabled)
-global.__mp_gml_action_equ_op=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_equ_op():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_equ_op;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=43;
 }
 
@@ -712,10 +756,10 @@ function gml_action_equ_op(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_neq_op=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_neq_op():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_neq_op;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=44;
 }
 
@@ -727,10 +771,10 @@ function gml_action_neq_op(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_concat=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_concat():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_concat;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=45;
 }
 
@@ -742,10 +786,11 @@ function gml_action_concat(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_bin_op=["h_d","h_o"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_bin_op():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_bin_op;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_o
+	static __enumParams__=["h_d","h_o"];
 	static __enumIndex__=46;
 }
 
@@ -758,10 +803,11 @@ function gml_action_bin_op(l_h_d,l_h_o){
 }
 
 if(live_enabled)
-global.__mp_gml_action_un_op=["h_d","h_o"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_un_op():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_un_op;
+	/// @hint {gml_pos} :h_d
+	/// @hint {ast_GmlUnOp} :h_o
+	static __enumParams__=["h_d","h_o"];
 	static __enumIndex__=47;
 }
 
@@ -774,10 +820,11 @@ function gml_action_un_op(l_h_d,l_h_o){
 }
 
 if(live_enabled)
-global.__mp_gml_action_in=["h_d","h_not"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_in():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_in;
+	/// @hint {gml_pos} :h_d
+	/// @hint {bool} :h_not
+	static __enumParams__=["h_d","h_not"];
 	static __enumIndex__=48;
 }
 
@@ -790,10 +837,12 @@ function gml_action_in(l_h_d,l_h_not){
 }
 
 if(live_enabled)
-global.__mp_gml_action_call_script=["h_d","h_script","h_argc"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_call_script():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_call_script;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_script} :h_script
+	/// @hint {int} :h_argc
+	static __enumParams__=["h_d","h_script","h_argc"];
 	static __enumIndex__=49;
 }
 
@@ -807,10 +856,11 @@ function gml_action_call_script(l_h_d,l_h_script,l_h_argc){
 }
 
 if(live_enabled)
-global.__mp_gml_action_call_script_id=["h_d","h_argc"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_call_script_id():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_call_script_id;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_argc
+	static __enumParams__=["h_d","h_argc"];
 	static __enumIndex__=50;
 }
 
@@ -823,10 +873,10 @@ function gml_action_call_script_id(l_h_d,l_h_argc){
 }
 
 if(live_enabled)
-global.__mp_gml_action_call_script_with_array=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_call_script_with_array():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_call_script_with_array;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=51;
 }
 
@@ -838,10 +888,16 @@ function gml_action_call_script_with_array(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_call_func=["h_d","h_func","h_argc","h_args","h_rest","h_inst","h_out"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_call_func():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_call_func;
+	/// @hint {gml_pos} :h_d
+	/// @hint {any} :h_func
+	/// @hint {int} :h_argc
+	/// @hint {array<gml_type_check>} :h_args
+	/// @hint {gml_type_check} :h_rest
+	/// @hint {data_GmlFuncFlags} :h_inst
+	/// @hint {bool} :h_out
+	static __enumParams__=["h_d","h_func","h_argc","h_args","h_rest","h_inst","h_out"];
 	static __enumIndex__=52;
 }
 
@@ -859,10 +915,12 @@ function gml_action_call_func(l_h_d,l_h_func,l_h_argc,l_h_args,l_h_rest,l_h_inst
 }
 
 if(live_enabled)
-global.__mp_gml_action_call_field=["h_d","h_field","h_argc"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_call_field():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_call_field;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_field
+	/// @hint {int} :h_argc
+	static __enumParams__=["h_d","h_field","h_argc"];
 	static __enumIndex__=53;
 }
 
@@ -876,10 +934,11 @@ function gml_action_call_field(l_h_d,l_h_field,l_h_argc){
 }
 
 if(live_enabled)
-global.__mp_gml_action_construct=["h_d","h_argc"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_construct():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_construct;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_argc
+	static __enumParams__=["h_d","h_argc"];
 	static __enumIndex__=54;
 }
 
@@ -892,10 +951,11 @@ function gml_action_construct(l_h_d,l_h_argc){
 }
 
 if(live_enabled)
-global.__mp_gml_action_func_literal=["h_d","h_name"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_func_literal():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_func_literal;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_name
+	static __enumParams__=["h_d","h_name"];
 	static __enumIndex__=55;
 }
 
@@ -908,10 +968,11 @@ function gml_action_func_literal(l_h_d,l_h_name){
 }
 
 if(live_enabled)
-global.__mp_gml_action_jump=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_jump():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_jump;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=56;
 }
 
@@ -924,10 +985,11 @@ function gml_action_jump(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_jump_if=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_jump_if():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_jump_if;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=57;
 }
 
@@ -940,10 +1002,11 @@ function gml_action_jump_if(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_jump_unless=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_jump_unless():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_jump_unless;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=58;
 }
 
@@ -956,10 +1019,11 @@ function gml_action_jump_unless(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_bool_and=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_bool_and():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_bool_and;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=59;
 }
 
@@ -972,10 +1036,11 @@ function gml_action_bool_and(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_bool_or=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_bool_or():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_bool_or;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=60;
 }
 
@@ -988,10 +1053,12 @@ function gml_action_bool_or(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_switch=["h_d","h_jumptable","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_switch():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_switch;
+	/// @hint {gml_pos} :h_d
+	/// @hint {vm_GmlValueMap<int>} :h_jumptable
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_jumptable","h_p"];
 	static __enumIndex__=61;
 }
 
@@ -1005,10 +1072,11 @@ function gml_action_switch(l_h_d,l_h_jumptable,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_switch_case=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_switch_case():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_switch_case;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=62;
 }
 
@@ -1021,10 +1089,11 @@ function gml_action_switch_case(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_repeat_jump=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_repeat_jump():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_repeat_jump;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=63;
 }
 
@@ -1037,10 +1106,11 @@ function gml_action_repeat_jump(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_repeat_pre=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_repeat_pre():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_repeat_pre;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=64;
 }
 
@@ -1053,10 +1123,10 @@ function gml_action_repeat_pre(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_with_pre=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_with_pre():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_with_pre;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=65;
 }
 
@@ -1068,10 +1138,11 @@ function gml_action_with_pre(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_with_next=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_with_next():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_with_next;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=66;
 }
 
@@ -1084,10 +1155,10 @@ function gml_action_with_next(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_with_post=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_with_post():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_with_post;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=67;
 }
 
@@ -1099,10 +1170,11 @@ function gml_action_with_post(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_break=["h_d","h_lp"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_break():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_break;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_lp
+	static __enumParams__=["h_d","h_lp"];
 	static __enumIndex__=68;
 }
 
@@ -1115,10 +1187,11 @@ function gml_action_break(l_h_d,l_h_lp){
 }
 
 if(live_enabled)
-global.__mp_gml_action_continue=["h_d","h_lp"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_continue():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_continue;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_lp
+	static __enumParams__=["h_d","h_lp"];
 	static __enumIndex__=69;
 }
 
@@ -1131,10 +1204,10 @@ function gml_action_continue(l_h_d,l_h_lp){
 }
 
 if(live_enabled)
-global.__mp_gml_action_return=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_return():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_return;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=70;
 }
 
@@ -1146,10 +1219,10 @@ function gml_action_return(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_result=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_result():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_result;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=71;
 }
 
@@ -1161,10 +1234,11 @@ function gml_action_result(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_try=["h_d","h_hdl"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_try():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_try;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_hdl
+	static __enumParams__=["h_d","h_hdl"];
 	static __enumIndex__=72;
 }
 
@@ -1177,10 +1251,11 @@ function gml_action_try(l_h_d,l_h_hdl){
 }
 
 if(live_enabled)
-global.__mp_gml_action_catch=["h_d","h_v"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_catch():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_catch;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_v
+	static __enumParams__=["h_d","h_v"];
 	static __enumIndex__=73;
 }
 
@@ -1193,10 +1268,11 @@ function gml_action_catch(l_h_d,l_h_v){
 }
 
 if(live_enabled)
-global.__mp_gml_action_finally=["h_d","h_p"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_finally():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_finally;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_p
+	static __enumParams__=["h_d","h_p"];
 	static __enumIndex__=74;
 }
 
@@ -1209,10 +1285,10 @@ function gml_action_finally(l_h_d,l_h_p){
 }
 
 if(live_enabled)
-global.__mp_gml_action_throw=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_throw():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_throw;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=75;
 }
 
@@ -1224,10 +1300,10 @@ function gml_action_throw(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_wait=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_wait():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_wait;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=76;
 }
 
@@ -1239,10 +1315,11 @@ function gml_action_wait(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_fork=["h_d","h_out"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_fork():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_fork;
+	/// @hint {gml_pos} :h_d
+	/// @hint {bool} :h_out
+	static __enumParams__=["h_d","h_out"];
 	static __enumIndex__=77;
 }
 
@@ -1255,10 +1332,11 @@ function gml_action_fork(l_h_d,l_h_out){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ensure_array_for_local=["h_d","h_ind"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ensure_array_for_local():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ensure_array_for_local;
+	/// @hint {gml_pos} :h_d
+	/// @hint {int} :h_ind
+	static __enumParams__=["h_d","h_ind"];
 	static __enumIndex__=78;
 }
 
@@ -1271,10 +1349,11 @@ function gml_action_ensure_array_for_local(l_h_d,l_h_ind){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ensure_array_for_global=["h_d","h_name"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ensure_array_for_global():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ensure_array_for_global;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_name
+	static __enumParams__=["h_d","h_name"];
 	static __enumIndex__=79;
 }
 
@@ -1287,10 +1366,11 @@ function gml_action_ensure_array_for_global(l_h_d,l_h_name){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ensure_array_for_field=["h_d","h_field"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ensure_array_for_field():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ensure_array_for_field;
+	/// @hint {gml_pos} :h_d
+	/// @hint {string} :h_field
+	static __enumParams__=["h_d","h_field"];
 	static __enumIndex__=80;
 }
 
@@ -1303,10 +1383,10 @@ function gml_action_ensure_array_for_field(l_h_d,l_h_field){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ensure_array_for_index=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ensure_array_for_index():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ensure_array_for_index;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=81;
 }
 
@@ -1318,10 +1398,10 @@ function gml_action_ensure_array_for_index(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_ensure_array_for_index2d=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_ensure_array_for_index2d():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_ensure_array_for_index2d;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=82;
 }
 
@@ -1333,10 +1413,10 @@ function gml_action_ensure_array_for_index2d(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_alarm=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_alarm():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_alarm;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=83;
 }
 
@@ -1348,10 +1428,10 @@ function gml_action_alarm(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_alarm_set=["h_d"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_alarm_set():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_alarm_set;
+	/// @hint {gml_pos} :h_d
+	static __enumParams__=["h_d"];
 	static __enumIndex__=84;
 }
 
@@ -1363,10 +1443,11 @@ function gml_action_alarm_set(l_h_d){
 }
 
 if(live_enabled)
-global.__mp_gml_action_alarm_aop=["h_d","h_op"];
-if(live_enabled)
+/// @implements {gml_action}
 function mc_gml_action_alarm_aop():mc_gml_action()constructor{
-	static __enumParams__=global.__mp_gml_action_alarm_aop;
+	/// @hint {gml_pos} :h_d
+	/// @hint {gml_op} :h_op
+	static __enumParams__=["h_d","h_op"];
 	static __enumIndex__=85;
 }
 

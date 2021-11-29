@@ -3,6 +3,9 @@ switch(state) {
 	//	Let's check if the browser has metamask
 	case 0:
 		
+		get_metamaskaccount_check = false
+		token_balance_check = false
+		
 		browser_has_metamask = checkMetaConnection()
 		
 		if browser_has_metamask {
@@ -10,7 +13,10 @@ switch(state) {
 			state = 1
 		}
 		else {
-			debug.log("User needs to install the MetaMask extension")	
+			debug.log("User needs to install the MetaMask extension")
+			get_metamaskaccount_check = false
+			token_balance_check = false
+			state = -1
 		}
 		
 	break
@@ -18,7 +24,10 @@ switch(state) {
 	//	Connect wallet
 	case 1:
 		
-		getMetamaskAccount()
+		if !get_metamaskaccount_check {
+			getMetamaskAccount()
+			get_metamaskaccount_check = true
+		}
 		
 	break
 	
@@ -36,13 +45,20 @@ switch(state) {
 	//	The user has an NFT! Proceed to Chapter 3
 	case 3:
 	
-		if stage != 4 and !app.chapter3active {
-			app.unlockedChapter3 = true
+		if user_has_nft {
+			debug.log("Proceeding to Chapter 3!")
+			//app.unlockedChapter3 = true
+			//gui.showMenuChapter3 = false
+			//app.switch_room(Room2)
+			//app.switch_stage(4)
+			//app.chapter3active = true
 			gui.showMenuChapter3 = false
-			app.switch_room(Room2)
 			app.switch_stage(4)
-			app.chapter3active = true
 			state = -1
+			get_metamaskaccount_check = false
+			token_balance_check = false
+			//app.switch_room(Room2)
+			room_goto(Room2)
 		}
 	
 	break

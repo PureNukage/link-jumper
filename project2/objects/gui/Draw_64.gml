@@ -1,4 +1,4 @@
-if live_call() return live_result
+//if live_call() return live_result
 
 if showRestart {
 	
@@ -966,29 +966,33 @@ if showNodeControls {
 	
 if showMenuChapter3 {
 	
-	//	MetaMask Button
-	var width = 240
-	var height = 60
-	var xx = display_get_gui_width()/2 - width/2
-	var yy = display_get_gui_height()/2
-	var thickness = 4
+	if instance_exists(web3controller) and web3controller.state == -1 {
 	
-	draw_set_color(c_black)
-	draw_roundrect(xx-thickness,yy-thickness,xx+width+thickness,yy+height+thickness,false)
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
-		draw_set_color(c_orange_dark)
-		if input.leftPress {
-			web3controller.state = 0
+		//	MetaMask Button
+		var width = 240
+		var height = 60
+		var xx = display_get_gui_width()/2 - width/2
+		var yy = display_get_gui_height()/2
+		var thickness = 4
+	
+		draw_set_color(c_black)
+		draw_roundrect(xx-thickness,yy-thickness,xx+width+thickness,yy+height+thickness,false)
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
+			draw_set_color(c_orange_dark)
+			if input.leftPress {
+				web3controller.state = 0
+			}
 		}
-	}
-	else {
-		draw_set_color(c_orange)
-	}
-	draw_roundrect(xx,yy,xx+width,yy+height,false)
+		else {
+			draw_set_color(c_orange)
+		}
+		draw_roundrect(xx,yy,xx+width,yy+height,false)
 	
-	draw_set_color(c_black)
-	draw_set_halign(fa_center)
-	draw_set_valign(fa_middle)
-	draw_text(xx+width/2,yy+height/2,"Connect MetaMask")
+		draw_set_color(c_black)
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_middle)
+		draw_text(xx+width/2,yy+height/2,"Connect MetaMask")
+		
+	}
 	
 }

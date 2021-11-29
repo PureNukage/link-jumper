@@ -43,7 +43,7 @@ if centerWindow = true {
 
 if os_browser != browser_not_a_browser and !scaled {
 	if (browser_width != window_get_width() or browser_width != window_get_height()) {
-		scale_canvas(browser_width, browser_height, true)	
+		//scale_canvas(browser_width, browser_height, true)	
 	}
 }
 

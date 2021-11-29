@@ -20,7 +20,7 @@
     {"filename":"custom_script.js","origname":"","init":"","final":"","kind":5,"uncompress":false,"functions":[
         {"externalName":"checkMetaConnection","kind":5,"help":"checkMetaConnection();","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"checkMetaConnection","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"getMetamaskAccount","kind":5,"help":"getMetamaskAccount();","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"getMetamaskAccount","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"getTokenBalance","kind":5,"help":"getTokenBalance(wallet_address, token_address)","hidden":false,"returnType":2,"argCount":0,"args":[
+        {"externalName":"getTokenBalance","kind":5,"help":"getTokenBalance(wallet_address, token_address, ID)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
             1,
             1,

@@ -6,14 +6,14 @@
 // More of a coroutine really
 if(live_enabled)
 function gml_thread(l_program,l_actions,l_args1,l_locals,l_self1,l_other1,l_offset)constructor{
-	static h_result=undefined;
-	static h_status=undefined;
-	static h_callback=undefined;
-	static h_scope=undefined;
-	static h_wait_time=undefined;
-	static h_time_tag=undefined;
-	static h_error_text=undefined;
-	static h_error_pos=undefined;
+	static h_result=undefined; /// @is {any}
+	static h_status=undefined; /// @is {gml_thread_status}
+	static h_callback=undefined; /// @is {function<gml_thread; void>}
+	static h_scope=undefined; /// @is {gml_thread_scope}
+	static h_wait_time=undefined; /// @is {number}
+	static h_time_tag=undefined; /// @is {vm_GmlThreadTimeTag}
+	static h_error_text=undefined; /// @is {string}
+	static h_error_pos=undefined; /// @is {gml_pos}
 	static h_get_error=function(){
 		return self.h_error_text;
 	}

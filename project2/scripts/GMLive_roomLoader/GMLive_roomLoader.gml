@@ -54,18 +54,25 @@ if(live_enabled)
 function live_room_loader_add_layer(l_ql){
 	var l_ql_depth=l_ql[?"depth"];
 	var l_ql_name=l_ql[?"name"];
-	var l_rl,l_i,l_n,l_f,l_s,l_aval,l_rx,l_ry;
-	switch(l_ql[?"modelName"]){
+	var l_ql_sublayers=l_ql[?"layers"];
+	var l_ql_sublayer_index,l_rl,l_i,l_n,l_f,l_s,l_aval,l_rx,l_ry;
+	var l__g=l_ql[?"modelName"];
+	if(l__g==undefined){
+		trace("src/live/RoomLoader.hx:397:","Unknown layer type "+gml_std_Std_stringify(l_ql[?"modelName"]));
+	} else switch(l__g){
 		case "GMRLayer":
 			l_rl=layer_get_id(l_ql_name);
 			if(l_rl==-1){
 				l_rl=layer_create(l_ql_depth,l_ql_name);
 				if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
 			}
-			var l_sublayers=l_ql[?"layers"];
-			var l_i=ds_list_size(l_sublayers);
-			while(--l_i>=0){
-				live_room_loader_add_layer(ds_list_find_value(l_sublayers,l_i));
+			if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+				l_ql_sublayer_index=0;
+				var l__=0;
+				for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+					live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+					l_ql_sublayer_index++;
+				}
 			}
 			break;
 		case "GMRBackgroundLayer":
@@ -74,6 +81,14 @@ function live_room_loader_add_layer(l_ql){
 				if(l_rl==-1){
 					l_rl=layer_create(l_ql_depth,l_ql_name);
 					if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
+				}
+				if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+					l_ql_sublayer_index=0;
+					var l__=0;
+					for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+						live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+						l_ql_sublayer_index++;
+					}
 				}
 				var l_qb=l_ql;
 				l_s=l_qb[?"sprite"];
@@ -107,6 +122,14 @@ function live_room_loader_add_layer(l_ql){
 					l_rl=layer_create(l_ql_depth,l_ql_name);
 					if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
 				}
+				if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+					l_ql_sublayer_index=0;
+					var l__=0;
+					for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+						live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+						l_ql_sublayer_index++;
+					}
+				}
 				var l_qt=l_ql;
 				var l_qtt=l_qt[?"tiles"];
 				var l_qtw=l_qtt[?"SerialiseWidth"];
@@ -133,6 +156,14 @@ function live_room_loader_add_layer(l_ql){
 				if(l_rl==-1){
 					l_rl=layer_create(l_ql_depth,l_ql_name);
 					if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
+				}
+				if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+					l_ql_sublayer_index=0;
+					var l__=0;
+					for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+						live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+						l_ql_sublayer_index++;
+					}
 				}
 				var l_qi=l_ql;
 				l_rx=live_room_loader_room_x;
@@ -187,6 +218,14 @@ function live_room_loader_add_layer(l_ql){
 					l_rl=layer_create(l_ql_depth,l_ql_name);
 					if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
 				}
+				if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+					l_ql_sublayer_index=0;
+					var l__=0;
+					for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+						live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+						l_ql_sublayer_index++;
+					}
+				}
 				var l_sprites=l_ql[?"assets"];
 				l_n=ds_list_size(l_sprites);
 				var l_lcs=live_room_loader_sprite_cache;
@@ -222,6 +261,54 @@ function live_room_loader_add_layer(l_ql){
 				}
 			}
 			break;
+		case "GMREffectLayer":
+			if(live_room_loader_apply_filters){
+				l_rl=layer_get_id(l_ql_name);
+				if(l_rl==-1){
+					l_rl=layer_create(l_ql_depth,l_ql_name);
+					if(l_ql[?"visible"]!=undefined)layer_set_visible(l_rl,l_ql[?"visible"]);
+				}
+				if(l_ql_sublayers!=undefined&&l_ql_sublayers!=pointer_null){
+					l_ql_sublayer_index=0;
+					var l__=0;
+					for(var l__g1=ds_list_size(l_ql_sublayers);l__<l__g1;l__++){
+						live_room_loader_add_layer(ds_list_find_value(l_ql_sublayers,l_ql_sublayer_index));
+						l_ql_sublayer_index++;
+					}
+				}
+				var l_fxl=l_ql;
+				l_s=l_fxl[?"effectType"];
+				if(l_s==undefined||l_s==pointer_null)return 0;
+				var l_fx1=fx_create(l_s);
+				var l__g_list=l_fxl[?"properties"];
+				var l__g_index=0;
+				while(l__g_index<ds_list_size(l__g_list)){
+					var l_pp=ds_list_find_value(l__g_list,l__g_index++);
+					switch(l_pp[?"type"]){
+						case 1:
+							l_s=l_pp[?"value"];
+							if(string_ord_at(l_s,1)!=35)continue;
+							l_f=real(ptr(string_delete(l_s,1,1)));
+							if(l_f<0)l_f+=4294967296.;
+							fx_set_parameter(l_fx1,l_pp[?"name"],l_f%256/255,(l_f/256|0)%256/255,(l_f/65536|0)%256/255,(l_f/16777216|0)/255);
+							break;
+						case 0:
+							l_f=real(l_pp[?"value"]);
+							fx_set_parameter(l_fx1,l_pp[?"name"],l_f);
+							break;
+						case 2:
+							l_s=l_pp[?"value"];
+							if(l_s==undefined||l_s==pointer_null)continue;
+							l_f=asset_get_index(l_s);
+							if(l_f!=-1)fx_set_parameter(l_fx1,l_pp[?"name"],l_f);
+							break;
+						default:live_log("Unknown effect parameter type "+string(l_pp[?"type"]),1);
+					}
+				}
+				layer_set_fx(l_rl,l_fx1);
+			}
+			break;
+		default:trace("src/live/RoomLoader.hx:397:","Unknown layer type "+gml_std_Std_stringify(l_ql[?"modelName"]));
 	}
 }
 

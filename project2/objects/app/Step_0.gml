@@ -1,4 +1,4 @@
-if chapter3active {
+//if chapter3active {
 	//	Chapter 3 Timer
 	if time.minutes_switch chapter3_timer--
 
@@ -42,4 +42,4 @@ if chapter3active {
 
 
 	if input.keySpeedMinute chapter3_timer--
-}
+//}
