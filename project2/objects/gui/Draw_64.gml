@@ -218,8 +218,8 @@ if showMenu {
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y, xx,yy,xx+width,yy+height) {
 			draw_set_color(c_sergey_blue2)
 			if input.leftPress {
-				app.switch_stage(4)
-				app.switch_room(Room2)
+				showMenu = false
+				showMenuChapter3 = true
 			}
 		}
 		else {
@@ -961,5 +961,34 @@ if showBookshelf {
 if showNodeControls {
 	
 
+	
+}
+	
+if showMenuChapter3 {
+	
+	//	MetaMask Button
+	var width = 240
+	var height = 60
+	var xx = window_get_width()/2 - width/2
+	var yy = window_get_height()/2
+	var thickness = 4
+	
+	draw_set_color(c_black)
+	draw_roundrect(xx-thickness,yy-thickness,xx+width+thickness,yy+height+thickness,false)
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+width,yy+height) {
+		draw_set_color(c_orange_dark)
+		if input.leftPress {
+			
+		}
+	}
+	else {
+		draw_set_color(c_orange)
+	}
+	draw_roundrect(xx,yy,xx+width,yy+height,false)
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text(xx+width/2,yy+height/2,"Connect MetaMask")
 	
 }

@@ -8,6 +8,7 @@ creator = "@PureNukage"
 stage = -1
 
 unlockedChapter3 = false
+chapter3active = false
 
 chapter3_looped_once = false
 chapter3_seen_timer = false
@@ -221,8 +222,10 @@ function save_game() {
 function load_game() {
 	ini_open("save.ini")
 	
-	unlockedFlyingStage = ini_read_real("Data", "unlockedFlying", 0)
+	unlockedFlyingStage = ini_read_real("Data", "unlockedFlying", 1)
 	unlockedChapter3 = ini_read_real("Data", "unlockedChapter3", 0)
+	
+	unlockedFlyingStage = 1
 	
 	ini_close()
 }

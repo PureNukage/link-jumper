@@ -17,6 +17,8 @@ if app.stage == 4 showMenu = false
 
 showBookshelf = false
 
+showMenuChapter3 = false
+
 interacting = -1
 
 showNodeControls = false

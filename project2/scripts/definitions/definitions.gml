@@ -9,6 +9,7 @@
 
 #macro c_sergey_blue make_color_rgb(42,90,218)
 #macro c_sergey_blue2 make_color_rgb(70,117,244)
+#macro c_orange_dark make_color_rgb(255,130,4)
 
 #macro icon_y 0
 #macro icon_string 1

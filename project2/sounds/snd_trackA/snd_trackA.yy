@@ -1,4 +1,5 @@
 {
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -11,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_trackA.mp3",
-  "duration": 56.71683,
+  "duration": 56.711834,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

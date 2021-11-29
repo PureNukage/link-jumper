@@ -71,6 +71,15 @@ if on {
 		app.switch_stage(2)	
 		app.switch_stage(3)	
 	}
+	
+	var xx = display_get_gui_width()/2 - width + 90
+	var yy = 30 + 80
+	var clicked = draw_debug_button(xx+15,yy+15,80,30,"Stage 4")
+	if clicked {
+		app.unlockedChapter3 = true
+		app.switch_room(Room2)
+		app.switch_stage(4)
+	}
 		
 	draw_reset()
 	
