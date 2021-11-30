@@ -31,7 +31,7 @@ else if stage == 3 {
 
 	_y += space
 
-	draw_text_ext(_x, _y, "Thanks to the Chainlink team for the work they do and for humoring this", string_height("1"),500)
+	draw_text_ext(_x, _y, "Thanks to the Chainlink team", string_height("1"),500)
 
 	_y += space
 
@@ -39,6 +39,8 @@ else if stage == 3 {
 
 	if creditsY <= -1000 {
 		game_restart()
+		app.stage = -1
 		if audio_is_playing(snd_trackB) audio_stop_sound(snd_trackB)
+		if audio_is_playing(snd_trackA) audio_stop_sound(snd_trackA)
 	}
 }
