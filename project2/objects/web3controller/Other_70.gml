@@ -7,6 +7,7 @@ if _id == "getWalletAddress" {
 	if user_address != "0" {
 		state = 2
 		debug.log("Got the users address as: " + string(user_address))
+		gui.addMetamaskMessage("Got the users address as: " + string(user_address))
 	}
 	//	Couldn't get users address
 	else {
@@ -21,10 +22,11 @@ if _id == "getTokenBalance" {
 	
 	var balance = async_load[? "balance"]
 	
-	if balance != "-1" {
+	if balance != "-1" and balance != "0" {
 		user_has_nft = true
 		state = 3
 		debug.log("User holds: "+string(balance)+" of the games NFT!")
+		gui.addMetamaskMessage("User holds: "+string(balance)+" of the games NFT!")
 	}
 	//	User does not hold any of the NFT!
 	else {
@@ -33,6 +35,7 @@ if _id == "getTokenBalance" {
 		token_balance_check = false
 		user_has_nft = false
 		debug.log("User does not hold any of the games NFT!")
+		gui.addMetamaskMessage("User does not hold any of the games NFT!")
 	}
 	
 }

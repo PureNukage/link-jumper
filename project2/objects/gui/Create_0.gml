@@ -18,6 +18,12 @@ if app.stage == 4 showMenu = false
 showBookshelf = false
 
 showMenuChapter3 = false
+showMetamaskMessage = false
+metamaskMessage = ""
+metamaskMessages = ds_list_create()
+function addMetamaskMessage(String) {
+	ds_list_add(metamaskMessages, String)
+}
 
 interacting = -1
 

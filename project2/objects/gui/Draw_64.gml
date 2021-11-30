@@ -966,6 +966,20 @@ if showNodeControls {
 	
 if showMenuChapter3 {
 	
+	//	Display Message
+	if !ds_list_empty(metamaskMessages) {
+		
+		var xx = display_get_gui_width()/2
+		var yy = display_get_gui_height()/2 - 120
+		
+		for(var i=0;i<ds_list_size(metamaskMessages);i++) {
+			yy += i*32
+			draw_text_outlined(xx,yy,metamaskMessages[| i],c_white,c_black)		
+		}
+		
+	}
+	
+	//	MetaMask Button
 	if instance_exists(web3controller) and web3controller.state == -1 {
 	
 		//	MetaMask Button

@@ -6,6 +6,10 @@ switch(state) {
 		get_metamaskaccount_check = false
 		token_balance_check = false
 		
+		if !ds_list_empty(gui.metamaskMessages) {
+			ds_list_clear(gui.metamaskMessages)	
+		}
+		
 		browser_has_metamask = checkMetaConnection()
 		
 		if browser_has_metamask {
@@ -14,6 +18,7 @@ switch(state) {
 		}
 		else {
 			debug.log("User needs to install the MetaMask extension")
+			gui.addMetamaskMessage("User needs to install the MetaMask extension")
 			get_metamaskaccount_check = false
 			token_balance_check = false
 			state = -1
@@ -54,11 +59,10 @@ switch(state) {
 			//app.chapter3active = true
 			gui.showMenuChapter3 = false
 			app.switch_stage(4)
+			app.switch_room(Room2)
 			state = -1
 			get_metamaskaccount_check = false
 			token_balance_check = false
-			//app.switch_room(Room2)
-			room_goto(Room2)
 		}
 	
 	break

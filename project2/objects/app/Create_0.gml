@@ -1,4 +1,4 @@
-version = "0.1.3"
+version = "0.1.4a"
 creator = "@PureNukage"
 
 //	cr_size_we - horizontal
